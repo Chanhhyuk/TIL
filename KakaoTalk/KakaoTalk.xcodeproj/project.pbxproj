@@ -13,6 +13,7 @@
 		71CFC38A26C53292007A21F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38826C53292007A21F0 /* Main.storyboard */; };
 		71CFC38C26C53293007A21F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38B26C53293007A21F0 /* Assets.xcassets */; };
 		71CFC38F26C53293007A21F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */; };
+		71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E72A0726C7C3DF009668B6 /* Chatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		71CFC38B26C53293007A21F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CFC38E26C53293007A21F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CFC39026C53293007A21F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71E72A0726C7C3DF009668B6 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */,
 				71CFC39026C53293007A21F0 /* Info.plist */,
 				711AFD4526C66D1100643FD9 /* Friend.swift */,
+				71E72A0726C7C3DF009668B6 /* Chatting.swift */,
 			);
 			path = KakaoTalk;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 				711AFD4626C66D1100643FD9 /* Friend.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
 				71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */,
+				71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
