@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		711AFD4626C66D1100643FD9 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AFD4526C66D1100643FD9 /* Friend.swift */; };
+		7141673926C8ED6100A27502 /* SeeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* SeeMore.swift */; };
 		71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38226C53292007A21F0 /* AppDelegate.swift */; };
 		71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38426C53292007A21F0 /* SceneDelegate.swift */; };
 		71CFC38A26C53292007A21F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38826C53292007A21F0 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		711AFD4526C66D1100643FD9 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		7141673826C8ED6100A27502 /* SeeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMore.swift; sourceTree = "<group>"; };
 		71CFC37F26C53292007A21F0 /* KakaoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CFC38226C53292007A21F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CFC38426C53292007A21F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				71CFC39026C53293007A21F0 /* Info.plist */,
 				711AFD4526C66D1100643FD9 /* Friend.swift */,
 				71E72A0726C7C3DF009668B6 /* Chatting.swift */,
+				7141673826C8ED6100A27502 /* SeeMore.swift */,
 			);
 			path = KakaoTalk;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				711AFD4626C66D1100643FD9 /* Friend.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
+				7141673926C8ED6100A27502 /* SeeMore.swift in Sources */,
 				71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */,
 				71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */,
 			);
