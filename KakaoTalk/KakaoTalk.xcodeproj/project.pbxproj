@@ -16,6 +16,7 @@
 		71CFC38C26C53293007A21F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38B26C53293007A21F0 /* Assets.xcassets */; };
 		71CFC38F26C53293007A21F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */; };
 		71D1650D26CCE33C00F6EFCC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1650C26CCE33C00F6EFCC /* Setting.swift */; };
+		71D1652526CE26A200F6EFCC /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1652426CE26A200F6EFCC /* Notice.swift */; };
 		71DDAB1426CB8C9800E7C023 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDAB1326CB8C9800E7C023 /* View.swift */; };
 		71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E72A0726C7C3DF009668B6 /* Chatting.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		71CFC38E26C53293007A21F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CFC39026C53293007A21F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71D1650C26CCE33C00F6EFCC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		71D1652426CE26A200F6EFCC /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		71DDAB1326CB8C9800E7C023 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		71E72A0726C7C3DF009668B6 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				71C7232C26CA4C8A0024AAAB /* Shopping.swift */,
 				71DDAB1326CB8C9800E7C023 /* View.swift */,
 				71D1650C26CCE33C00F6EFCC /* Setting.swift */,
+				71D1652426CE26A200F6EFCC /* Notice.swift */,
 			);
 			path = KakaoTalk;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 				711AFD4626C66D1100643FD9 /* Friend.swift in Sources */,
 				71C7232D26CA4C8A0024AAAB /* Shopping.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
+				71D1652526CE26A200F6EFCC /* Notice.swift in Sources */,
 				7141673926C8ED6100A27502 /* SeeMore.swift in Sources */,
 				71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */,
 				71DDAB1426CB8C9800E7C023 /* View.swift in Sources */,

@@ -1,8 +1,7 @@
-//
-//  View.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/17.
-//
+import UIKit
 
-import Foundation
+class View : UIViewController{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
