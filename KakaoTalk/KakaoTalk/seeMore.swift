@@ -1,6 +1,6 @@
 import UIKit
 
-class SeeMore : UIViewController{
+class seeMore : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }

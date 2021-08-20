@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		711AFD4626C66D1100643FD9 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AFD4526C66D1100643FD9 /* Friend.swift */; };
-		7141673926C8ED6100A27502 /* SeeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* SeeMore.swift */; };
-		71C7232D26CA4C8A0024AAAB /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7232C26CA4C8A0024AAAB /* Shopping.swift */; };
+		711AFD4626C66D1100643FD9 /* friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AFD4526C66D1100643FD9 /* friend.swift */; };
+		7141673926C8ED6100A27502 /* seeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* seeMore.swift */; };
+		71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7232C26CA4C8A0024AAAB /* shopping.swift */; };
 		71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38226C53292007A21F0 /* AppDelegate.swift */; };
 		71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38426C53292007A21F0 /* SceneDelegate.swift */; };
 		71CFC38A26C53292007A21F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38826C53292007A21F0 /* Main.storyboard */; };
 		71CFC38C26C53293007A21F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38B26C53293007A21F0 /* Assets.xcassets */; };
 		71CFC38F26C53293007A21F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */; };
-		71D1650D26CCE33C00F6EFCC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1650C26CCE33C00F6EFCC /* Setting.swift */; };
-		71D1652526CE26A200F6EFCC /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1652426CE26A200F6EFCC /* Notice.swift */; };
-		71DDAB1426CB8C9800E7C023 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDAB1326CB8C9800E7C023 /* View.swift */; };
-		71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E72A0726C7C3DF009668B6 /* Chatting.swift */; };
+		71D1650D26CCE33C00F6EFCC /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1650C26CCE33C00F6EFCC /* setting.swift */; };
+		71D1652526CE26A200F6EFCC /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1652426CE26A200F6EFCC /* notice.swift */; };
+		71DDAB1426CB8C9800E7C023 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDAB1326CB8C9800E7C023 /* view.swift */; };
+		71E72A0826C7C3DF009668B6 /* chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E72A0726C7C3DF009668B6 /* chatting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		711AFD4526C66D1100643FD9 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		7141673826C8ED6100A27502 /* SeeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMore.swift; sourceTree = "<group>"; };
-		71C7232C26CA4C8A0024AAAB /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
+		711AFD4526C66D1100643FD9 /* friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friend.swift; sourceTree = "<group>"; };
+		7141673826C8ED6100A27502 /* seeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeMore.swift; sourceTree = "<group>"; };
+		71C7232C26CA4C8A0024AAAB /* shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopping.swift; sourceTree = "<group>"; };
 		71CFC37F26C53292007A21F0 /* KakaoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CFC38226C53292007A21F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CFC38426C53292007A21F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,10 +32,10 @@
 		71CFC38B26C53293007A21F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71CFC38E26C53293007A21F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71CFC39026C53293007A21F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71D1650C26CCE33C00F6EFCC /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		71D1652426CE26A200F6EFCC /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
-		71DDAB1326CB8C9800E7C023 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		71E72A0726C7C3DF009668B6 /* Chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatting.swift; sourceTree = "<group>"; };
+		71D1650C26CCE33C00F6EFCC /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
+		71D1652426CE26A200F6EFCC /* notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notice.swift; sourceTree = "<group>"; };
+		71DDAB1326CB8C9800E7C023 /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
+		71E72A0726C7C3DF009668B6 /* chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,13 +74,13 @@
 				71CFC38B26C53293007A21F0 /* Assets.xcassets */,
 				71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */,
 				71CFC39026C53293007A21F0 /* Info.plist */,
-				711AFD4526C66D1100643FD9 /* Friend.swift */,
-				71E72A0726C7C3DF009668B6 /* Chatting.swift */,
-				7141673826C8ED6100A27502 /* SeeMore.swift */,
-				71C7232C26CA4C8A0024AAAB /* Shopping.swift */,
-				71DDAB1326CB8C9800E7C023 /* View.swift */,
-				71D1650C26CCE33C00F6EFCC /* Setting.swift */,
-				71D1652426CE26A200F6EFCC /* Notice.swift */,
+				711AFD4526C66D1100643FD9 /* friend.swift */,
+				71E72A0726C7C3DF009668B6 /* chatting.swift */,
+				7141673826C8ED6100A27502 /* seeMore.swift */,
+				71C7232C26CA4C8A0024AAAB /* shopping.swift */,
+				71DDAB1326CB8C9800E7C023 /* view.swift */,
+				71D1650C26CCE33C00F6EFCC /* setting.swift */,
+				71D1652426CE26A200F6EFCC /* notice.swift */,
 			);
 			path = KakaoTalk;
 			sourceTree = "<group>";
@@ -155,15 +155,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				711AFD4626C66D1100643FD9 /* Friend.swift in Sources */,
-				71C7232D26CA4C8A0024AAAB /* Shopping.swift in Sources */,
+				711AFD4626C66D1100643FD9 /* friend.swift in Sources */,
+				71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
-				71D1652526CE26A200F6EFCC /* Notice.swift in Sources */,
-				7141673926C8ED6100A27502 /* SeeMore.swift in Sources */,
+				71D1652526CE26A200F6EFCC /* notice.swift in Sources */,
+				7141673926C8ED6100A27502 /* seeMore.swift in Sources */,
 				71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */,
-				71DDAB1426CB8C9800E7C023 /* View.swift in Sources */,
-				71D1650D26CCE33C00F6EFCC /* Setting.swift in Sources */,
-				71E72A0826C7C3DF009668B6 /* Chatting.swift in Sources */,
+				71DDAB1426CB8C9800E7C023 /* view.swift in Sources */,
+				71D1650D26CCE33C00F6EFCC /* setting.swift in Sources */,
+				71E72A0826C7C3DF009668B6 /* chatting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

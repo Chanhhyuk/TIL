@@ -1,6 +1,6 @@
 import UIKit
 
-class Chatting : UIViewController {
+class shopping : UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
