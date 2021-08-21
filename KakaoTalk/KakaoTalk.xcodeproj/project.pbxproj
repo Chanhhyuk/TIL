@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		711AFD4626C66D1100643FD9 /* friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AFD4526C66D1100643FD9 /* friend.swift */; };
 		7141673926C8ED6100A27502 /* seeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* seeMore.swift */; };
+		71C1BC3526D0B06A00B1AB46 /* lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1BC3426D0B06A00B1AB46 /* lab.swift */; };
 		71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7232C26CA4C8A0024AAAB /* shopping.swift */; };
 		71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38226C53292007A21F0 /* AppDelegate.swift */; };
 		71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38426C53292007A21F0 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		711AFD4526C66D1100643FD9 /* friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friend.swift; sourceTree = "<group>"; };
 		7141673826C8ED6100A27502 /* seeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeMore.swift; sourceTree = "<group>"; };
+		71C1BC3426D0B06A00B1AB46 /* lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lab.swift; sourceTree = "<group>"; };
 		71C7232C26CA4C8A0024AAAB /* shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopping.swift; sourceTree = "<group>"; };
 		71CFC37F26C53292007A21F0 /* KakaoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CFC38226C53292007A21F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				71DDAB1326CB8C9800E7C023 /* view.swift */,
 				71D1650C26CCE33C00F6EFCC /* setting.swift */,
 				71D1652426CE26A200F6EFCC /* notice.swift */,
+				71C1BC3426D0B06A00B1AB46 /* lab.swift */,
 			);
 			path = KakaoTalk;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				711AFD4626C66D1100643FD9 /* friend.swift in Sources */,
+				71C1BC3526D0B06A00B1AB46 /* lab.swift in Sources */,
 				71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
 				71D1652526CE26A200F6EFCC /* notice.swift in Sources */,

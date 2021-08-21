@@ -1,8 +1,7 @@
-//
-//  Notice.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/19.
-//
+import UIKit
 
-import Foundation
+class notice : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
