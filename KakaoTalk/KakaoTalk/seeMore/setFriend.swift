@@ -1,8 +1,7 @@
-//
-//  setFriend.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/23.
-//
+import UIKit
 
-import Foundation
+class seeFriend : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
