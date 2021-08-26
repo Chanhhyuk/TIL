@@ -1,6 +1,6 @@
 import UIKit
 
-class multiProfile : UIViewController {
+class setChatting : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
