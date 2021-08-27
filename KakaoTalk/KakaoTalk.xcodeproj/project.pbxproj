@@ -16,6 +16,7 @@
 		71C1BC4C26D1F0B600B1AB46 /* versionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C1BC4B26D1F0B600B1AB46 /* versionInfo.swift */; };
 		71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C7232C26CA4C8A0024AAAB /* shopping.swift */; };
 		71C92F7A26D7540300C734FD /* seeMMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C92F7926D7540300C734FD /* seeMMS.swift */; };
+		71C92F7C26D8AABD00C734FD /* screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C92F7B26D8AABD00C734FD /* screen.swift */; };
 		71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38226C53292007A21F0 /* AppDelegate.swift */; };
 		71CFC38526C53292007A21F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CFC38426C53292007A21F0 /* SceneDelegate.swift */; };
 		71CFC38A26C53292007A21F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71CFC38826C53292007A21F0 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		71C1BC4B26D1F0B600B1AB46 /* versionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = versionInfo.swift; sourceTree = "<group>"; };
 		71C7232C26CA4C8A0024AAAB /* shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopping.swift; sourceTree = "<group>"; };
 		71C92F7926D7540300C734FD /* seeMMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeMMS.swift; sourceTree = "<group>"; };
+		71C92F7B26D8AABD00C734FD /* screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screen.swift; sourceTree = "<group>"; };
 		71CFC37F26C53292007A21F0 /* KakaoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CFC38226C53292007A21F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71CFC38426C53292007A21F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				7148AD0826D4F9ED00CD0DF6 /* setChatting.swift */,
 				71B2F6A926D62BBB00C6C27F /* multiProfile.swift */,
 				71C92F7926D7540300C734FD /* seeMMS.swift */,
+				71C92F7B26D8AABD00C734FD /* screen.swift */,
 			);
 			path = seeMore;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				71C7232D26CA4C8A0024AAAB /* shopping.swift in Sources */,
 				71C92F7A26D7540300C734FD /* seeMMS.swift in Sources */,
 				71B2F6AA26D62BBB00C6C27F /* multiProfile.swift in Sources */,
+				71C92F7C26D8AABD00C734FD /* screen.swift in Sources */,
 				71CFC38326C53292007A21F0 /* AppDelegate.swift in Sources */,
 				71D1652526CE26A200F6EFCC /* notice.swift in Sources */,
 				7141673926C8ED6100A27502 /* seeMore.swift in Sources */,

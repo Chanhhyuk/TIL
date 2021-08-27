@@ -1,8 +1,7 @@
-//
-//  seeMMS.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/26.
-//
+import UIKit
 
-import Foundation
+class seeMMS : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
