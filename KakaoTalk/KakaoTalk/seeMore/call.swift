@@ -1,8 +1,7 @@
-//
-//  call.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/29.
-//
+import UIKit
 
-import Foundation
+class call : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
