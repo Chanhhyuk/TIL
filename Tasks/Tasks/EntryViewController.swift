@@ -13,11 +13,16 @@ class EntryViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        field.delegate = self
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        saveTask()
+        
         return true
+    }
+    @IBAction func saveTask() {
+        
     }
 
 }
