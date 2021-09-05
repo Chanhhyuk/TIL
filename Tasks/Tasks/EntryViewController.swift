@@ -22,7 +22,9 @@ class EntryViewController: UIViewController,UITextFieldDelegate {
         return true
     }
     @IBAction func saveTask() {
-        
+        let vc = storyboard?.instantiateViewController(identifier: "entry") as! EntryViewController
+        vc.title = "New Task"
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }
