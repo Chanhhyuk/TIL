@@ -8,7 +8,41 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.title = "Tasks"
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // Setup
+        if !UserDefaults().bool(forKey: "setup"){
+            UserDefaults().set(true, forKey: "setup")
+            UserDefaults().set(0, forKey: "setup")
+        }
+        updateTasks()
+    }
+    
+    func updateTasks() {
+        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+            return
+        }
+        
+        for x in 0...count {
+            
+            
+        }
+        
+    }
+    
+    @IBAction func didTapAdd() {
+        let vc = storyboard?.instantiateViewController(identifier: "entry") as! EntryViewController
+        vc.title = "New Task"
+        vc.update = {
+            DispatchQueue.main.async {
+                self.updateTasks()
+            }
+            
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

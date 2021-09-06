@@ -41,7 +41,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gRf-4o-Y2z">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="DlO-ne-S4c"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="DlO-ne-S4c">
+                            <connections>
+                                <action selector="didTapAdd" destination="BYZ-38-t0r" id="FX9-It-Mkx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="jVo-HD-Y2J" id="qLq-eE-9P1"/>
@@ -58,9 +62,27 @@
                     <view key="view" contentMode="scaleToFill" id="3GH-JH-MeL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vA-Jq-3Gt">
+                                <rect key="frame" x="20" y="64" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="FnL-tS-WkC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Qg5-kD-GxV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3vA-Jq-3Gt" firstAttribute="top" secondItem="Qg5-kD-GxV" secondAttribute="top" constant="20" id="OBH-eY-3LO"/>
+                            <constraint firstItem="3vA-Jq-3Gt" firstAttribute="leading" secondItem="Qg5-kD-GxV" secondAttribute="leading" constant="20" id="Smo-5u-v7C"/>
+                            <constraint firstItem="Qg5-kD-GxV" firstAttribute="trailing" secondItem="3vA-Jq-3Gt" secondAttribute="trailing" constant="20" id="jBv-Us-CBq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="field" destination="3vA-Jq-3Gt" id="hdx-f5-Muv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2XB-pH-9i4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
