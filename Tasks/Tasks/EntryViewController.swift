@@ -1,10 +1,3 @@
-//
-//  EntryViewController.swift
-//  Tasks
-//
-//  Created by ChanHyuk Kim on 2021/09/03.
-//
-
 import UIKit
 
 class EntryViewController: UIViewController,UITextFieldDelegate {
