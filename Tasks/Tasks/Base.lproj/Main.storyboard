@@ -43,12 +43,12 @@
                     <navigationItem key="navigationItem" id="gRf-4o-Y2z">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="DlO-ne-S4c">
                             <connections>
-                                <action selector="didTapAdd" destination="BYZ-38-t0r" id="FX9-It-Mkx"/>
+                                <action selector="didTapAdd" destination="BYZ-38-t0r" id="8fg-wn-1T6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="jVo-HD-Y2J" id="qLq-eE-9P1"/>
+                        <outlet property="tableView" destination="jVo-HD-Y2J" id="v2I-W8-FHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,7 +73,7 @@
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qg5-kD-GxV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstItem="3vA-Jq-3Gt" firstAttribute="top" secondItem="Qg5-kD-GxV" secondAttribute="top" constant="20" id="OBH-eY-3LO"/>
                             <constraint firstItem="3vA-Jq-3Gt" firstAttribute="leading" secondItem="Qg5-kD-GxV" secondAttribute="leading" constant="20" id="Smo-5u-v7C"/>
@@ -140,6 +140,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
