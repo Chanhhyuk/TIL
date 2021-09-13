@@ -8,6 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var table: UITableView!
+    
+    var models = [Weather]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
