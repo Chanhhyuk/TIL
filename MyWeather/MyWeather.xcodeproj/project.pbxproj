@@ -13,6 +13,10 @@
 		7111F1AC26EB673A004134C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7111F1AA26EB673A004134C0 /* Main.storyboard */; };
 		7111F1AE26EB673B004134C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7111F1AD26EB673B004134C0 /* Assets.xcassets */; };
 		7111F1B126EB673B004134C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7111F1AF26EB673B004134C0 /* LaunchScreen.storyboard */; };
+		71CC465426F32EB600FAC616 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC465226F32EB600FAC616 /* WeatherTableViewCell.swift */; };
+		71CC465526F32EB600FAC616 /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC465326F32EB600FAC616 /* WeatherTableViewCell.xib */; };
+		71CC465826F32EF800FAC616 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC465626F32EF800FAC616 /* HourlyTableViewCell.swift */; };
+		71CC465926F32EF800FAC616 /* HourlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71CC465726F32EF800FAC616 /* HourlyTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		7111F1AD26EB673B004134C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7111F1B026EB673B004134C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7111F1B226EB673B004134C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71CC465226F32EB600FAC616 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		71CC465326F32EB600FAC616 /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
+		71CC465626F32EF800FAC616 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
+		71CC465726F32EF800FAC616 /* HourlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +64,8 @@
 		7111F1A326EB673A004134C0 /* MyWeather */ = {
 			isa = PBXGroup;
 			children = (
-				71CC465126F32D6200FAC616 /* WeatherCell */,
 				71CC465026F32D5500FAC616 /* HourlyCollectionCell */,
+				71CC465126F32D6200FAC616 /* WeatherCell */,
 				7111F1A426EB673A004134C0 /* AppDelegate.swift */,
 				7111F1A626EB673A004134C0 /* SceneDelegate.swift */,
 				7111F1A826EB673A004134C0 /* ViewController.swift */,
@@ -72,6 +80,8 @@
 		71CC465026F32D5500FAC616 /* HourlyCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				71CC465626F32EF800FAC616 /* HourlyTableViewCell.swift */,
+				71CC465726F32EF800FAC616 /* HourlyTableViewCell.xib */,
 			);
 			path = HourlyCollectionCell;
 			sourceTree = "<group>";
@@ -79,6 +89,8 @@
 		71CC465126F32D6200FAC616 /* WeatherCell */ = {
 			isa = PBXGroup;
 			children = (
+				71CC465226F32EB600FAC616 /* WeatherTableViewCell.swift */,
+				71CC465326F32EB600FAC616 /* WeatherTableViewCell.xib */,
 			);
 			path = WeatherCell;
 			sourceTree = "<group>";
@@ -140,6 +152,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CC465526F32EB600FAC616 /* WeatherTableViewCell.xib in Resources */,
+				71CC465926F32EF800FAC616 /* HourlyTableViewCell.xib in Resources */,
 				7111F1B126EB673B004134C0 /* LaunchScreen.storyboard in Resources */,
 				7111F1AE26EB673B004134C0 /* Assets.xcassets in Resources */,
 				7111F1AC26EB673A004134C0 /* Main.storyboard in Resources */,
@@ -153,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71CC465426F32EB600FAC616 /* WeatherTableViewCell.swift in Sources */,
 				7111F1A926EB673A004134C0 /* ViewController.swift in Sources */,
+				71CC465826F32EF800FAC616 /* HourlyTableViewCell.swift in Sources */,
 				7111F1A526EB673A004134C0 /* AppDelegate.swift in Sources */,
 				7111F1A726EB673A004134C0 /* SceneDelegate.swift in Sources */,
 			);
