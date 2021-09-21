@@ -1,7 +1,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -14,6 +14,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var table: UITableView!
     
     var models = [Weather]()
+    
+    let locationManger = CLLocationManager()
+    
+    var coordinates: CLLocation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         table.delegate = self
         table.dataSource = self
+    }
+    
+    func setupLocation() {
+        locationManger.delegate = self
+        locationManger.requestWhenInUseAuthorization()
+        locationManger.startUpdatingLocation()
     }
 
     struct Weather {
