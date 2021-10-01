@@ -28,7 +28,7 @@
 - 복사시 값을 전달하는 것이 아니거, 저장된 주소를 전달
 - Heap의 공간에 저장, ARC 시스템을 통해 메모리를 관리
 
-```
+```swift
 class Fruit {
     var color = "red"
 }
@@ -45,7 +45,7 @@ melon.color // green
 apple.color // green 동일한 데이터를 가리키기 때문에 melon을 변경하면 똑같이 apple도 변경된다.
 ```
 
-```
+```swift
 struct Fruit {
     var color = "yellow"
 }
