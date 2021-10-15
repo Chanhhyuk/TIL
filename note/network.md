@@ -1,3 +1,33 @@
+# Network
+
+## HTTP(HyperText Tranfer Protocol)
+- 초기에는 하이퍼 문서를 전송하는데 쓰임
+- 현재는 이미지, 영상, 음성, 파일, JSON 등 모든 형태의 데이터 전송가능
+- 인터넷의 모든 것은 HTTP로 이루어져 있다
+
+인터넷주소 요청메시지
+- 쿼리 파라미터를 통한 데이터 전송
+get 메소드
+?로 시작, &로 추가 가능
+key=value의 형태
+
+- 메세지 바디를 통한 데이터 전송
+POST, PUT, PATCH 메소드
+
+* HTTP 요청 메세지
+첫줄은 요청하는 방식     // 메소드 + 요청대상(경로) + HTTP버전
+header (헤더 필드)    // 모든 부가 정보 (HTTP 전송에 필요한 메타데이터)
+공백라인    
+message body (메세지 본문)   // 실제 전송할 데이터(JSON / HTML문서 / 이미지 / 영상 등)
+
+* HTTP 응답 메세지
+첫줄은 요청하는 방식     // HTTP버전 + 상태코드 + 문구
+header (헤더 필드)    // 모든 부가 정보 (HTTP 전송에 필요한 메타데이터)
+공백라인    
+message body (메세지 본문)   // 실제 전송할 데이터(JSON / HTML문서 / 이미지 / 영상 등)
+
+
+
 ### Network communication (네트워크 통신)
 네트워크 통신은 Network server와 DB server를 갖추고 안정적으로 운영하기 위해 IDC에 관리를 위탁해야하며 불법적인 접근과 해킹을 막기 위해 firewall(방화벽)을 설치해야 하고 대량의 요청을 처리하기 위해 SLB(부하분산장치)도 추가 해야한다.
 

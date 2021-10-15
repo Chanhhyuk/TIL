@@ -48,6 +48,8 @@ do {
 
 ## 에러를 처리하는 방법 (try, try?, try!)
 - try? 정상적인경우: 리턴타입으로 리턴, 에러가 발생하면: nil 리턴
+- try? do catch를 사용하지 않아도 되고 try를 사용하려면 옵셔널 타입을 벗겨서 사용해야함
+- try! 런타임에러가 발생하면 앱이 종료되므로 에러가 발생하지 않을거라고 확신할 경우에만 사용
 
 ```swift
 // try
@@ -66,5 +68,14 @@ do {
 
 // try?
 
+let isChecked = try? checkingWeight(weight: 250)        // Bool?
+
+if let result = isChecked {
+    print(result)
+}
+
+// try!
+
+let isChecked: Bool = try! checkingWeight(weight: 250)  // Bool
 
 ```
