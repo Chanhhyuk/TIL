@@ -9,11 +9,11 @@
 
 ```swift
 // 정의
-protocol ColorProtocol {
-    func color()
+protocol ColorProtocol {    // 최소한의 요구사항 나열
+    func color() -> String
 }
 
-// 채택 및 구현
+// 채택 및 구현 (class, struct, enum 다 가능)
 struct apple: ColorProtocol {
     func color() {
         // 구체적인 구현
