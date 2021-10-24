@@ -70,12 +70,71 @@ do {
 
 let isChecked = try? checkingWeight(weight: 250)        // Bool?
 
-if let result = isChecked {
+if let result = isChecked {     // 사용시 옵셔널바인딩을 사용해야함
     print(result)
 }
 
 // try!
 
 let isChecked: Bool = try! checkingWeight(weight: 250)  // Bool
+
+```
+
+## 에러를 던지는 함수를 처리하는 함수
+```swift
+// 에러정의
+enum SomeError: Error {
+    case aError
+}
+
+// 에러를 던지는 함수 정의
+func throwingFunc() throws {
+    throw SomeError.aError
+}
+
+// 에러의 처리
+do{
+    try throwingFunc()
+} catch {
+    print(error)
+}
+```
+
+1) 일반적인 함수로 처리
+```swift
+func handleError() {
+    do{
+        try throwingFunc()
+    } catch {
+        print(error)
+    }
+}
+
+handleError()
+```
+2) throwing함수로 에러 다시 던지기
+- 함수 내에서 에러를 직접처리하지 못하는 경우, 에러를 다시 던질 수 있음
+
+```swift
+func handleError() throws {
+    try throwingFunc()  // do 블럭도 생략 가능
+                        // catch블럭이 없어도 에러를 밖으로 던질 수 있음
+}
+
+do {
+    try handleError()   // 에러를 받아서 처리 가능
+} catch {
+    print(error)
+}
+```
+3) rethrowing 함수로 에러 다시 던지기 (rethrows 키워드)
+- 에러를 던지는 throwing 함수를 파라미터로 받는 경우, 내부에서 다시 에러를 던지기 가능
+
+```swift
+// 에러를 던질 수 있는 함수를 파라미터로 사용하고(callback: () throws -> Void) 실행할 때
+// 다시 에러를 던지는 함수
+func someFunction(callback: () throws -> Void) rethrows {
+    try callback()
+}
 
 ```
