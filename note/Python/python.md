@@ -14,3 +14,15 @@ print("두 숫자를 더하면:",(number1 + number2))
 ```
 
 ## split
+
+파이썬은 switch문이 없다.
+
+```python
+A = "357"
+int(A[0])   // 3
+int(A[1])   // 5
+int(A[2])   // 7
+
+and // &&
+or  // ||
+```
