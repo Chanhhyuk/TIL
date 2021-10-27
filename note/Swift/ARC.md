@@ -1,16 +1,16 @@
 ## Memory Struct(메모리 구조)
 1. Code(Program)
-명령어 / 프로그램 / Read-only / 앱이 끝날때까지 지워지지 않는다. / 전역변수가 여기에 저장된다.
+명령어 / 프로그램 / Read-only / 앱이 끝날때까지 지워지지 않는다.
 그래서 당연히 앱이 끝날때까지 필요한것만 넣어야한다 **(그렇지 않으면 메모리 낭비가 일어난다.)**
 
-2. Data: 전역변수 / 타입(static/class) 변수 / 공통으로 공유하기 위한 데이터 / 앱이 실행되는 동안 불변
+2. Data
+전역변수 / 타입(static/class) 변수 / 공통으로 공유하기 위한 데이터 / 앱이 실행되는 동안 불변
 
 3. Heap
 동적할당(일반적으로 긴시간 저장) / 크기가 크고, 관리할 필요가 있는 데이터
-비어있는 메모리를 찾아서 저장
-스택보다 조금 더 오래 저장하기 위해 클래스나 객체를 저장
+비어있는 메모리를 찾아서 저장 / 스택보다 조금 더 오래 저장하기 위해 클래스나 객체를 저장
 Heap 영역에 할당되는 데이터를 관리를 해야만 메모리가 해제가 된다.(개발자가 잘 관리해야함)
-할당이 해제되지 않으면 Memory Leak(메모리 누수) 발생
+할당이 해제되지 않으면 **Memory Leak(메모리 누수)** 발생
 
 4. Stack
 함수실행을 위한 임시적 공간 / 크기가 작고 빠르게 사용하기 위한 데이터 / 알아서 자동 관리 됨 / 차곡차곡 쌓아서 저장
@@ -31,26 +31,39 @@ Heap 영역에 할당되는 데이터를 관리를 해야만 메모리가 해제
 |타입 예시|기본 타입(Int, String,...)</br> tuple,struct,enum,collection|class, closure|
 
 ## MRC(수동RC관리), ARC(자동RC관리)
+- 인스턴스를 사용해야 되는데 메모리에서 해제시켜버린다면???
+1) 인스턴스의 프로퍼티와 함수에 접근 불가
+2) 강제로 접근한다면 앱이 죽음
 - Object-C의 경우 메모리를 수동 관리했음 (실수 가능성 높음)
 - MRC: retain(RC 1증가), release(RC 1감소)
 - ARC: 컴파일러가 메모리 관리코드를 자동으로 추가해 줌으로써 안정성 증가
+- ARC는 자동으로 retain, release를 삽입해서 retainCount를 관리하고 0이 될때 deinit을 호출해서 인스턴스를 메모리 해제를 시킨다.
+- 자동으로 삽입된 코드는 complie time(build할 때)에 실행 (runtime에 계속 실행되는게 아님)
 1. 소유정책 - 인스턴스는 하나이상의 소유자가 있는 경우 메모리에 유지됨 (소유자 없으면 메모리에서 제거)
 2. 참조카운팅 - 인스턴스(나)를 가르키는 소유자수를 카운팅
 ```swift
-class fruit {
+class Fruit {       // Heap의 영역에 인스턴스가 하나 생긴다.
     var name: String
     var price: Int
     
-    init(name: String, price: Double) {
+    init(name: String, price: Int) {     // 생성자
         self.name = name
         self.price = price
     }
+    
+    deinit {        // 소멸자: 실제로 해제되는지 확인
+        print("\(name) 메모리 해제")
+    }
+    
 }
+// stack의 apple과 banana가 변수가 동일한 fruit(Heap)을 가리킨다.
+// apple과 banana 즉 2개가 가르키고 있기때문에 RC는 2개가 된다.
 var apple: Fruit? = Fruit(name:"apple", price: 1000)    // retain(apple)    RC:1
-var a = apple                                           // retain(apple)    RC:2
-a = nil         // release(apple)       RC:1
-apple = nil     // release(apple)       RC:0
+var banana: Fruit? = Fruit(name:"banana", price: 4000)  // retain(banana)    RC:2
+apple = nil     // release(apple)       RC:1
+banana = nil    // release(banana)      RC:0
 ```
+
 
 ## Strong Reference Cycle(강한 참조 사이클)
 
