@@ -58,10 +58,10 @@ class Fruit {       // Heap의 영역에 인스턴스가 하나 생긴다.
 }
 // stack의 apple과 banana가 변수가 동일한 fruit(Heap)을 가리킨다.
 // apple과 banana 즉 2개가 가르키고 있기때문에 RC는 2개가 된다.
-var apple: Fruit? = Fruit(name:"apple", price: 1000)    // retain(apple)    RC:1
-var banana: Fruit? = Fruit(name:"banana", price: 4000)  // retain(banana)    RC:2
-apple = nil     // release(apple)       RC:1
-banana = nil    // release(banana)      RC:0
+var apple: Fruit? = Fruit(name:"apple", price: 1000)    // retain(apple)    RC(Fruit):1
+var banana: Fruit? = Fruit(name:"banana", price: 4000)  // retain(banana)    RC(Fruit):2
+apple = nil     // release(apple)       RC(Fruit):1
+banana = nil    // release(banana)      RC(Fruit):0
 ```
 
 
@@ -91,18 +91,17 @@ class Food {
         print("\(name) 메모리 해제")
     }
 }
-var apple: Fruit? = Fruit(name: "사과")
-var applePie: Food? = Food(name: "사과파이")
+var apple: Fruit? = Fruit(name: "사과")       // retain(apple)    RC(Fruit):1
+var applePie: Food? = Food(name: "사과파이")   // retain(applePie) RC(Food):1
 
-apple?.cook = applePie           // 서로 참조
-applePie?.ingredient = apple     // 서로 참조
-
-apple = nil     // 객체가 서로를 참조하는 강한 참조 사이클로 인해변수의 참조에 nil을 할당해도 메모리 해제가 되지 않는
-applePie = nil  // 메모리 누수(Memory Leak)의 상황이 발생     
+apple?.cook = applePie          // RC(Fruit):2      
+applePie?.ingredient = apple    // RC(Food):2
 
 apple?.cook = nil               // RC를 고려하여, 참조 해제 순서를 주의해서 코드를 작성
-applePie?.ingredient = nil      // 이것까지 해야 메모리 해제가 됨, 위에 코드보다 먼저 적어줘야 한다.
+applePie?.ingredient = nil      // RC:1
 
+apple = nil         // RC:0
+applePie = nil      // RC:0
 ```
 
 ## Memory Leak 해결방법
@@ -112,9 +111,11 @@ applePie?.ingredient = nil      // 이것까지 해야 메모리 해제가 됨, 
 
 ||Weak Reference</br>(약한 참조)|Unowned Reference</br>(비소유 참조)|
 |---|-----|-----|
-|예시|weak var </br>(nil 자동할당)|unowned var </br>(nil 자동할당하지 않음)|
-|공통점|가르키는 인스턴스의 RC의 숫자를 올라가지 않게 함(인스턴스 사이의 강한 참조를 제거)</br>변수를 통해 인스턴스에 접근 가능하지만, 인스턴스를 유지시키는 것은 불가능|
-|차이점|소유자에 비해, 보다 짧은 생명주기를 가진 인스턴스를 참조할때 주로 사용</br>|소유자 보다 인스턴스의 생명주기가 더 길거나 같은 경우에 사용|
+|예시|weak var (nil 자동할당)|unowned var (nil 자동할당하지 않음)|
+|---|----------|
+|공통점|가르키는 인스턴스의 RC의 숫자를 올라가지 않게 함(인스턴스 사이의 강한 참조를 제거)변수를 통해 인스턴스에 접근 가능하지만, 인스턴스를 유지시키는 것은 불가능|
+|---|-----|-----|
+|차이점|소유자에 비해, 보다 짧은 생명주기를 가진 인스턴스를 참조할때 주로 사용|소유자 보다 인스턴스의 생명주기가 더 길거나 같은 경우에 사용|
 
 ```swift
 class Fruit {
