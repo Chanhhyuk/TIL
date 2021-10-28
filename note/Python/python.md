@@ -1,4 +1,5 @@
-# Python
+# Python 
+split, range
 
 ## 입출력
 input: 입력
@@ -13,18 +14,18 @@ number2 = int(number2)
 print("두 숫자를 더하면:",(number1 + number2))
 ```
 
-## split
-
-파이썬은 switch문이 없다.
-
+## String
 ```python
+# 문자 인덱싱 및 숫자형 변환
 A = "357"
-int(A[0])   // 3
-int(A[1])   // 5
-int(A[2])   // 7
+int(A[0])   # 3
+int(A[1])   # 5
+int(A[2])   # 7
 
-and // &&
-or  // ||
+# 문자 슬라이싱
+A = "12345"
+A[1:3]      #  2,3
+
 ```
 
 ## Number
@@ -72,5 +73,33 @@ a[0] = 0
 # index 뒤로 접근
 a[-1]       // 5
 
-# 
+# list 원소 하나 삽입
+a.append(2)
+
+# 오름차순으로 변경
+a.sort()
+
+# 내림차순으로 변경
+a.sort(reverse = True)
+
+# list 원소 뒤집기
+a.reverse()
+
+# 특정 인덱스에 데이터 추가
+a.insert(2,3)   # 인덱스 2에 3추가
+
+# 특정 값 개수 세기
+a.count(3)      # 값이 3인 데이터 개수
+
+# 특정 값 데이터 삭제
+a.remove(1)     # 값이 1인 데이터 삭제 
+```
+
+## if, for
+- 파이썬은 switch문이 없다.
+- and: &&, or: ||
+```python
+for 변수 in 리스트(또는 튜플, 문자열):
+    수행할 문장
+
 ```
