@@ -27,12 +27,23 @@ print("두 숫자를 더하면:",(number1 + number2))
 A = "357"
 int(A[0])   # 3
 int(A[1])   # 5
-int(A[2])   # 7
+
+# 문자열 길이 구하기
+A = "apple"
+len(A)          # 5
+len("banana")   # 6
 
 # 문자 슬라이싱
 A = "12345"
 A[1:3]      #  2,3
 
+# 문자열을 배열로 바꾸기
+A = "I love apple"
+A = A.split()    # 공백을 기준으로 나누기, ['I', 'love', 'apple']
+
+# 하나씩 배열로 바꾸기
+A = "I love apple"
+A = list(A)     # ['I', ' ', 'l', 'o', 'v', 'e', ' ', 'a', 'p', 'p', 'l', 'e']
 ```
 
 ## Number
@@ -72,22 +83,22 @@ a // b      # 2
 
 ## List
 ```python
+# 빈 배열 선언
+a = list()      a = []
+
 # 배열 선언
 a = [1,2,3,4,5]
 
 # 배열 접근
 a[0]
-            
-# 빈 배열 선언
-a = list()      a = []
 
 # 원소값 변경
 a[0] = 0
 
 # index 뒤로 접근
-a[-1]       // 5
+a[-1]
 
-# list 원소 하나 삽입
+# list 가장 뒤에 원소 하나 삽입
 a.append(2)
 
 # 오름차순으로 변경
@@ -107,6 +118,13 @@ a.count(3)      # 값이 3인 데이터 개수
 
 # 특정 값 데이터 삭제
 a.remove(1)     # 값이 1인 데이터 삭제 
+
+# 배열에서 제일 작은 숫자, 큰 숫자
+min(a),     max(a)
+
+# 리스트에서 문자열로 변환
+A = ['I','love','apple']
+A = " ".join(A) # I love apple
 ```
 
 ## dict(사전자료형)
