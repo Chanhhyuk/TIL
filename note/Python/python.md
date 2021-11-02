@@ -87,44 +87,57 @@ a // b      # 2
 a = list()      a = []
 
 # 배열 선언
-a = [1,2,3,4,5]
+list = [1,2,3,4,5]
 
 # 배열 접근
-a[0]
+list[0]
 
 # 원소값 변경
-a[0] = 0
+list[0] = 0
 
 # index 뒤로 접근
-a[-1]
+list[-1]
 
 # list 가장 뒤에 원소 하나 삽입
-a.append(2)
+list.append(2)
 
 # 오름차순으로 변경
-a.sort()
+list.sort()
 
 # 내림차순으로 변경
-a.sort(reverse = True)
+list.sort(reverse = True)
 
 # list 원소 뒤집기
-a.reverse()
+list.reverse()
 
 # 특정 인덱스에 데이터 추가
-a.insert(2,3)   # 인덱스 2에 3추가
-
-# 특정 값 개수 세기
-a.count(3)      # 값이 3인 데이터 개수
+list.insert(2,3)   # 인덱스 2에 3추가
 
 # 특정 값 데이터 삭제
-a.remove(1)     # 값이 1인 데이터 삭제 
+list.remove(1)     # 값이 1인 데이터 삭제 
 
 # 배열에서 제일 작은 숫자, 큰 숫자
-min(a),     max(a)
+min(list),     max(list)
 
 # 리스트에서 문자열로 변환
-A = ['I','love','apple']
-A = " ".join(A) # I love apple
+list = ['I','love','apple']
+list = " ".join(A) # I love apple
+
+## 값이 리스트에 존재 하는지 체크
+list = ["A","B","C"]
+
+# 값 포함 되어있는지 체크
+"B" in list     # True
+"A" not in list # True
+
+# 값 포함 되어있는경우 인덱스를 반환
+list.index("C")     # 2
+# 지정한 값이 리스트에 없을 경우 "ValueError"가 발생
+
+# 특정 값 개수 세기
+list.count("A")      # 값 A가 몇개 있는지 반환해준다
+# 지정한 값이 리스트에 없을 경우 0을 반환
+
 ```
 
 ## dict(사전자료형)
