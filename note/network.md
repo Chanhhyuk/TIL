@@ -92,7 +92,7 @@ DELETE|리소스를 삭제할 때
 HEAD|GET 방식의 요청이지만 내용 없이 메타정보만 요청할 때
 OPTIONS|특정 URL에 대한 보조 메소드 역할
 
-### RESTful API (Representational State Transfer) 
+## RESTful API (Representational State Transfer) 
 HTTP를 위한 아키텍처의 한 형식. 네트워크 프로토콜이라기 보다는 네트워크 자원을 정의하고 자원에 대한 주소를 관리하는 방법.
 HTTP 기반으로 간단히 주고 받기 위해 정의된 간단한 형식의 인터페이스.
 기존 HTTP 프로토콜을 사용하기 편하다
