@@ -2,6 +2,14 @@
 - split, range
 - and: &&, or: ||, not = !
 
+## temp
+```python
+# 삼항연산자
+season = “summer”
+만약에(if) season값이 summer이면 green값 그대로 사용 아닐경우 red 사용
+appleColor = “green” if season == “summer” else “red”
+```
+
 ## 입출력
 input: 입력
 print: 출력
