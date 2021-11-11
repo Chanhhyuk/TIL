@@ -15,6 +15,14 @@ for i in num:
     print("%s * %s =" %(N,i),int(N) * i )
 ```
 
+## Swap (스와프)
+특정한 리스트가 주어졌을 때 위치를 변경하는 작업.
+```python
+fruit = ["cherry","banana","apple"]
+fruit[0],fruit[2] = fruit[2],fruit[0]
+#['apple', 'banana', 'cherry']
+```
+
 ## 다중변환
 ```python
 # 숫자를 곱한다 (*) 
