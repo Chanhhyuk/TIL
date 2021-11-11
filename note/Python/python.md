@@ -47,6 +47,11 @@ A.index("l")    # 3
 A = "apple"
 'b' in A        # False     A는 apple값에 b라는 단어가 없으므로
 
+# 문자열 정렬
+A = "apple"
+A.sort()    # str 타입에는 sort()라는 메소드가 없다
+A = ''.joint(sorted(A)) # aelpp 알파벳 순서대로 정렬된다.
+
 # 문자열 길이 구하기
 A = "apple"
 len(A)          # 5
