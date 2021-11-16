@@ -4,6 +4,11 @@
 # 한번에 두개이상의 값 입력 받기
 H,M = map(int, input().split())
 
+# 여러줄 입력받기
+# 반복문으로 여러줄을 입력 받아야 할 때는 input()으로 받는다면 시간초과가 발생할 수 있다
+import sys
+input = sys.stdin.readline
+
 # 리스트로 입력 받기
 score = list(map(int, input().split()))
 
@@ -79,13 +84,6 @@ result = [i for i in a if i not in remove_set]
 print(result)
 ```
 
-## sys.stdin.readline
-- 반복문으로 여러줄을 입력 받아야 할 때는 input()으로 받는다면 시간초과가 발생할 수 있다
- 
-```python
-import sys 
-a = int(sys.stdin.readline())
-```
 ## 라이브러리
 - 표준 라이브러리: 특정한 프로그래밍 언어에서 자주 사용되는 표준 소스코드를 미리 구현해 놓은 라이브러리
 - itertools: 파이썬에서 반복되는 형태의 데이터를 처리하는 기능을 제공하는 라이브러리. 순열과 조합 라이브러리를 제공한다.
