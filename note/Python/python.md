@@ -52,6 +52,10 @@ A = "apple"
 A.sort()    # str 타입에는 sort()라는 메소드가 없다
 A = ''.joint(sorted(A)) # aelpp 알파벳 순서대로 정렬된다.
 
+# 특정 문자열로 변경 및 삭제
+a = "apple"
+a = a.replace("p","")  #ale
+
 # 문자열 길이 구하기
 A = "apple"
 len(A)          # 5
