@@ -1,6 +1,0 @@
-framework module Pods_UpDown {
-  umbrella header "Pods-UpDown-umbrella.h"
-
-  export *
-  module * { export * }
-}
