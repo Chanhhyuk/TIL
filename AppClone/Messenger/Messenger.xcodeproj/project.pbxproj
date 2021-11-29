@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7153778427549CA00007448E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7153778327549CA00007448E /* GoogleService-Info.plist */; };
 		71851EAA274E0F7100F9E6CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71851EA9274E0F7100F9E6CF /* Extensions.swift */; };
 		71C2598A274B5D40007B6841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C25989274B5D40007B6841 /* AppDelegate.swift */; };
 		71C2598C274B5D40007B6841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C2598B274B5D40007B6841 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		1A80BD544823B150CD247A40 /* Pods_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7153778327549CA00007448E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71851EA9274E0F7100F9E6CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71C25986274B5D40007B6841 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C25989274B5D40007B6841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 				B2A15D492F65BCF5023773D0 /* Pods-Messenger.debug.xcconfig */,
 				F653640F5FFCCC47C2390EEF /* Pods-Messenger.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -94,6 +95,7 @@
 		71C25988274B5D40007B6841 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				7153778327549CA00007448E /* GoogleService-Info.plist */,
 				71C259A1274B5DE1007B6841 /* Controllers */,
 				71C259A0274B5DDA007B6841 /* Views */,
 				71C2599F274B5DD0007B6841 /* Models */,
@@ -219,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C25996274B5D41007B6841 /* LaunchScreen.storyboard in Resources */,
+				7153778427549CA00007448E /* GoogleService-Info.plist in Resources */,
 				71C25993274B5D41007B6841 /* Assets.xcassets in Resources */,
 				71C25991274B5D40007B6841 /* Main.storyboard in Resources */,
 			);

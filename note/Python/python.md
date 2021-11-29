@@ -56,6 +56,14 @@ A = ''.joint(sorted(A)) # aelpp 알파벳 순서대로 정렬된다.
 a = "apple"
 a = a.replace("p","")  #ale
 
+# 문자열 대,소문자 변환 및 확인
+a = 'Apple' b = 'banana'
+a.lower()   # apple
+b.upper()   # BANANA
+a.isupper() # False, 대문자인지 확인 한개라도 소문자가 있을 경우 False 반환
+b.islower() # True
+
+
 # 문자열 길이 구하기
 A = "apple"
 len(A)          # 5
