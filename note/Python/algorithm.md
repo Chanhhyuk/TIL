@@ -10,7 +10,7 @@ H,M = map(int, input().split())
 # 여러줄 입력받기
 # 반복문으로 여러줄을 입력 받아야 할 때는 input()으로 받는다면 시간초과가 발생할 수 있다
 import sys
-input = sys.stdin.readline
+input = sys.stdin.readline().strip()
 
 # 리스트로 입력 받기
 score = list(map(int, input().split()))
