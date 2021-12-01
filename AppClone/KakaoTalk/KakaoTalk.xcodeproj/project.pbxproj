@@ -108,12 +108,10 @@
 		71CFC38126C53292007A21F0 /* KakaoTalk */ = {
 			isa = PBXGroup;
 			children = (
-				71C1BC4A26D1F09200B1AB46 /* seeMore */,
-				71CFC38226C53292007A21F0 /* AppDelegate.swift */,
-				71CFC38426C53292007A21F0 /* SceneDelegate.swift */,
-				71CFC38826C53292007A21F0 /* Main.storyboard */,
-				71CFC38B26C53293007A21F0 /* Assets.xcassets */,
-				71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */,
+				71FCED4C2757626F00D1CCE2 /* Resources */,
+				71FCED4B2757624300D1CCE2 /* Controllers */,
+				71FCED4A2757623800D1CCE2 /* Views */,
+				71FCED492757623000D1CCE2 /* Models */,
 				71CFC39026C53293007A21F0 /* Info.plist */,
 				711AFD4526C66D1100643FD9 /* friend.swift */,
 				71E72A0726C7C3DF009668B6 /* chatting.swift */,
@@ -121,6 +119,40 @@
 				71DDAB1326CB8C9800E7C023 /* view.swift */,
 			);
 			path = KakaoTalk;
+			sourceTree = "<group>";
+		};
+		71FCED492757623000D1CCE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		71FCED4A2757623800D1CCE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				71CFC38826C53292007A21F0 /* Main.storyboard */,
+				71CFC38B26C53293007A21F0 /* Assets.xcassets */,
+				71CFC38D26C53293007A21F0 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		71FCED4B2757624300D1CCE2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				71C1BC4A26D1F09200B1AB46 /* seeMore */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71FCED4C2757626F00D1CCE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71CFC38226C53292007A21F0 /* AppDelegate.swift */,
+				71CFC38426C53292007A21F0 /* SceneDelegate.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
