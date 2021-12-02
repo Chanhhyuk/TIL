@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  Messenger
-//
-//  Created by ChanHyuk Kim on 2021/11/22.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
