@@ -60,7 +60,11 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let facebookLoginButton = FBLoginButton()
+    private let facebookLoginButton : FBLoginButton = {
+        let button = FBLoginButton()
+        button.permissions = ["email,public_profile"]
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,8 +166,22 @@ extension LoginViewController: LoginButtonDelegate {
         }
         
         let credential = FacebookAuthProvider.credential(withAccessToken: token)
-        FirebaseAuth.Auth.auth().signIn(with: credential, completion: {authResult, error in
+        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { [weak self] authResult, error in
             
+            guard let strongSelf = self else {
+                return
+            }
+            
+            guard authResult != nil, error == nil else {
+                if let error = error {
+                    print("\(error)")
+                }
+                return
+            }
+            let facebookRequest = FBSDKLoginKit.GraphRequest(graphPath: "me", parameters: ["fields":"email, name"], tokenString: token, version: nil, httpMethod: .get)
+            facebookRequest.start(completion: <#T##GraphRequestCompletion?##GraphRequestCompletion?##(GraphRequestConnecting?, Any?, Error?) -> Void#>)
+            
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })
     }
     
