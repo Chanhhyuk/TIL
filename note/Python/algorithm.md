@@ -28,11 +28,16 @@ num**0.5    # 3
 ```
 
 ## Swap (스와프)
-특정한 리스트가 주어졌을 때 위치를 변경하는 작업.
+- 특정한 리스트가 주어졌을 때 위치를 변경하는 작업.
 ```python
 fruit = ["cherry","banana","apple"]
 fruit[0],fruit[2] = fruit[2],fruit[0]
 #['apple', 'banana', 'cherry']
+```
+- 대문자를 소문자로 소문자를 대문자로 변경
+```python
+a = "Apple"
+a.swapcase()    # aPPLE
 ```
 
 ## 다중변환
