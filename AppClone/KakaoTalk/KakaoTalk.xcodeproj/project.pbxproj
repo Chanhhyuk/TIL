@@ -30,6 +30,7 @@
 		71D1652526CE26A200F6EFCC /* notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D1652426CE26A200F6EFCC /* notice.swift */; };
 		71DDAB1426CB8C9800E7C023 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DDAB1326CB8C9800E7C023 /* view.swift */; };
 		71E72A0826C7C3DF009668B6 /* chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E72A0726C7C3DF009668B6 /* chatting.swift */; };
+		71F099592769E87E00FF4EFF /* friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F099582769E87E00FF4EFF /* friends.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		71D1652426CE26A200F6EFCC /* notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notice.swift; sourceTree = "<group>"; };
 		71DDAB1326CB8C9800E7C023 /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 		71E72A0726C7C3DF009668B6 /* chatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatting.swift; sourceTree = "<group>"; };
+		71F099582769E87E00FF4EFF /* friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friends.swift; sourceTree = "<group>"; };
 		9AF06A2E91A7B950F815B756 /* Pods-KakaoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoTalk.release.xcconfig"; path = "Target Support Files/Pods-KakaoTalk/Pods-KakaoTalk.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,6 +138,14 @@
 			path = KakaoTalk;
 			sourceTree = "<group>";
 		};
+		71F099572769E83F00FF4EFF /* friends */ = {
+			isa = PBXGroup;
+			children = (
+				71F099582769E87E00FF4EFF /* friends.swift */,
+			);
+			path = friends;
+			sourceTree = "<group>";
+		};
 		71FCED492757623000D1CCE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 		71FCED4B2757624300D1CCE2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71F099572769E83F00FF4EFF /* friends */,
 				71C1BC4A26D1F09200B1AB46 /* seeMore */,
 			);
 			path = Controllers;
@@ -176,7 +187,6 @@
 				1E070ACB9340A19DC6FF19D1 /* Pods-KakaoTalk.debug.xcconfig */,
 				9AF06A2E91A7B950F815B756 /* Pods-KakaoTalk.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -279,6 +289,7 @@
 				711AFD4626C66D1100643FD9 /* friend.swift in Sources */,
 				71C1AB8C26DBB07900394BD5 /* call.swift in Sources */,
 				71C1BC3526D0B06A00B1AB46 /* lab.swift in Sources */,
+				71F099592769E87E00FF4EFF /* friends.swift in Sources */,
 				710A550A26D35C4C008BDF68 /* setFriend.swift in Sources */,
 				71C1AB8E26DCCE0900394BD5 /* etc.swift in Sources */,
 				71C1BC4C26D1F0B600B1AB46 /* versionInfo.swift in Sources */,
