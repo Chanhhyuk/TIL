@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6D036237BCD9884F5BEE69B8 /* libPods-KakaoTalk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BAEEB0764A1C497CFA81F86 /* libPods-KakaoTalk.a */; };
 		710A550A26D35C4C008BDF68 /* setFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A550926D35C4C008BDF68 /* setFriend.swift */; };
-		711AFD4626C66D1100643FD9 /* friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711AFD4526C66D1100643FD9 /* friend.swift */; };
 		7141673926C8ED6100A27502 /* seeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* seeMore.swift */; };
 		7148AD0926D4F9ED00CD0DF6 /* setChatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148AD0826D4F9ED00CD0DF6 /* setChatting.swift */; };
 		715C697E26DA63FF00682CA8 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C697D26DA63FF00682CA8 /* theme.swift */; };
@@ -37,7 +36,6 @@
 		1E070ACB9340A19DC6FF19D1 /* Pods-KakaoTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KakaoTalk.debug.xcconfig"; path = "Target Support Files/Pods-KakaoTalk/Pods-KakaoTalk.debug.xcconfig"; sourceTree = "<group>"; };
 		6BAEEB0764A1C497CFA81F86 /* libPods-KakaoTalk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KakaoTalk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		710A550926D35C4C008BDF68 /* setFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setFriend.swift; sourceTree = "<group>"; };
-		711AFD4526C66D1100643FD9 /* friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friend.swift; sourceTree = "<group>"; };
 		7141673826C8ED6100A27502 /* seeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeMore.swift; sourceTree = "<group>"; };
 		7148AD0826D4F9ED00CD0DF6 /* setChatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setChatting.swift; sourceTree = "<group>"; };
 		715C697D26DA63FF00682CA8 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				71FCED4A2757623800D1CCE2 /* Views */,
 				71FCED492757623000D1CCE2 /* Models */,
 				71CFC39026C53293007A21F0 /* Info.plist */,
-				711AFD4526C66D1100643FD9 /* friend.swift */,
 				71E72A0726C7C3DF009668B6 /* chatting.swift */,
 				71C7232C26CA4C8A0024AAAB /* shopping.swift */,
 				71DDAB1326CB8C9800E7C023 /* view.swift */,
@@ -144,6 +141,27 @@
 				71F099582769E87E00FF4EFF /* friends.swift */,
 			);
 			path = friends;
+			sourceTree = "<group>";
+		};
+		71FBFDD9276C70A1002ADA58 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		71FBFDDA276C70B6002ADA58 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		71FBFDDB276C70D9002ADA58 /* shopping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shopping;
 			sourceTree = "<group>";
 		};
 		71FCED492757623000D1CCE2 /* Models */ = {
@@ -167,6 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				71F099572769E83F00FF4EFF /* friends */,
+				71FBFDD9276C70A1002ADA58 /* chat */,
+				71FBFDDA276C70B6002ADA58 /* view */,
+				71FBFDDB276C70D9002ADA58 /* shopping */,
 				71C1BC4A26D1F09200B1AB46 /* seeMore */,
 			);
 			path = Controllers;
@@ -286,7 +307,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				711AFD4626C66D1100643FD9 /* friend.swift in Sources */,
 				71C1AB8C26DBB07900394BD5 /* call.swift in Sources */,
 				71C1BC3526D0B06A00B1AB46 /* lab.swift in Sources */,
 				71F099592769E87E00FF4EFF /* friends.swift in Sources */,
@@ -463,7 +483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.daum.KakaoTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -483,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.daum.KakaoTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

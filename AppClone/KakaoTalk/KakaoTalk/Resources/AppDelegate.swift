@@ -13,11 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = UIViewController()
-        vc.view.backgroundColor = UIColor.white
-        window!.rootViewController = vc
-        window!.makeKeyAndVisible()
+        
+        Thread.sleep(forTimeInterval: 1.0)  // 런치스크린을 보여주기 위해 시간 2초 지연
         return true
     }
 
@@ -37,4 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+//let storyboard = UIStoryboard(name: "Main", bundle: nil) // Main.storyboard 가져오기
+//
+//if isLogged == false {
+//    // 로그인 안된 상태
+//    guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginView") as? LoginViewController else { return }
+//    window?.rootViewController = loginVC
+//} else {
+//    // 로그인 된 상태
+//    guard let mainVC = storyboard.instantiateViewController(withIdentifier: "MainView") as? ViewController else { return }
+//    window?.rootViewController = mainVC
+//}
 
