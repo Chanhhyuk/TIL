@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/12.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -16,7 +9,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(frame: scene.coordinateSpace.bounds)
+        window?.windowScene = scene
+        
+        // 탭바컨트롤러 객체 생성
+        let tabBarController = UITabBarController()
+        
+        // 네비게이션 객체 생성
+        
+        // 컨트롤러 5개를 네비게이션컨트롤러로 뷰 객체 생성 
+        let friends = UINavigationController(rootViewController: friends())
+        let chat = UINavigationController(rootViewController: chat())
+        let view = UINavigationController(rootViewController: view())
+        let shopping = UINavigationController(rootViewController: shopping())
+        let seeMore = UINavigationController(rootViewController: seeMore())
+        
+        // 탭바 아이템 만들기
+        let friendsBtn = UITabBarItem(title: nil, image: UIImage(named: "friendOff"), selectedImage: UIImage(named: "friendOn") )
+        let chatBtn = UITabBarItem(title: nil, image: UIImage(named: "chatOff"), selectedImage: UIImage(named: "chatOn") )
+        let viewBtn = UITabBarItem(title: nil, image: UIImage(named: "viewOff"), selectedImage: UIImage(named: "viewOn") )
+        let shoppingBtn = UITabBarItem(title: nil, image: UIImage(named: "shopOff"), selectedImage: UIImage(named: "shopOn") )
+        let seeMoreBtn = UITabBarItem(title: nil, image: UIImage(named: "otherOff"), selectedImage: UIImage(named: "otherOn") )
+        
+        // 탭바 아이템 적용
+        friends.tabBarItem = friendsBtn
+        chat.tabBarItem = chatBtn
+        view.tabBarItem = viewBtn
+        shopping.tabBarItem = shoppingBtn
+        seeMore.tabBarItem = seeMoreBtn
+        
+        // 탭바 컨트롤러가 5개의 뷰 객체를 제어하도록 만들기
+        tabBarController.viewControllers = [friends, chat, view, shopping, seeMore]
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

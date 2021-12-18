@@ -1,7 +1,8 @@
 import UIKit
 
-class view : UIViewController{
+class shopping: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
 }
