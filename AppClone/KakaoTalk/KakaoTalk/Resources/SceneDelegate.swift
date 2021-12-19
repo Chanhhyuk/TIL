@@ -3,6 +3,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -12,11 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
+        window?.backgroundColor = .white    // 모든 화면 백그라운드 색 흰색으로 설정
+        window?.tintColor = .black          // 모든 화면 백버튼 글씨색 검은색 설정
+        
+
+        UITableViewCell.appearance().selectionStyle = .none         // 모든 테이블뷰 셀 선택시 색변경되는 하이라이트 정지
+        UIButton.appearance().setTitleColor(.black, for: .normal)   // 모든 버튼글씨 검은색으로 변경
         
         // 탭바컨트롤러 객체 생성
         let tabBarController = UITabBarController()
-        
-        // 네비게이션 객체 생성
         
         // 컨트롤러 5개를 네비게이션컨트롤러로 뷰 객체 생성 
         let friends = UINavigationController(rootViewController: friends())

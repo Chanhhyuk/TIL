@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  KakaoTalk
-//
-//  Created by ChanHyuk Kim on 2021/08/12.
-//
-
 import UIKit
 
 @main

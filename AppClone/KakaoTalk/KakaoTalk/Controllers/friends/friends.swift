@@ -4,7 +4,7 @@ import KakaoSDKUser
 class friends: UIViewController, UITableViewDataSource {    // UITableViewDataSource 프로토콜 사용
     // 테이블 뷰의 한 섹션 당 몇 개의 셀을 넣을 것인지 설정(필수)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 50
     }
     // 테이블 뷰에서 각 Index에 맞는 셀을 추가(필수)
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +54,6 @@ class friends: UIViewController, UITableViewDataSource {    // UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         naviView()
         tableViewSet()
     }
