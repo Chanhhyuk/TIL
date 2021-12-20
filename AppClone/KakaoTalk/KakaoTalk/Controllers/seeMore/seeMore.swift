@@ -47,14 +47,14 @@ class seeMore: UIViewController {
 }
 
 extension seeMore: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3           // 하드코딩 되어있음
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let wallet = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         wallet.backgroundColor = UIColor(red: 249, green: 224, blue: 0, alpha: 1)
         wallet.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        wallet.selectionStyle = .none
         
         let walletBtn = UIButton()
         walletBtn.setTitle("지갑 >", for: .normal)
@@ -83,8 +83,88 @@ extension seeMore: UITableViewDataSource {
         remiBtn.translatesAutoresizingMaskIntoConstraints = false
         remiBtn.bottomAnchor.constraint(equalTo: wallet.bottomAnchor, constant: -30).isActive = true
         remiBtn.leftAnchor.constraint(equalTo: walletBtn.leftAnchor, constant: -10).isActive = true
-        remiBtn.widthAnchor.constraint(equalToConstant: 50).isActive = trueg
+        remiBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
-        return wallet
+        let payment = UIButton()
+        payment.setTitle("결제", for: .normal)
+        wallet.addSubview(payment)
+        payment.translatesAutoresizingMaskIntoConstraints = false
+        payment.bottomAnchor.constraint(equalTo: remiBtn.bottomAnchor).isActive = true
+        payment.leftAnchor.constraint(equalTo: remiBtn.rightAnchor, constant: 10).isActive = true
+        payment.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let asset = UIButton()
+        asset.setTitle("자산", for: .normal)
+        wallet.addSubview(asset)
+        asset.translatesAutoresizingMaskIntoConstraints = false
+        asset.bottomAnchor.constraint(equalTo: remiBtn.bottomAnchor).isActive = true
+        asset.leftAnchor.constraint(equalTo: payment.rightAnchor, constant: 10).isActive = true
+        asset.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let buyHis = UIButton()
+        buyHis.setTitle("구매내역", for: .normal)
+        wallet.addSubview(buyHis)
+        buyHis.translatesAutoresizingMaskIntoConstraints = false
+        buyHis.bottomAnchor.constraint(equalTo: remiBtn.bottomAnchor).isActive = true
+        buyHis.leftAnchor.constraint(equalTo: wallet.rightAnchor, constant: -150).isActive = true
+        buyHis.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        
+        
+        
+        let moreMenu = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        moreMenu.heightAnchor.constraint(equalToConstant: 400).isActive = true
+
+        let mailBtn = UIButton()
+        mailBtn.setTitle("메일", for: .normal)
+        moreMenu.addSubview(mailBtn)
+        mailBtn.translatesAutoresizingMaskIntoConstraints = false
+        mailBtn.widthAnchor.constraint(equalTo: moreMenu.widthAnchor, multiplier: 0.25).isActive = true
+        mailBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        let dateBtn = UIButton()
+        dateBtn.setTitle("캘린더", for: .normal)
+        moreMenu.addSubview(dateBtn)
+        dateBtn.translatesAutoresizingMaskIntoConstraints = false
+        dateBtn.leftAnchor.constraint(equalTo: mailBtn.rightAnchor).isActive = true
+        dateBtn.widthAnchor.constraint(equalTo: moreMenu.widthAnchor, multiplier: 0.25).isActive = true
+        dateBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
+
+        let deskBtn = UIButton()
+        deskBtn.setTitle("서랍", for: .normal)
+        moreMenu.addSubview(deskBtn)
+        deskBtn.translatesAutoresizingMaskIntoConstraints = false
+        deskBtn.leftAnchor.constraint(equalTo: dateBtn.rightAnchor).isActive = true
+        deskBtn.widthAnchor.constraint(equalTo: moreMenu.widthAnchor, multiplier: 0.25).isActive = true
+        deskBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        let emojiBtn = UIButton()
+        emojiBtn.setTitle("카카오콘", for: .normal)
+        moreMenu.addSubview(emojiBtn)
+        emojiBtn.translatesAutoresizingMaskIntoConstraints = false
+        emojiBtn.leftAnchor.constraint(equalTo: deskBtn.rightAnchor).isActive = true
+        emojiBtn.widthAnchor.constraint(equalTo: moreMenu.widthAnchor, multiplier: 0.25).isActive = true
+        emojiBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        let makersBtn = UIButton()
+        makersBtn.setTitle("메이커스", for: .normal)
+        moreMenu.addSubview(makersBtn)
+        makersBtn.backgroundColor = .red
+        makersBtn.translatesAutoresizingMaskIntoConstraints = false
+        makersBtn.topAnchor.constraint(equalTo: mailBtn.bottomAnchor).isActive = true
+        makersBtn.widthAnchor.constraint(equalTo: moreMenu.widthAnchor, multiplier: 0.25).isActive = true
+        makersBtn.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        
+        
+        
+        
+        let ad = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        ad.backgroundColor = .purple
+        ad.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        let cell = [wallet,moreMenu,ad]
+        
+        return cell[indexPath.row]
     }
 }
