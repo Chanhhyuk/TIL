@@ -20,7 +20,7 @@ class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     private let setLabel = ["공지사항","실험실","버전정보","개인/보안","알림","친구","채팅","멀티프로필","문자 모아보기","화면","테마","통화","기타","고객센터/도움말"]
-    private let setImage = ["qr","qr","qr","qr","qr","qr","qr","qr","qr","qr","qr","qr","qr","qr","qr"]
+    private let setImage = ["notice","exper","info","secu","bell","friendOff","chatOff","friendAdd","paper","bright","theme","call","otherOff","question"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return setLabel.count       // 배열의 크기만큼 return

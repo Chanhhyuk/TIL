@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white    // 모든 화면 백그라운드 색 흰색으로 설정
         window?.tintColor = .black          // 모든 화면 백버튼 글씨색 검은색 설정
         
-
+        UITableView.appearance().separatorStyle = .none             // 모든 테이블뷰 밑줄 제거
         UITableViewCell.appearance().selectionStyle = .none         // 모든 테이블뷰 셀 선택시 색변경되는 하이라이트 정지
         UIButton.appearance().setTitleColor(.black, for: .normal)   // 모든 버튼글씨 검은색으로 변경
         

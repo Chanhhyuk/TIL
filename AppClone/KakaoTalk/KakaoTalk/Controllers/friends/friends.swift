@@ -12,7 +12,6 @@ class friends: UIViewController, UITableViewDataSource {    // UITableViewDataSo
         return cell
     }
     
-    
     private func naviView() {
         let titleName = UILabel()
         titleName.text = "친구"
