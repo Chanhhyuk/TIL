@@ -6,7 +6,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         Thread.sleep(forTimeInterval: 1.0)  // 런치스크린을 보여주기 위해 시간 2초 지연
         return true
     }
