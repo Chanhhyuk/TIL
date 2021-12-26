@@ -13,9 +13,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        window?.backgroundColor = .white    // 모든 화면 백그라운드 색 흰색으로 설정
+        window?.backgroundColor = UIColor(red: 160, green: 160, blue: 160, alpha: 1)  // 모든 화면 약간회색
         window?.tintColor = .black          // 모든 화면 백버튼 글씨색 검은색 설정
+        window?.rootViewController?.modalPresentationStyle = .fullScreen
         
+        
+        UILabel.appearance().font = UIFont(name: "BMHANNAPro", size: 26)    // 모든 라벨 폰트 변경
+        
+//        UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).font = UIFont.boldSystemFont(ofSize: 30)
+        UITextField.appearance().tintColor = UIColor(red: 255, green: 255, blue: 64, alpha: 1)         // 모든 텍스트필드 깜빡이는 커서 노란색
         UITableView.appearance().separatorStyle = .none             // 모든 테이블뷰 밑줄 제거
         UITableView.appearance().backgroundColor = .clear       // 모든 테이블뷰 바탕 투명색
         UITableViewCell.appearance().backgroundColor = .clear   // 모든 테이블뷰셀 바탕 투명색/
@@ -46,9 +52,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         shopping.tabBarItem = shoppingBtn
         seeMore.tabBarItem = seeMoreBtn
         
+        let loginView = "off"
+        
         // 탭바 컨트롤러가 5개의 뷰 객체를 제어하도록 만들기
         tabBarController.viewControllers = [friends, chat, view, shopping, seeMore]
-        window?.rootViewController = tabBarController
+        if loginView == "on"{
+            window?.rootViewController = tabBarController
+        }else{
+            window?.rootViewController = initial()
+        }
+        
         window?.makeKeyAndVisible()
         
     }

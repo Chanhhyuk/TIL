@@ -2,7 +2,6 @@ import UIKit
 
 class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
     func tableView() {
         let tableView: UITableView = {
             let tableView = UITableView()
@@ -36,7 +35,10 @@ class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+             // 네비게이션 기본설정인 Back에서 바꿔줌
         tableView()
+        navigationItem.backButtonTitle = ""
+        
     }
     
 }

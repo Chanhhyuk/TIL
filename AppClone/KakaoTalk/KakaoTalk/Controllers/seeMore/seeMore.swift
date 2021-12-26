@@ -2,37 +2,29 @@ import UIKit
 
 class seeMore: UIViewController {
     
+    
     private func naviView() {
         let titleName = UILabel()
         titleName.text = "더보기"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleName)
         
-        let search = UIButton()
-        search.setImage(UIImage(named: "search"), for: .normal)
-        let qr = UIButton()
-        qr.setImage(UIImage(named: "qr"), for: .normal)
-        let talkMusic = UIButton()
-        talkMusic.setImage(UIImage(named: "music"), for: .normal)
-        let setting = UIButton()
-        setting.setImage(UIImage(named: "setting"), for: .normal)
-        setting.addTarget(self, action: #selector(setMove(_:)), for: .touchUpInside)
-        
-        let searchBtn = UIBarButtonItem(customView: search)
-        let qrBtn = UIBarButtonItem(customView: qr)
-        let talkMusicBtn = UIBarButtonItem(customView: talkMusic)
-        let settingBtn = UIBarButtonItem(customView: setting)
+        let searchBtn = UIBarButtonItem(image: UIImage(named: "search"), style:  .plain, target: self, action: nil)
+        let qrBtn = UIBarButtonItem(image: UIImage(named: "qr"), style: .plain, target: self, action: nil)
+        let talkMusicBtn = UIBarButtonItem(image: UIImage(named: "music"), style: .plain, target: self, action: nil)
+        let settingBtn = UIBarButtonItem(image: UIImage(named: "setting"), style: .plain, target: self, action: #selector(setMove))
         navigationItem.rightBarButtonItems = [settingBtn, talkMusicBtn, qrBtn, searchBtn]
         // rightBarButtonItems 뒤에 s를 안 붙여서 삽질함....
     }
     
-    @objc func setMove(_: UIButton) {
-        navigationController?.pushViewController(setting(), animated: true)
+    @objc func setMove() {
+        navigationController?.pushViewController(setting(), animated: false)
     }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         naviView()
         tableView()
+        navigationItem.backButtonTitle = "설정"
     }
     
 }
@@ -113,11 +105,11 @@ extension seeMore: UITableViewDataSource {
         
         let moreMenu = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         moreMenu.heightAnchor.constraint(equalToConstant: 400).isActive = true
-
+        
         let mailBtn = UIButton()
         mailBtn.backgroundColor = .green
         mailBtn.setTitle("메일", for: .normal)
-        mailBtn.titleLabel?.font = .boldSystemFont(ofSize: 10)
+        mailBtn.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 14)
         mailBtn.setImage(UIImage(named: "music"), for: .normal)
         moreMenu.addSubview(mailBtn)
         mailBtn.translatesAutoresizingMaskIntoConstraints = false

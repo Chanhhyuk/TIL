@@ -4,7 +4,6 @@ class friends: UIViewController{
     private func naviView() {
         let titleName = UILabel()
         titleName.text = "친구"
-        titleName.font = UIFont.boldSystemFont(ofSize: 20)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleName)
   
 //        초기에 버튼을 따로 만들고 그 버튼을 UIBarbutton아이템에 다시 넣고를 반복함 (번거롭게 함)
@@ -28,6 +27,7 @@ class friends: UIViewController{
     
     @objc func friendsAdd(){
         view.backgroundColor = UIColor(white: 0.2, alpha: 0.9)
+        navigationController?.pushViewController(addView(), animated: true)
     }
     
     class addView: UIViewController {
