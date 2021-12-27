@@ -13,7 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        window?.backgroundColor = UIColor(red: 160, green: 160, blue: 160, alpha: 1)  // 모든 화면 약간회색
+        window?.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.97)  // 모든 화면 약간어두운 흰색
         window?.tintColor = .black          // 모든 화면 백버튼 글씨색 검은색 설정
         window?.rootViewController?.modalPresentationStyle = .fullScreen
         
@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UILabel.appearance().font = UIFont(name: "BMHANNAPro", size: 26)    // 모든 라벨 폰트 변경
         
 //        UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).font = UIFont.boldSystemFont(ofSize: 30)
-        UITextField.appearance().tintColor = UIColor(red: 255, green: 255, blue: 64, alpha: 1)         // 모든 텍스트필드 깜빡이는 커서 노란색
+        UITextField.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 144/255, alpha: 1)         // 모든 텍스트필드 깜빡이는 커서 노란색
         UITableView.appearance().separatorStyle = .none             // 모든 테이블뷰 밑줄 제거
         UITableView.appearance().backgroundColor = .clear       // 모든 테이블뷰 바탕 투명색
         UITableViewCell.appearance().backgroundColor = .clear   // 모든 테이블뷰셀 바탕 투명색/
@@ -94,6 +94,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

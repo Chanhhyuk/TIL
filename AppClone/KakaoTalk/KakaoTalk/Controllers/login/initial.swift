@@ -12,6 +12,7 @@ class initial: UIViewController {
     private let midLabel: UILabel = {
         let label = UILabel()
         label.text = "카카오톡을 이용하려면\n아래의 권한을 허용해 주세요."
+        label.font = UIFont(name: "BMHANNAPro", size: 14)     // 이거 사이즈 바꿔줄때마다 name 써줘야하나?
         label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = .gray
@@ -28,34 +29,33 @@ class initial: UIViewController {
     
     private let callBtn: UIButton = {
         let button = UIButton()
+        button.contentMode = .scaleToFill
         button.setTitle("전화", for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.setImage(UIImage(systemName: "bubble.right"), for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
-        button.backgroundColor = .red
+        button.imageEdgeInsets =
+        button.backgroundColor = .green
         button.addTarget(self, action: #selector(callEvent), for: .touchUpInside)
-        button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
         return button
     }()
     
     private let callView: UIView = {
         let view = UIView()
         let label = UILabel()
-        label.text = "내 기기에서 받은 인증 상태를 유지하고 카카오톡을 지속\n적으로 이용하기 위하여 기기정보 접근 허용이 필요합니다."
+        label.text = "내 기기에서 받은 인증 상태를 유지하고 카카오톡을\n지속적으로 이용하기 위하여 기기정보 접근 허용이 필요합니다."
         label.numberOfLines = 2
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         label.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        view.backgroundColor = .green
+        view.backgroundColor = .green           // 여기 앞에 있는 view는 window view 지칭하는거랑 안 겹치는걸까?
         view.isHidden = true
         return view
     }()
     
-    @objc func callEvent() {
-        UIView.animate(withDuration: 2, delay: 0,options: [.transitionCrossDissolve], animations: {
-                self.callView.alpha = 0
-            self.callView.isHidden = false
-            })
-        }
+    @objc func callEvent(){
+    }
     
     private let saveBtn: UIButton = {
         let button = UIButton()
@@ -71,6 +71,7 @@ class initial: UIViewController {
     
     private let arrowBtn: UIButton = {
         let button = UIButton()
+        button.layer.cornerRadius = 20
         button.setTitle("허용하기", for: .normal)
         button.backgroundColor = .yellow
         button.addTarget(self, action: #selector(permiss) , for: .touchUpInside)
@@ -94,7 +95,6 @@ class initial: UIViewController {
         view.addSubview(callView)
         
         view.addSubview(botLabel)
-        view.addSubview(arrowBtn)
         
     }
     
@@ -117,11 +117,6 @@ class initial: UIViewController {
         callView.widthAnchor.constraint(equalTo: callBtn.widthAnchor).isActive = true
         callView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        arrowBtn.translatesAutoresizingMaskIntoConstraints = false
-        arrowBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
-        arrowBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        arrowBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        arrowBtn.topAnchor.constraint(equalTo: callView.bottomAnchor, constant: 20).isActive = true
         
     }
     

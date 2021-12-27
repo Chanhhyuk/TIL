@@ -1,6 +1,7 @@
 import UIKit
 
 class friends: UIViewController{
+    
     private func naviView() {
         let titleName = UILabel()
         titleName.text = "친구"
