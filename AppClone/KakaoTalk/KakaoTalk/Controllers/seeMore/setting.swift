@@ -29,7 +29,20 @@ class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = setLabel[indexPath.row] // 왼쪽 레이블부분은 0번째 데이터 오른쪽은 textLabel부분에 detailTextLabel
         cell.imageView?.image = UIImage(named: "\(setImage[indexPath.row])" )
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 0: self.performSegue(withIdentifier: "photoObjectDetection", sender: nil)
+        case 1: self.performSegue(withIdentifier: "realTimeObjectDetection", sender: nil)
+        case 2: self.performSegue(withIdentifier: "facialAnalysis", sender: nil)
+        default:
+            return
+        }
     }
     
     
@@ -38,7 +51,6 @@ class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
              // 네비게이션 기본설정인 Back에서 바꿔줌
         tableView()
         navigationItem.backButtonTitle = ""
-        
     }
     
 }

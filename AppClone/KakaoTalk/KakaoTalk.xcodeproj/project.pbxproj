@@ -11,11 +11,11 @@
 		7104FD40276C9A7E00A602C8 /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104FD3F276C9A7E00A602C8 /* chat.swift */; };
 		7104FD46276C9AEF00A602C8 /* shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7104FD45276C9AEF00A602C8 /* shopping.swift */; };
 		710A550A26D35C4C008BDF68 /* setFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710A550926D35C4C008BDF68 /* setFriend.swift */; };
-		711A7B4B2775C6BF003FAECF /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 711A7B4A2775C6BF003FAECF /* BMHANNAPro.ttf */; };
 		713DC15A276D9F8B0071811B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713DC159276D9F8B0071811B /* TableViewCell.swift */; };
 		7141673926C8ED6100A27502 /* seeMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7141673826C8ED6100A27502 /* seeMore.swift */; };
 		7148AD0926D4F9ED00CD0DF6 /* setChatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7148AD0826D4F9ED00CD0DF6 /* setChatting.swift */; };
 		715C697E26DA63FF00682CA8 /* theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C697D26DA63FF00682CA8 /* theme.swift */; };
+		718E7728277AA61300945DBE /* BMHANNAAir.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 718E7727277AA61300945DBE /* BMHANNAAir.ttf */; };
 		7191927E2772DF4D00BC4F62 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191927D2772DF4D00BC4F62 /* login.swift */; };
 		719192802772DF6A00BC4F62 /* register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191927F2772DF6A00BC4F62 /* register.swift */; };
 		719192822772DFCC00BC4F62 /* conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719192812772DFCC00BC4F62 /* conversations.swift */; };
@@ -43,11 +43,11 @@
 		7104FD3F276C9A7E00A602C8 /* chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat.swift; sourceTree = "<group>"; };
 		7104FD45276C9AEF00A602C8 /* shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shopping.swift; sourceTree = "<group>"; };
 		710A550926D35C4C008BDF68 /* setFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setFriend.swift; sourceTree = "<group>"; };
-		711A7B4A2775C6BF003FAECF /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BMHANNAPro.ttf; path = ../../../../../../Downloads/BMHANNAPro.ttf; sourceTree = "<group>"; };
 		713DC159276D9F8B0071811B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7141673826C8ED6100A27502 /* seeMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seeMore.swift; sourceTree = "<group>"; };
 		7148AD0826D4F9ED00CD0DF6 /* setChatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setChatting.swift; sourceTree = "<group>"; };
 		715C697D26DA63FF00682CA8 /* theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = theme.swift; sourceTree = "<group>"; };
+		718E7727277AA61300945DBE /* BMHANNAAir.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAAir.ttf; sourceTree = SOURCE_ROOT; };
 		7191927D2772DF4D00BC4F62 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		7191927F2772DF6A00BC4F62 /* register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.swift; sourceTree = "<group>"; };
 		719192812772DFCC00BC4F62 /* conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = conversations.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		711A7B492775C67D003FAECF /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				711A7B4A2775C6BF003FAECF /* BMHANNAPro.ttf */,
+				718E7727277AA61300945DBE /* BMHANNAAir.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -300,8 +300,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				711A7B4B2775C6BF003FAECF /* BMHANNAPro.ttf in Resources */,
 				71CFC38F26C53293007A21F0 /* LaunchScreen.storyboard in Resources */,
+				718E7728277AA61300945DBE /* BMHANNAAir.ttf in Resources */,
 				71CFC38C26C53293007A21F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

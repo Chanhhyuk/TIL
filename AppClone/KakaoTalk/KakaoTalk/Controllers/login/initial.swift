@@ -5,6 +5,7 @@ class initial: UIViewController {
     
     private let topLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont(name: "BMHANNAPro", size: 36)
         label.text = "카카오톡 이용 안내"
         return label
     }()
@@ -12,7 +13,7 @@ class initial: UIViewController {
     private let midLabel: UILabel = {
         let label = UILabel()
         label.text = "카카오톡을 이용하려면\n아래의 권한을 허용해 주세요."
-        label.font = UIFont(name: "BMHANNAPro", size: 14)     // 이거 사이즈 바꿔줄때마다 name 써줘야하나?
+        label.font = UIFont(name: "BMHANNAPro", size: 20)     // 이거 사이즈 바꿔줄때마다 name 써줘야하나?
         label.numberOfLines = 2
         label.textAlignment = .center
         label.textColor = .gray
@@ -34,7 +35,6 @@ class initial: UIViewController {
         button.contentHorizontalAlignment = .left
         button.setImage(UIImage(systemName: "bubble.right"), for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
-        button.imageEdgeInsets =
         button.backgroundColor = .green
         button.addTarget(self, action: #selector(callEvent), for: .touchUpInside)
         return button
@@ -53,6 +53,45 @@ class initial: UIViewController {
         view.isHidden = true
         return view
     }()
+    
+    private let addressView: UIView = {
+        let view = UIView()
+        let button = UIButton()
+        view.addSubview(button)
+        button.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 26)
+        button.contentHorizontalAlignment = .left
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.setTitle("주소록", for: .normal)
+        button.addTarget(self, action: #selector(addressHide), for: .touchUpInside)
+        
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.text = "내 기기에 저장된 주소록을 카카오톡을 전송하고 친구를 추가하기 위하여 주소록 권한 허용이 필요합니다."
+        label.font = UIFont(name: "BMHANNAPro", size: 16)
+        label.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.3)
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16).isActive = true
+        label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        let underLine = UIView()
+        view.addSubview(underLine)
+        underLine.translatesAutoresizingMaskIntoConstraints = false
+        underLine.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10).isActive = true
+        underLine.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        underLine.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        underLine.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.3)
+        
+        return view
+    }()
+    
+    @objc func addressHide(){
+        
+        addressView.layoutIfNeeded()
+    }
+    
     
     @objc func callEvent(){
     }
@@ -94,7 +133,9 @@ class initial: UIViewController {
         view.addSubview(callBtn)
         view.addSubview(callView)
         
+        view.addSubview(addressView)
         view.addSubview(botLabel)
+        view.addSubview(arrowBtn)
         
     }
     
@@ -102,6 +143,7 @@ class initial: UIViewController {
         topLabel.translatesAutoresizingMaskIntoConstraints = false
         topLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         topLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
         midLabel.translatesAutoresizingMaskIntoConstraints = false
         midLabel.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 30).isActive = true
         midLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -117,6 +159,11 @@ class initial: UIViewController {
         callView.widthAnchor.constraint(equalTo: callBtn.widthAnchor).isActive = true
         callView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
+        addressView.translatesAutoresizingMaskIntoConstraints = false
+        
+        arrowBtn.translatesAutoresizingMaskIntoConstraints = false
+        arrowBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        arrowBtn.topAnchor.constraint(equalTo: callBtn.bottomAnchor, constant: 30).isActive = true
         
     }
     

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController?.modalPresentationStyle = .fullScreen
         
         
-        UILabel.appearance().font = UIFont(name: "BMHANNAPro", size: 26)    // 모든 라벨 폰트 변경
+        UILabel.appearance().font = UIFont(name: "BMHANNAAir", size: 26)    // 모든 라벨 폰트 변경
         
 //        UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).font = UIFont.boldSystemFont(ofSize: 30)
         UITextField.appearance().tintColor = UIColor(red: 255/255, green: 255/255, blue: 144/255, alpha: 1)         // 모든 텍스트필드 깜빡이는 커서 노란색
@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         shopping.tabBarItem = shoppingBtn
         seeMore.tabBarItem = seeMoreBtn
         
-        let loginView = "off"
+        let loginView = "on"
         
         // 탭바 컨트롤러가 5개의 뷰 객체를 제어하도록 만들기
         tabBarController.viewControllers = [friends, chat, view, shopping, seeMore]

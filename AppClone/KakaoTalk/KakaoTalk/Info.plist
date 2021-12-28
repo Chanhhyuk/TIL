@@ -6,7 +6,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BMHANNAPro.ttf</string>
+		<string>BMHANNAAir.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

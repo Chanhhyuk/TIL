@@ -18,6 +18,7 @@ PODS:
     - KakaoSDKAuth (= 2.8.3)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKTalk
@@ -40,6 +41,6 @@ SPEC CHECKSUMS:
   KakaoSDKTemplate: 0526fe52476228ec0061912e20e50955466ca873
   KakaoSDKUser: 7debff9ff539b095aa4858469163fed7e3bce73e
 
-PODFILE CHECKSUM: 935ca43f3c9b8b1f0dd406e47adabfba2c236df2
+PODFILE CHECKSUM: b49c83eac462c0dfdce481369da88e5c9add8530
 
 COCOAPODS: 1.11.2
