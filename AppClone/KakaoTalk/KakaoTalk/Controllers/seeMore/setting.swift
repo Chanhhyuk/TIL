@@ -34,12 +34,16 @@ class setting : UIViewController, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
+        let vc = theme()
+        vc.modalPresentationStyle = .fullScreen
+        
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0: self.performSegue(withIdentifier: "photoObjectDetection", sender: nil)
         case 1: self.performSegue(withIdentifier: "realTimeObjectDetection", sender: nil)
         case 2: self.performSegue(withIdentifier: "facialAnalysis", sender: nil)
+        case 10: self.present(vc, animated: false)
         default:
             return
         }

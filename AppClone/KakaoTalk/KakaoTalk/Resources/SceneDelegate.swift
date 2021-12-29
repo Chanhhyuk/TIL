@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.tintColor = .black          // 모든 화면 백버튼 글씨색 검은색 설정
         window?.rootViewController?.modalPresentationStyle = .fullScreen
         
-        
         UILabel.appearance().font = UIFont(name: "BMHANNAAir", size: 26)    // 모든 라벨 폰트 변경
         
 //        UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).font = UIFont.boldSystemFont(ofSize: 30)
@@ -52,11 +51,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         shopping.tabBarItem = shoppingBtn
         seeMore.tabBarItem = seeMoreBtn
         
-        let loginView = "on"
-        
         // 탭바 컨트롤러가 5개의 뷰 객체를 제어하도록 만들기
         tabBarController.viewControllers = [friends, chat, view, shopping, seeMore]
-        if loginView == "on"{
+        
+        let loginView = true
+        if loginView == true{
             window?.rootViewController = tabBarController
         }else{
             window?.rootViewController = initial()
