@@ -136,9 +136,8 @@
 		71C259A0274B5DDA007B6841 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				71C2598F274B5D40007B6841 /* Main.storyboard */,
+				71E85011277D5CF700BEEF8C /* Storyboard */,
 				71C25992274B5D41007B6841 /* Assets.xcassets */,
-				71C25994274B5D41007B6841 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +152,15 @@
 				71C259AC274B612B007B6841 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		71E85011277D5CF700BEEF8C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				71C2598F274B5D40007B6841 /* Main.storyboard */,
+				71C25994274B5D41007B6841 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		BD033FA43E3113DF40A5CD62 /* Frameworks */ = {

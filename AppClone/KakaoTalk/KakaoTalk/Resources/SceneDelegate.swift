@@ -54,7 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 탭바 컨트롤러가 5개의 뷰 객체를 제어하도록 만들기
         tabBarController.viewControllers = [friends, chat, view, shopping, seeMore]
         
-        let loginView = true
+        let loginView = false
         if loginView == true{
             window?.rootViewController = tabBarController
         }else{
