@@ -5,20 +5,20 @@ class LoginViewController: UIViewController {
     
     private let scrollView: UIScrollView = {    // 딱히 테이블 뷰는 필요없지만 스크롤은 줘야 할떄 스크롤뷰를 사용
         let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
+        scrollView.clipsToBounds = true         // 스크롤뷰에 속해있는 나머지 subview가 짤리지 않게 방지
         return scrollView
     }()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFit // 이미지를 비율에 맞게 늘린다.
         return imageView
     }()
     private let emailField: UITextField = {
         let field = UITextField()
-        field.autocapitalizationType = .none
-        field.autocorrectionType = .no
+        field.autocapitalizationType = .none    // 첫글자 대문자 끄기
+        field.autocorrectionType = .no          // 자동고침 끄기
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
         field.layer.borderWidth = 1
@@ -55,6 +55,7 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)       // ? 왜 붙일까?
         return button
     }()
+
     
     
     override func viewDidLoad() {
@@ -63,11 +64,11 @@ class LoginViewController: UIViewController {
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done
                                                             , target: self, action: #selector(didTapRegister))
+
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         emailField.delegate = self      // 이거 정확한뜻
         passwordField.delegate = self
-        
         
         // Add subview
         view.addSubview(scrollView)
@@ -108,7 +109,7 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapRegister(){
         let vc = RegisterViewController()
-        vc.title = "Create Account"
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
