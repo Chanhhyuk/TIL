@@ -1,5 +1,6 @@
 // 회원가입 뷰
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
@@ -14,7 +15,7 @@ class RegisterViewController: UIViewController {
         imageView.image = UIImage(systemName: "person")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.masksToBounds = true
+        imageView.layer.masksToBounds = true  // 이거 사용하지 않으면 imageView안에 image가 예쁘게 잘리지 않고 그대로 나옴
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
@@ -64,7 +65,7 @@ class RegisterViewController: UIViewController {
     
     private let passwordField: UITextField = {
         let field = UITextField()
-        field.isSecureTextEntry = true
+//        field.isSecureTextEntry = true
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .done
@@ -97,12 +98,13 @@ class RegisterViewController: UIViewController {
                                                             , target: self, action: #selector(didTapRegister))
         registerButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        emailField.delegate = self      // 이거 정확한뜻
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+        emailField.delegate = self
         passwordField.delegate = self
         
         imageView.isUserInteractionEnabled = true
         scrollView.isUserInteractionEnabled = true
-        
         
         // Add subview
         view.addSubview(scrollView)
@@ -113,8 +115,7 @@ class RegisterViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(registerButton)
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
-        imageView.addGestureRecognizer(gesture)
+
     }
     
     @objc private func didTapChangeProfilePic() {
@@ -143,11 +144,27 @@ class RegisterViewController: UIViewController {
         lastNameField.resignFirstResponder()
         
         // 유효성검사: 로그인 버튼을 누를때 이메일과 패스워드가 형식에 맞게 작성됫는지 확인
-        guard let firstName = firstNameField.text, let lastName = lastNameField.text, let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty, !firstName.isEmpty,!lastName.isEmpty, password.count >= 6 else {
+        guard let firstName = firstNameField.text,
+              let lastName = lastNameField.text,
+              let email = emailField.text,
+              let password = passwordField.text,
+              !email.isEmpty,
+              !password.isEmpty,
+              !firstName.isEmpty,
+              !lastName.isEmpty,
+              password.count >= 6 else {
             alertUserLoginError()
             return
         }
         // Firebase Login
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else {
+            print("Error cureating user")
+            return
+        }
+            let user = result.user
+            print("Created User: \(user)")
+        })
     }
     
     func alertUserLoginError() {    // 로그인 에러 알림창
@@ -167,11 +184,16 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailField {
+        if textField == firstNameField{
+            lastNameField.becomeFirstResponder()
+        }else if textField == lastNameField {
+            emailField.becomeFirstResponder()
+        }else if textField == emailField {
             passwordField.becomeFirstResponder()
         }else if textField == passwordField{
             loginButtonTapped()
         }
+        
         
         
         return true
@@ -187,20 +209,20 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         present(actionSheet, animated: true)
     }
     
-    func presentCamera(){
+    func presentCamera(){           // 카메라로 직접 찍기
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.delegate = self          // UINavigationControllerDelegate 채택해야됨
         vc.allowsEditing = true     // 편집허용
         present(vc, animated: true)
     }
-    func presentPhotoPicker(){
+    func presentPhotoPicker(){      // 앨범에 들어가서 사진 고르기
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self          // UINavigationControllerDelegate 채택해야됨
         vc.allowsEditing = true     // 편집허용
         present(vc, animated: true)
-    }
+    }// 여기까지만 구현하면 앨범만 나옴
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)

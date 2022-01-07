@@ -25,6 +25,9 @@ for i in num:
 # 숫자의 제곱근
 num = 9
 num**0.5    # 3 
+
+# 배열이 int형일때 문자형으로 한꺼번에 출력할 때
+print(" ".join(map(str, result)))
 ```
 
 ## Swap (스와프)

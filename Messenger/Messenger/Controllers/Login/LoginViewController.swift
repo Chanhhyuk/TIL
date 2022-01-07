@@ -1,5 +1,6 @@
 // 로그인 뷰
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -65,10 +66,9 @@ class LoginViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done
                                                             , target: self, action: #selector(didTapRegister))
 
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
-        emailField.delegate = self      // 이거 정확한뜻
+        emailField.delegate = self
         passwordField.delegate = self
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         // Add subview
         view.addSubview(scrollView)
@@ -87,18 +87,25 @@ class LoginViewController: UIViewController {
         passwordField.frame = CGRect(x: 30, y: emailField.bottom+20, width: scrollView.width-60, height: 52)
         loginButton.frame = CGRect(x: 30, y: passwordField.bottom+20, width: scrollView.width-60, height: 52)
     }
+    
+    
     @objc private func loginButtonTapped() {
-        
-        emailField.resignFirstResponder()       // 키보드를 없애기 위해?
-        passwordField.resignFirstResponder()
         
         // 유효성검사: 로그인 버튼을 누를때 이메일과 패스워드가 형식에 맞게 작성됫는지 확인
         guard let email = emailField.text, let password = passwordField.text, !email.isEmpty, !password.isEmpty, password.count >= 6 else {
             alertUserLoginError()
             return
         }
-        // Firebase Login
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("Failed to log in user with email: \(email)")
+                return
+            }
+            let user = result.user
+            print("Logged In User: \(user)")
+        })
     }
+    
     
     func alertUserLoginError() {    // 로그인 에러 알림창
         let alert = UIAlertController(title: "Woops", message: "Please enter all information to log in", preferredStyle: .alert)
@@ -109,20 +116,17 @@ class LoginViewController: UIViewController {
     
     @objc private func didTapRegister(){
         let vc = RegisterViewController()
-        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailField {
             passwordField.becomeFirstResponder()
-        }else if textField == passwordField{
+        }else if textField == passwordField {
             loginButtonTapped()
         }
-        
         
         return true
     }
