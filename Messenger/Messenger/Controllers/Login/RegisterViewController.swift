@@ -12,7 +12,7 @@ class RegisterViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true  // 이거 사용하지 않으면 imageView안에 image가 예쁘게 잘리지 않고 그대로 나옴
@@ -156,19 +156,32 @@ class RegisterViewController: UIViewController {
             alertUserLoginError()
             return
         }
-        // Firebase Login
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
-            guard let result = authResult, error == nil else {
-            print("Error cureating user")
-            return
+        
+        DatabaseManager.shared.userExists(with: email) {[weak self] exists in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            guard !exists else {        // 이메일 계정을 생성하려 했으니 이미 회원이 있을 때
+                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
+                return
+            }
+            // Firebase Login
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+                guard authResult != nil, error == nil else {
+                print("Error cureating user")
+                return
+            }
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            
         }
-            let user = result.user
-            print("Created User: \(user)")
-        })
+        
     }
     
-    func alertUserLoginError() {    // 로그인 에러 알림창
-        let alert = UIAlertController(title: "Woops", message: "Please enter all information to create a new account.", preferredStyle: .alert)
+    func alertUserLoginError(message: String = "Please enter all information to create a new account.") {    // 로그인 에러 알림창
+        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
     }

@@ -28,3 +28,5 @@ imageView.addGestureRecognizer(gesture)
 - Firebase 셋팅함, Appdelegate에서 FirebaseApp.configure() 설정
 - Firebase의 회원정보를 가져오거나 입력해야 하는 뷰인 로그인뷰와 회원가입뷰와 FirebaseAuth 설정 
 - 회원가입시 이름,이메일,비밀번호,프로필사진이 저장되어야 할것을 인지
+
+5.
