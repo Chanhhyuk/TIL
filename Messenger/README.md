@@ -30,3 +30,6 @@ imageView.addGestureRecognizer(gesture)
 - 회원가입시 이름,이메일,비밀번호,프로필사진이 저장되어야 할것을 인지
 
 5.
+
+6. Facebook Login & Log Out
+- 스토리보드 탭바,네비게이션 컨트롤러 추가
