@@ -29,7 +29,29 @@ imageView.addGestureRecognizer(gesture)
 - Firebase의 회원정보를 가져오거나 입력해야 하는 뷰인 로그인뷰와 회원가입뷰와 FirebaseAuth 설정 
 - 회원가입시 이름,이메일,비밀번호,프로필사진이 저장되어야 할것을 인지
 
-5.
-
+5. Database Set Up
 6. Facebook Login & Log Out
 - 스토리보드 탭바,네비게이션 컨트롤러 추가
+
+8. Building User Interface & Dependencies
+- 라이브러리 설치
+messageKit: 채팅 대화방의 말풍선이나 프로필 등을 쉽게 구현할 수 있음
+JGProgressHUD: 로딩 팝업 등을 쉽고 예쁘게 보여줄 수 있는 라이브러리
+RealmSwift: 데이터 모델을 따로 만들지 않고도 리액티비 데이터 레이어를 쉽게 구현할 수 있다
+SDWebImage: url 방식으로 이미지나 영상을 받아올때 비동기적으로 처리하고 받아온 이미지나 영상을 캐싱하여 사용할 수 있게 해준다(속도문제 개선)
+- tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell") 사용
+register: 셀을 등록하는데 사용하는 메서드
+dequeueReusableCell: 셀 재사용시 사용하는 메서드
+reuseIdentifier: 셀의 id
+NibName: 셀의 NibNam  // xib를 가르킴 xib 파일을 사용하지 않으면 사용하지 않는다.
+
+- 네비게이션 타이틀 자리에 서치바
+navigationController?.navigationBar.topItem?.titleView = searchBar
+
+- Cancel 버튼을 누르면 전 네이게이션으로 돌아갈 때 이렇게 이벤트를 줌
+navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissSelf))
+@objc private func dismissSelf() {
+    dismiss(animated: true, completion: nil)
+}
+
+9. Upload Photos to Firebase Storage
