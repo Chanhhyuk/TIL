@@ -55,3 +55,6 @@ navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .don
 }
 
 9. Upload Photos to Firebase Storage
+- Firebase/Storage 추가
+10. Fetching Users & Photos
+- 
