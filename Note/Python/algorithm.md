@@ -28,6 +28,9 @@ num**0.5    # 3
 
 # 배열이 int형일때 문자형으로 한꺼번에 출력할 때
 print(" ".join(map(str, result)))
+
+# 문자열값으로 된 배열을 숫자형으로 바꿀 때
+listName = list(map(int, listName))
 ```
 
 ## Swap (스와프)

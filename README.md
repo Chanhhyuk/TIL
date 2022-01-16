@@ -20,3 +20,5 @@
 1.13: Messenger add(8.Building User Interface & Dependencies)
 - 7. Firebase Google sign issue
 1.14: Messenger add(9.Upload Photos to Firebase Storage)
+1.15: Organize what you have studied temp (study.md)
+1.16: pythonAlgorithm( list(map(int, listName)) ), study delete 
