@@ -1,6 +1,0 @@
-module Pods_KakaoTalk {
-  umbrella header "Pods-KakaoTalk-umbrella.h"
-
-  export *
-  module * { export * }
-}
