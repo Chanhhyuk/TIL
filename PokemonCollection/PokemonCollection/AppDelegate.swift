@@ -1,19 +1,18 @@
-//
-//  AppDelegate.swift
-//  PokemonCollection
-//
-//  Created by ChanHyuk Kim on 2022/01/17.
-//
-
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let navigationBar = UINavigationBarAppearance()
+        navigationBar.configureWithOpaqueBackground()
+        navigationBar.backgroundColor = UIColor.mainColor
+        UINavigationBar.appearance().standardAppearance = navigationBar
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBar
         return true
     }
 
