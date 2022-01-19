@@ -1,6 +1,9 @@
 # PokemonCollection
 - extension과 static을 이용해서 전역적으로 사용할 color 생성
 - 네비게이션에 버튼을 생성했는데 얘가 기본색이 link색이였다 그래서 씬 델리게이트에서 UIButton.appearance().tintColor = .systemBackground 값을줌
+- class에 UICollectionView로 상속받으면 viewdidLoad가 override가 되지 않았고 UICollectionViewController 컨트롤러를 상속받아야 overrider가 되었다
+- collectionView에 cell을 넣는것은 몇개 더 해야하는게 있었지만 대부분 tableView생성과 비슷했음
+- 포켓몬 API 방법 3시간째 찾고 있음 혼자 공부하는거 서럽다 ㅠ
 
 1. iOS15 업데이트가 된 이후부터 네비게이션 바가 확장이 되면서 scrollEdgeAppearance는 기본적으로 투명한 배경으로 생성이 되면서 뒤에 컨텐츠가 없는 경우 기본적으로 투명한 배경색으로 보이게 변하였다
 - navigationController?.navigationBar.tintColor이 먹히지 않음 (😡바뀐방식 구현해보려고 반나절 날림 ㅅㅂ...)
@@ -32,3 +35,22 @@
 7. 컬렉션셀을 따로 파일을 만들었는데 컬렉션뷰에 등록을 시켜줘야 화면에 띄울수 있음
 - collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: "PokemonCell") 등록
 - 
+
+8. collectionView.register(PokemonCell.self, forCellWithReuseIdentifier: cellIdentifier)
+- 이걸 ""문자열로 선언하면 틀리기 쉬우닌깐 인스턴스로 선언하려했지만 private let collectionView 안에서는 되지 않았다.
+- viewDidLoad에 적어주닌깐 되었음
+- class 밖에 전역으로 설정해주닌깐 인스턴스로 설정 가능했음 🤗
+
+9. UIViewController가 메인인 뷰에 아래에 extension으로 UICollectionViewController 상속하려는데 Inheritance from non-protocol type 'UICollectionViewController' 에러 발생
+- UICollectionViewDataSource를 상속했더니 Collection의 기능을 사용할 수 있었음
+
+10. collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PokemonCell
+- for: indexPath:이 함수에서 전달받은 indexPath
+
+11. extension으로 델리게이트 기능 다 명시해 줬는데 에러는 나지 않지만 구현이 안되었음
+- delegate만 구현해줬는데 extension에 dataSource까지 2개가 구현되어있으므로 dataSource도 구현해 줘야 했던거임 
+- collectionView.delegate = self, collectionView.dataSource = self
+12. Anchor의 multiple을 주는 방법은 알고 있었지만 snapKit은 몰랐기에 해매더라도 해결방법을 찾음(1시간 걸림 현타옴...)
+- make.height.equalTo(self.snp.height).multipliedBy(0.7)
+- equalTo에 0.7 넣고 아주 그냥 개판이였음 콜렉션뷰 셀을 가르키는게 self.snp.height 일줄이야...
+- 여기다가 width값 넣어주니 방향 안 잡아줘도 cell에 알아서 들어갔음
