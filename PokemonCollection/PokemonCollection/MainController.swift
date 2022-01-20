@@ -5,15 +5,6 @@ private let cellIdentifier = "pokemonCell"
 
 class MainController: UIViewController {
     
-    private let pokemonService = PokemonService()
-    private var pokemons = [Pokemon]() {
-        didSet {
-            // 변수의 값이 변할때마다
-            // 여기 코드블럭이 실행된다.
-            self.collectionView.reloadData()
-        }
-    }
-    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
@@ -29,9 +20,11 @@ class MainController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(searchTap))
         collectionView.delegate = self
         collectionView.dataSource = self
+        fetchPokemon()
         
-        pokemonService.fetchPokemons()  // 포켓몬 셀으
-        pokemonService.delegate = self
+    }
+    private func fetchPokemon() {
+        PokemonService.shared.fetchPokemons()
     }
     
     
@@ -42,13 +35,14 @@ class MainController: UIViewController {
         view.addSubview(collectionView)
     }
     
+    
 }
 
 // 몇개의 셀을 또는 어떠한 셀을 보여줄것인지 대해서 함수정의
 extension MainController: UICollectionViewDataSource,UICollectionViewDelegate {
     // n개의 셀을 보여주겠다
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pokemons.count
+        return 6
     }
     
     // 몇번째 아이템에 어떤 셀을 보여줄것인지
@@ -68,12 +62,4 @@ extension MainController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 32, left: 8, bottom: 8, right: 8)
     }
-}
-extension MainController: PokemonServiceProtocol {
-    func pokemonService(pokemons: [Pokemon]) {   // Pokemons의 데이터를 받아오고 있다
-        self.pokemons = pokemons
-//        self.collectionView.reloadData()  콜렉션뷰를 리로드해야된다 didSet으로 해줘도 된다.
-    }
-    
-    
 }
