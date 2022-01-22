@@ -5,6 +5,8 @@ private let cellIdentifier = "pokemonCell"
 
 class MainController: UIViewController {
     
+    var pokemon = [Pokemon]()
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
@@ -24,7 +26,13 @@ class MainController: UIViewController {
         
     }
     private func fetchPokemon() {
-        PokemonService.shared.fetchPokemons()
+        PokemonService.shared.fetchPokemons { (pokemon) in
+            DispatchQueue.main.async {
+                self.pokemon = pokemon
+                self.collectionView.reloadData()
+            }
+            
+        }
     }
     
     
@@ -42,12 +50,13 @@ class MainController: UIViewController {
 extension MainController: UICollectionViewDataSource,UICollectionViewDelegate {
     // n개의 셀을 보여주겠다
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return pokemon.count
     }
     
     // 몇번째 아이템에 어떤 셀을 보여줄것인지
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PokemonCell
+        cell.pokemon = pokemon[indexPath.item]
         return cell
     }
     

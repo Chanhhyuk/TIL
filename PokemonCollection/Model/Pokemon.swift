@@ -1,3 +1,4 @@
+// 이 앱의 Model 부분 데이터?부분
 import Foundation
 import UIKit
 

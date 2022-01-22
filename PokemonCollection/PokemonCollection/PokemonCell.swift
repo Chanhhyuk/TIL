@@ -2,9 +2,15 @@ import UIKit
 
 class PokemonCell: UICollectionViewCell {
     
+    var pokemon: Pokemon? {
+        didSet{
+            textLabel.text = pokemon?.name
+            imageView.image = pokemon?.image
+        }
+    }
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .green
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -17,7 +23,6 @@ class PokemonCell: UICollectionViewCell {
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "피카츄"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
