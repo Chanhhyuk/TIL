@@ -10,7 +10,7 @@ class FeedController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // viewDidLayoutSubviews에 적었을때 크러쉬가 났음 순서 문제인듯 함
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
     }
     
     // layout과 관련된 메서드
@@ -45,12 +45,12 @@ extension FeedController {
     // 만약 생성되었던거라면 이미 셀을 사용했으니 새로 생성하는 대신 캐시에서 가져올께라고하는거
     // 위에 identifier와 동일한 식별자를 사용하고 있따?
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
         return cell
     }
 }
 
+// MARK: UICollectionVeiwFlowLayout
 extension FeedController: UICollectionViewDelegateFlowLayout {
     // CGSize를 리턴
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
