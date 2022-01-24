@@ -54,6 +54,9 @@ extension FeedController {
 extension FeedController: UICollectionViewDelegateFlowLayout {
     // CGSize를 리턴
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width , height: 200)
+        let width = view.frame.width
+        var height = width + 8 + 40 + 8 // 정사각형을 만들기위해 width값 더하기 8 위 아래 간격 40 프로필 이미지 간격
+        height += 110                   // 50은 포스트 이미지 60은 댓글이랑 좋아요 버튼
+        return CGSize(width: width , height: height)
     }
 }
