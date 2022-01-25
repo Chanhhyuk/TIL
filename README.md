@@ -32,10 +32,31 @@
 1.12: Messenger add(6.Facebook Login & Log Out)
 
 1.13: Messenger add(8.Building User Interface & Dependencies)
-- 7. Firebase Google sign issue
+- Firebase Google sign issue
 
 1.14: Messenger add(9.Upload Photos to Firebase Storage)
 
 1.15: Organize what you have studied temp (study.md)
 
 1.16: pythonAlgorithm( list(map(int, listName)) ), study delete 
+
+1.17: Kakaotalk, Messenger, InstargramBeta delete
+- testApp delete
+
+1.18: PokemonCollection init(collectionView init)
+
+1.19: PokemonCollection cell init
+
+1.20: PokemonCollection API connect
+- firebase reference
+
+1.21: Instargram init
+
+1.22: PokemonCollection add (API image,name)
+
+1.23: Instargram add(Extension View, FeedCell userImage)
+- Extension anchor
+
+1.24: Instargram add(FInishing Up Feed Cell UI)
+
+1.25:

@@ -13,7 +13,6 @@ class MainTabController: UITabBarController {
     // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것
     // 컨트롤러의 인스턴스를 생성하고 있다 () 생성자
     private func tabController(){
-        
         let layout = UICollectionViewFlowLayout()   // 이거 해봤는데 바로 직접적으로 적어줘도 되었다
         let feed = naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search = naviController(unseletedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController() )
@@ -27,7 +26,6 @@ class MainTabController: UITabBarController {
         // 위에 변수에 따로 저장하는게 아니라 생성자형태로 바로 넣을 수 있다 하지만 이렇게 하는게 좋다
         // 아래처럼 코드가 지저분해지기 때문
 //        viewControllers = [naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController())]
-        
         tabBar.tintColor = .black
     }
     
@@ -35,8 +33,8 @@ class MainTabController: UITabBarController {
     // tabbar를 설정할 때 좀더 수월하게 하기 위해 함수 설정
     private func naviController(unseletedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
-        nav.tabBarItem.image = unseletedImage
-        nav.tabBarItem.selectedImage = selectedImage
+        nav.tabBarItem.image = unseletedImage           // 버튼이 선택되지 않았을때 이미지
+        nav.tabBarItem.selectedImage = selectedImage    // 버튼이 선택되었을때 이미지
         nav.navigationBar.tintColor = .black            // 네비게이션바 텍스트 색
         return nav
     }
