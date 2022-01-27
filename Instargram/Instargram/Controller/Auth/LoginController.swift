@@ -3,7 +3,10 @@ import UIKit
 // MARK: Properties
 // MARK: Lifecycle
 
+
 class LoginController: UIViewController{
+    
+    private var viewModel = LoginViewModel()  // 뷰 모델의 인스턴스 생성
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
@@ -26,10 +29,11 @@ class LoginController: UIViewController{
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
         return button
     }()
     private let forgotButton: UIButton = {      // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
@@ -50,6 +54,7 @@ class LoginController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFieldObservers()
     }
     
     override func viewDidLayoutSubviews() {
@@ -71,5 +76,20 @@ class LoginController: UIViewController{
         view.addSubview(registerButton)
         registerButton.centerX(inView: view)
         registerButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+    }
+    
+    func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
+        emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    @objc private func textDidChange(sender: UITextField){         // 입력 매개변수로 내부의 UI 텍스트 필드가 된다
+        if sender == emailField{
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTintColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
     }
 }
