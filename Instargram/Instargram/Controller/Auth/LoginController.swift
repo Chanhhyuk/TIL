@@ -88,6 +88,13 @@ class LoginController: UIViewController{
         } else {
             viewModel.password = sender.text
         }
+        updateForm()
+    }
+}
+
+// 필수는 아니지만 코드를 깔끔하게 해준다
+extension LoginController: FormViewModel {
+    func updateForm() {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor
         loginButton.setTitleColor(viewModel.buttonTintColor, for: .normal)
         loginButton.isEnabled = viewModel.formIsValid

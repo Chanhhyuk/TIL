@@ -2,6 +2,8 @@ import UIKit
 
 class RegisterController: UIViewController {
     
+    private var viewModel = RegistrationViewModel()
+    
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo") , for: .normal)
@@ -42,6 +44,7 @@ class RegisterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textFieldObservers()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -60,5 +63,32 @@ class RegisterController: UIViewController {
         view.addSubview(alreadyButton)
         alreadyButton.centerX(inView: view)
         alreadyButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+    }
+    
+    private func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
+        emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullNameField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        userNameField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    @objc private func textDidChange(sender: UITextField){         // 입력 매개변수로 내부의 UI 텍스트 필드가 된다
+        if sender == emailField{
+            viewModel.email = sender.text
+        } else if sender == passwordField {
+            viewModel.password = sender.text
+        } else if sender == fullNameField {
+            viewModel.fullName = sender.text
+        } else {
+            viewModel.userName = sender.text
+        }
+        updateForm()
+    }
+}
+
+extension RegisterController: FormViewModel {
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+        signUpButton.setTitleColor(viewModel.buttonTintColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsValid
     }
 }
