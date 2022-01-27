@@ -34,15 +34,19 @@ class LoginController: UIViewController{
     }()
     private let forgotButton: UIButton = {      // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
         let button = UIButton(type: .system)
-        button.attributed(first: "Don't have an account?", second: "Sign Up")
+        button.attributed(first: "Forgot your password?", second: "Get help signing in.")
         return button
     }()
     
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.attributed(first: "Don't have an account?", second: "Sign Up")
+        button.addTarget(self, action: #selector(tapRegister), for: .touchUpInside) // 여기서 self는 LoginController 클래스를 참조한다 즉 self는 작업을 처리할 클래스다
         return button
     }()
+    @objc private func tapRegister(){
+        navigationController?.pushViewController(RegisterController(), animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +54,8 @@ class LoginController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.backgroundColor = .white
         navigationController?.navigationBar.barStyle = .black // 이걸 사용하면 네비게이션 위에 상태바들이 다크모드 on/off 상관없이 흰색을 띰
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+        gradientBackground()
         
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)

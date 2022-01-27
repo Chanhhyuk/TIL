@@ -1,5 +1,15 @@
 import UIKit
 
+extension UIViewController {        // UIViewController로 상속되는 모든 클래스는 이제 gradientBackground 함수를 사용할 수 있다.
+    func gradientBackground(){
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradient.locations = [0, 1]
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
+    }
+}
+
 extension UIButton {
     func attributed(first: String, second: String){
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
