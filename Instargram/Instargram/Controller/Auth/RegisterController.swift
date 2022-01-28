@@ -7,9 +7,17 @@ class RegisterController: UIViewController {
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo") , for: .normal)
+        button.addTarget(self, action: #selector(tapPlusPhoto), for: .touchUpInside)
         button.tintColor = .white
         return button
     }()
+    @objc private func tapPlusPhoto() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+    
     private let emailField: UITextField = CustomTextField(placeholder: "Email")
     
     private let passwordField: UITextField = {
@@ -90,5 +98,20 @@ extension RegisterController: FormViewModel {
         signUpButton.backgroundColor = viewModel.buttonBackgroundColor
         signUpButton.setTitleColor(viewModel.buttonTintColor, for: .normal)
         signUpButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    // 사용자가 미디어 유형 선택을 마치면 호출한다
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let seletedImage = info[.editedImage] as? UIImage else { return }     // 선택된 이미지를 저장한다
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 2
+        plusPhotoButton.setImage(seletedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.dismiss(animated: true, completion: nil)
     }
 }
