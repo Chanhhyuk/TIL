@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>626628333037-r30qqq1jhubpcar1bvbj9886obmb4mlu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.626628333037-r30qqq1jhubpcar1bvbj9886obmb4mlu</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD1aCguh_huLz5D1WpN0vik2McfA-r-RoE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>626628333037</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.whk1140.Instargram</string>
+	<key>PROJECT_ID</key>
+	<string>instargram-bad01</string>
+	<key>STORAGE_BUCKET</key>
+	<string>instargram-bad01.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:626628333037:ios:a6fc6bf9a3536b67caebe4</string>
+</dict>
+</plist>

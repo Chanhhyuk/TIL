@@ -14,6 +14,7 @@
 		711A1D37279A62E700E65B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D35279A62E700E65B73 /* LaunchScreen.storyboard */; };
 		711A1D48279A650A00E65B73 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D47279A650A00E65B73 /* MainTabController.swift */; };
 		714FA26327A1700200EA8B3A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714FA26227A1700200EA8B3A /* CustomTextField.swift */; };
+		717D9F7927A3B45100AC9CCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 717D9F7827A3B45100AC9CCA /* GoogleService-Info.plist */; };
 		718F1B4E279D2F7F0035DF99 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F1B4D279D2F7F0035DF99 /* FeedCell.swift */; };
 		718F1B50279D38280035DF99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F1B4F279D38280035DF99 /* Extensions.swift */; };
 		718FCD7E27A27A26009E9A5E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718FCD7D27A27A26009E9A5E /* AuthViewModel.swift */; };
@@ -24,9 +25,11 @@
 		71EF8089279A7E3C00EA79E4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF8088279A7E3C00EA79E4 /* SearchController.swift */; };
 		71EF808B279A7E5B00EA79E4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF808A279A7E5B00EA79E4 /* NotificationController.swift */; };
 		71EF808D279A7E7200EA79E4 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF808C279A7E7200EA79E4 /* ProfileController.swift */; };
+		98917A4720EFDC0DFE243192 /* Pods_Instargram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA56F3B158080C29624195A /* Pods_Instargram.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
 		711A1D27279A62E600E65B73 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		711A1D2A279A62E600E65B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711A1D2C279A62E600E65B73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		711A1D38279A62E700E65B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		711A1D47279A650A00E65B73 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		714FA26227A1700200EA8B3A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		717D9F7827A3B45100AC9CCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		718F1B4D279D2F7F0035DF99 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		718F1B4F279D38280035DF99 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		718FCD7D27A27A26009E9A5E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -46,6 +50,8 @@
 		71EF8088279A7E3C00EA79E4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		71EF808A279A7E5B00EA79E4 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		71EF808C279A7E7200EA79E4 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		7FA56F3B158080C29624195A /* Pods_Instargram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instargram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8255E0B285C1CFD78FBA3D72 /* Pods-Instargram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.debug.xcconfig"; path = "Target Support Files/Pods-Instargram/Pods-Instargram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98917A4720EFDC0DFE243192 /* Pods_Instargram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +71,8 @@
 			children = (
 				711A1D29279A62E600E65B73 /* Instargram */,
 				711A1D28279A62E600E65B73 /* Products */,
+				CEB72C5055C89CC97FFB5B4B /* Pods */,
+				F971E024FA1A633E621015FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +87,7 @@
 		711A1D29279A62E600E65B73 /* Instargram */ = {
 			isa = PBXGroup;
 			children = (
+				717D9F7827A3B45100AC9CCA /* GoogleService-Info.plist */,
 				711A1D44279A63DE00E65B73 /* Utils */,
 				711A1D42279A635F00E65B73 /* API */,
 				711A1D41279A635C00E65B73 /* ViewModel */,
@@ -156,6 +166,23 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		CEB72C5055C89CC97FFB5B4B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8255E0B285C1CFD78FBA3D72 /* Pods-Instargram.debug.xcconfig */,
+				3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F971E024FA1A633E621015FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FA56F3B158080C29624195A /* Pods_Instargram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,9 +190,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 711A1D3B279A62E700E65B73 /* Build configuration list for PBXNativeTarget "Instargram" */;
 			buildPhases = (
+				FE17D708527461E18E58D5D5 /* [CP] Check Pods Manifest.lock */,
 				711A1D23279A62E600E65B73 /* Sources */,
 				711A1D24279A62E600E65B73 /* Frameworks */,
 				711A1D25279A62E600E65B73 /* Resources */,
+				96CCE58F3087B9C315C18B98 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,12 +244,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				711A1D37279A62E700E65B73 /* LaunchScreen.storyboard in Resources */,
+				717D9F7927A3B45100AC9CCA /* GoogleService-Info.plist in Resources */,
 				711A1D34279A62E700E65B73 /* Assets.xcassets in Resources */,
 				711A1D32279A62E600E65B73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		96CCE58F3087B9C315C18B98 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Instargram/Pods-Instargram-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Instargram/Pods-Instargram-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Instargram/Pods-Instargram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE17D708527461E18E58D5D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Instargram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		711A1D23279A62E600E65B73 /* Sources */ = {
@@ -384,6 +456,7 @@
 		};
 		711A1D3C279A62E700E65B73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8255E0B285C1CFD78FBA3D72 /* Pods-Instargram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -411,6 +484,7 @@
 		};
 		711A1D3D279A62E700E65B73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
