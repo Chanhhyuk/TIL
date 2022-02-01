@@ -25,7 +25,7 @@ class RegisterController: UIViewController {
     
     private let passwordField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
-        textField.isSecureTextEntry = true
+        
         return textField
     }()
     private let fullNameField: UITextField = CustomTextField(placeholder: "Fullname")       // 코드가 훨씬 깔끔해짐
@@ -49,11 +49,17 @@ class RegisterController: UIViewController {
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
         guard let fullName = fullNameField.text else { return }
-        guard let userName = userNameField.text else { return }
+        guard let userName = userNameField.text?.lowercased() else { return }
         guard let profileImage = self.profileImage else { return }
         
         let credentials = AuthCredetials(email: email, password: password, fullname: fullName, username: userName, profileImage: profileImage)
-        AuthService.registerUser(withCredential: credentials)
+        AuthService.registerUser(withCredential: credentials) { error in
+            if let error = error {
+                print("error:\(error.localizedDescription)")
+                return
+            }
+            print("성공!")
+        }
     }
     
     private let alreadyButton: UIButton = {      // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
@@ -70,9 +76,6 @@ class RegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldObservers()
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         gradientBackground()
         view.addSubview(plusPhotoButton)
         plusPhotoButton.centerX(inView: view)

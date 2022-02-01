@@ -21,7 +21,6 @@ class LoginController: UIViewController{
     
     private let passwordField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
-        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -55,10 +54,6 @@ class LoginController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldObservers()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         navigationController?.navigationBar.barStyle = .black // 이걸 사용하면 네비게이션 위에 상태바들이 다크모드 on/off 상관없이 흰색을 띰
         gradientBackground()
         
@@ -77,6 +72,7 @@ class LoginController: UIViewController{
         registerButton.centerX(inView: view)
         registerButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
+    
     
     func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
         emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
