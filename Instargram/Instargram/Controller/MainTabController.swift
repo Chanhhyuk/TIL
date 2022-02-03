@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class MainTabController: UITabBarController {
     
@@ -7,7 +8,31 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabController()
+        checkIfUserIsLoggedIn()
+//        logout()
     }
+    
+    // MARK: API
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let controller = LoginController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func logout(){
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG")
+        }
+    }
+    
+    
     
     // MARK: Helpers
     // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것
