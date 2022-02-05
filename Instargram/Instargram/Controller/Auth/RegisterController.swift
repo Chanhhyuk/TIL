@@ -58,7 +58,7 @@ class RegisterController: UIViewController {
                 print("error:\(error.localizedDescription)")
                 return
             }
-            print("성공!")
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

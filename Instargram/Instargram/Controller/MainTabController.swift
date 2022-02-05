@@ -24,14 +24,6 @@ class MainTabController: UITabBarController {
         }
     }
     
-    func logout(){
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            print("DEBUG")
-        }
-    }
-    
     
     
     // MARK: Helpers

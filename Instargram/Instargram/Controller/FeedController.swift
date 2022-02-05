@@ -1,5 +1,5 @@
 import UIKit
-
+import Firebase
 
 class FeedController: UICollectionViewController {
     
@@ -11,6 +11,7 @@ class FeedController: UICollectionViewController {
         super.viewDidLoad()
         // viewDidLayoutSubviews에 적었을때 크러쉬가 났음 순서 문제인듯 함
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
+        title = "Feed"
     }
     
     // layout과 관련된 메서드
@@ -19,10 +20,23 @@ class FeedController: UICollectionViewController {
         //view.backgroundColor = .systemRed  collectionView이기 때문에 이것은 작동되지 않고
         collectionView.backgroundColor = .white // 이렇게 해야 작동함
         
+        
         // 컬렉션 뷰에 셀을 반환하도록 지시하고 있지만 컬렉션에 셀을 등록하지 않았다
         // 셀을 등록해야 반환할 수 있다.
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
     }
     
+    @objc private func tapLogout(){
+        do {
+            try Auth.auth().signOut()
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+        } catch {
+            print("DEBUG")
+        }
+    }
     
     
 }

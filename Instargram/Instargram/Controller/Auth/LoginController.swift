@@ -32,9 +32,21 @@ class LoginController: UIViewController{
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        
+        button.addTarget(self, action: #selector(tapLogin), for: .touchUpInside)
         return button
     }()
+    @objc private func tapLogin(){
+        guard let email = emailField.text else { return }
+        guard let password = passwordField.text else { return }
+        AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Debut: \(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     private let forgotButton: UIButton = {      // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
         let button = UIButton(type: .system)
         button.attributed(first: "Forgot your password?", second: "Get help signing in.")
