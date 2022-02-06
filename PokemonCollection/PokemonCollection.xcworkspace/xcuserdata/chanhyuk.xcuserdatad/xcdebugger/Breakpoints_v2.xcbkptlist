@@ -8,16 +8,48 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "59AF8E53-F211-4D45-87FB-46E7EF2E96C2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PokemonCollection/PokemonCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "init(frame:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "59AF8E53-F211-4D45-87FB-46E7EF2E96C2 - 8752af0ce57b4db7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonCollection.PokemonCell.__allocating_init(frame: __C.CGRect) -&gt; PokemonCollection.PokemonCell"
+                  moduleName = "PokemonCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chanhyuk/Desktop/TIL/PokemonCollection/PokemonCollection/PokemonCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "59AF8E53-F211-4D45-87FB-46E7EF2E96C2 - 254dd9bfdfb465a2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokemonCollection.PokemonCell.init(frame: __C.CGRect) -&gt; PokemonCollection.PokemonCell"
+                  moduleName = "PokemonCollection"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chanhyuk/Desktop/TIL/PokemonCollection/PokemonCollection/PokemonCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

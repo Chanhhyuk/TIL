@@ -2,6 +2,7 @@ import UIKit
 
 class PokemonCell: UICollectionViewCell {
     
+    // MARK: Properties
     var pokemon: Pokemon? {
         didSet{
             textLabel.text = pokemon?.name
@@ -17,7 +18,7 @@ class PokemonCell: UICollectionViewCell {
     
     private lazy var textView: UIView = {
         let textView = UIView()
-        textView.backgroundColor = .red
+        textView.backgroundColor = .systemOrange
         return textView
     }()
     
@@ -28,23 +29,26 @@ class PokemonCell: UICollectionViewCell {
     }()
     
     
+    // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        viewComponents()
-        addView()
-        layoutSubviews()
+        layout()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func addView(){
+    
+    // MARK: Layout
+    
+    private func layout() {
         self.addSubview(imageView)
         self.addSubview(textView)
         self.addSubview(textLabel)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
+        self.backgroundColor = .tertiarySystemGroupedBackground
         
         imageView.snp.makeConstraints { make in
             make.height.equalTo(self.snp.height).multipliedBy(0.7)
@@ -62,12 +66,7 @@ class PokemonCell: UICollectionViewCell {
         
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    func viewComponents(){
-        self.backgroundColor = .tertiarySystemGroupedBackground
-    }
+    
     
 }

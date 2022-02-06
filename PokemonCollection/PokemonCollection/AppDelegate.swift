@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let navigationBar = UINavigationBarAppearance()
         navigationBar.configureWithOpaqueBackground()
-        navigationBar.backgroundColor = UIColor.mainColor
+        navigationBar.backgroundColor = UIColor.systemOrange
         UINavigationBar.appearance().standardAppearance = navigationBar
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBar
         return true

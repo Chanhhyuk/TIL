@@ -1,26 +1,40 @@
 import UIKit
 
+// API에 연결되어 분석한 모든 데이터를 반환한다.
 class PokemonService {
     
-    static let shared = PokemonService()        // 여기 클래스를 인스턴스를 공유?
+    // static을 사용하여 단일 인스턴스 구현
+    // 애플리케이션 전체에 API 호출을 많이 사용하지 않도록 해야함 메모리이슈가 생길 수 있음
+    // 그래서 싱글톤으로 구현
+    static let shared = PokemonService()        // 해당 클래스에서 사용하는 인스턴스를 공유한다
+    
     let url = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
+    // API json으로 된것을 변환해서 사용해야함
 
     func fetchPokemons(completion: @escaping ([Pokemon]) -> () ){
         var pokemonArray = [Pokemon]()
         
-        guard let url = URL(string: url) else { return }
+        guard let url = URL(string: url) else { return }    // url 유효성 확인
         
+        // URL 세션 시작
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             
+            // API 요청의 실패유무 확인
             if let error = error {
-                print("데이터를 받아오지 못했습니다!: ", error.localizedDescription)
+                print("오류로 인해 데이터를 가져오지 못했습니다!: ", error.localizedDescription)
                 return
             }
+            
+            // API에서 반환할 데이터
             guard let data = data else { return }
             
             do {
-                guard let resultArray = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject] else { return }
+                guard let resultArray = try JSONSerialization.jsonObject(with: data, options: []) as?  [AnyObject] else { return }
+                // 원시데이터에서 JSON으로 변환한다.
+                // 모든 객체유형의 배열로 캐스팅
                 
+                
+                // API result가 타입이 String도 있고 Int형도 있고 여러타입이 있어서 AnyObject로 
                 for (key, result) in resultArray.enumerated() {
                     if let dictionary = result as? [String: AnyObject] {
                         var pokemon = Pokemon(id: key, dictionary: dictionary)
@@ -34,7 +48,7 @@ class PokemonService {
                                 return poke1.id! < poke2.id! // 이 시점에는 이미 id있는게 확신하기 때문에 !사용
                             }
                             
-                            completion(pokemonArray)
+                            completion(pokemonArray)        // 완료블럭을 구현하여 빈블럭일때 앱이 다운되는것을 막는다?
                         }
                     }
 
