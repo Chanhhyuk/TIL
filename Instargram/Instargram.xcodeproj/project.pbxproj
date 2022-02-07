@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		711221D727B10E540044369D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D627B10E540044369D /* ProfileCell.swift */; };
+		711221D927B10E840044369D /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D827B10E840044369D /* ProfileHeader.swift */; };
 		711A1D2B279A62E600E65B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D2A279A62E600E65B73 /* AppDelegate.swift */; };
 		711A1D2D279A62E600E65B73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D2C279A62E600E65B73 /* SceneDelegate.swift */; };
 		711A1D32279A62E600E65B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D30279A62E600E65B73 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
+		711221D627B10E540044369D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		711221D827B10E840044369D /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		711A1D27279A62E600E65B73 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		711A1D2A279A62E600E65B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711A1D2C279A62E600E65B73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		711221DA27B10E9B0044369D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				711221D627B10E540044369D /* ProfileCell.swift */,
+				711221D827B10E840044369D /* ProfileHeader.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		711A1D1E279A62E600E65B73 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +131,7 @@
 		711A1D3F279A631E00E65B73 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				711221DA27B10E9B0044369D /* Profile */,
 				718F1B4D279D2F7F0035DF99 /* FeedCell.swift */,
 				714FA26227A1700200EA8B3A /* CustomTextField.swift */,
 			);
@@ -305,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				711221D727B10E540044369D /* ProfileCell.swift in Sources */,
 				714FA26327A1700200EA8B3A /* CustomTextField.swift in Sources */,
 				71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */,
 				717D9F7B27A3B97E00AC9CCA /* ImageUploader.swift in Sources */,
@@ -312,6 +327,7 @@
 				71EF8089279A7E3C00EA79E4 /* SearchController.swift in Sources */,
 				711A1D48279A650A00E65B73 /* MainTabController.swift in Sources */,
 				71EF808B279A7E5B00EA79E4 /* NotificationController.swift in Sources */,
+				711221D927B10E840044369D /* ProfileHeader.swift in Sources */,
 				711A1D2D279A62E600E65B73 /* SceneDelegate.swift in Sources */,
 				718F1B50279D38280035DF99 /* Extensions.swift in Sources */,
 				71EF8085279A7E1E00EA79E4 /* FeedController.swift in Sources */,
