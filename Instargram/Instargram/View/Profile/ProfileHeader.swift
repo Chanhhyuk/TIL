@@ -31,24 +31,48 @@ class ProfileHeader: UICollectionReusableView {
         print("dsds")
     }
     
-    private let postLabel: UILabel = {
+    
+    // 아무것도 초기화 하지 않았기 때문에 lazy 지연 로드가 필요하다?
+    private lazy var postLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.attributedText = attributedText(value: 5, label: "posts")
         return label
     }()
-    private let followersLabel: UILabel = {
+    private lazy var followersLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.attributedText = attributedText(value: 2, label: "followers")
         return label
     }()
-    private let followingLabel: UILabel = {
+    private lazy var followingLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.attributedText = attributedText(value: 1, label: "following")
         return label
     }()
+    
+    private let gridButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "grid"), for: .normal)
+        return button
+    }()
+    private let listButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "list"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
+        return button
+    }()
+    private let bookmarkButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "ribbon"), for: .normal)
+        button.tintColor = UIColor(white: 0, alpha: 0.2)
+        return button
+    }()
+    
     
     
     // MARK: LifeCycle
@@ -65,6 +89,28 @@ class ProfileHeader: UICollectionReusableView {
         addSubview(editProfileButton)
         editProfileButton.anchor(top: nameLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 16, paddingLeft: 24, paddingRight: 24)
         
+        let stackView = UIStackView(arrangedSubviews: [postLabel, followersLabel, followingLabel])
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
+        stackView.centerY(inView: profileImageView)
+        stackView.anchor(left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12, height: 50)
+        
+        let topDivider = UIView()
+        topDivider.backgroundColor = .lightGray
+        
+        let bottomDivider = UIView()
+        bottomDivider.backgroundColor = .lightGray
+        
+        let buttonStack = UIStackView(arrangedSubviews: [gridButton,listButton, bookmarkButton])
+        buttonStack.distribution = .fillEqually
+        
+        addSubview(buttonStack)
+        addSubview(topDivider)
+        addSubview(bottomDivider)
+        buttonStack.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
+        topDivider.anchor(top: buttonStack.topAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
+        bottomDivider.anchor(top: buttonStack.bottomAnchor, left: leftAnchor, right: rightAnchor, height: 0.5)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -72,9 +118,9 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     private func attributedText(value: Int, label: String) -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))
-        return attributedText
+        let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))
+        return attributeText
         
     }
     
