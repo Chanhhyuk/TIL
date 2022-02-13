@@ -4,11 +4,17 @@ private let cellIdentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
 
 class ProfileController: UICollectionViewController {
+    
+    // MARK: Properties
+    var user: User?
 
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        fetchUser()
     }
+    
     
     private func layout(){
         collectionView.backgroundColor = .white
@@ -16,7 +22,15 @@ class ProfileController: UICollectionViewController {
         collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
     }
     
+    // MARK: API
+    private func fetchUser() {
+        UserService.fetchUser { user in
+            <#code#>
+        }
+    }
+    
 }
+
 
 // MARK: UICollectionViewDataSource
 extension ProfileController {
