@@ -6,7 +6,9 @@ private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     
     // MARK: Properties
-    var user: User?
+    var user: User? {
+        didSet { navigationItem.title = user?.username }
+    }
 
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -25,7 +27,7 @@ class ProfileController: UICollectionViewController {
     // MARK: API
     private func fetchUser() {
         UserService.fetchUser { user in
-            <#code#>
+            self.user = user
         }
     }
     
