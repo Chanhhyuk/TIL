@@ -2,6 +2,11 @@ import UIKit
 
 class ProfileHeader: UICollectionReusableView {
     // MARK: Properties
+    
+    var viewModel: ProfileHeaderViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "venom-7")
@@ -115,6 +120,10 @@ class ProfileHeader: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure(){
+        
     }
     
     private func attributedText(value: Int, label: String) -> NSAttributedString {
