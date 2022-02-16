@@ -6,7 +6,8 @@ import UIKit
 
 class LoginController: UIViewController{
     
-    private var viewModel = LoginViewModel()  // 뷰 모델의 인스턴스 생성
+    // View Model 만든걸 사용하기위해 뷰 모델의 인스턴스 생성
+    private var viewModel = LoginViewModel()
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
@@ -86,17 +87,21 @@ class LoginController: UIViewController{
     }
     
     
+    // textField delegate를 사용할줄 알았는데 .editingChanged를 사용함
     func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
         emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
-    @objc private func textDidChange(sender: UITextField){         // 입력 매개변수로 내부의 UI 텍스트 필드가 된다
+    
+    // textField가 emailField인지 passwordField인지 구별하기 위한것
+    @objc private func textDidChange(sender: UITextField){ // 입력 매개변수로 내부의 UI 텍스트 필드가 된다
         if sender == emailField{
             viewModel.email = sender.text
         } else {
             viewModel.password = sender.text
         }
         updateForm()
+//        print("Debug: \(viewModel.formIsValid)") 타이핑 할때마다 true false값 확인할 수 있음
     }
 }
 

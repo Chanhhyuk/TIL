@@ -113,6 +113,8 @@ class RegisterController: UIViewController {
     }
 }
 
+
+// 프로토콜 지향방식
 extension RegisterController: FormViewModel {
     func updateForm() {
         signUpButton.backgroundColor = viewModel.buttonBackgroundColor
@@ -123,7 +125,7 @@ extension RegisterController: FormViewModel {
 
 extension RegisterController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    // 사용자가 미디어 유형 선택을 마치면 호출한다
+    // 사용자가 사진이나 비디오를 선택하면 호출한다
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let seletedImage = info[.editedImage] as? UIImage else { return }     // 선택된 이미지를 저장한다
         

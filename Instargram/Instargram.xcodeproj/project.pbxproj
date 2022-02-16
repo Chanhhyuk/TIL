@@ -85,8 +85,8 @@
 		711221DA27B10E9B0044369D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				711221D627B10E540044369D /* ProfileCell.swift */,
 				711221D827B10E840044369D /* ProfileHeader.swift */,
+				711221D627B10E540044369D /* ProfileCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

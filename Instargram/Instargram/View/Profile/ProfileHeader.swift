@@ -1,22 +1,24 @@
+// 프로필 컨트롤러 위에부분
 import UIKit
+import SDWebImage
 
-class ProfileHeader: UICollectionReusableView {
+class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     // MARK: Properties
     
+    // 처음 선택하면 nil이고 설정될 때까지 기다려야 한다
     var viewModel: ProfileHeaderViewModel? {
         didSet { configure() }
     }
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "venom-7")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Eddie Brock"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -122,8 +124,11 @@ class ProfileHeader: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // 처음 선택하면 nil이기떄문에 안전하게 여기서 포장을 푼다
     private func configure(){
-        
+        guard let viewModel = viewModel else { return }
+        nameLabel.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
     }
     
     private func attributedText(value: Int, label: String) -> NSAttributedString {
