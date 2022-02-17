@@ -1,6 +1,7 @@
 import UIKit
 
-extension UIViewController {        // UIViewController로 상속되는 모든 클래스는 이제 gradientBackground 함수를 사용할 수 있다.
+// UIViewController로 상속되는 모든 클래스는 이제 gradientBackground 함수를 사용할 수 있다.
+extension UIViewController {
     func gradientBackground(){
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
@@ -10,6 +11,7 @@ extension UIViewController {        // UIViewController로 상속되는 모든 �
     }
 }
 
+// UIButton을 확장한다. UIButton을 사용하면 attributed 함수를 사용할 수 있다.
 extension UIButton {
     func attributed(first: String, second: String){
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
@@ -19,6 +21,8 @@ extension UIButton {
         setAttributedTitle(attributedTitle, for: .normal)
     }
 }
+
+
 
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,

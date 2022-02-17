@@ -13,10 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
-        
         UINavigationBar.appearance().tintColor = .black
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -1,13 +1,17 @@
 import UIKit
 
-// MARK: Properties
-// MARK: Lifecycle
-
+// 로그인하면 기본 tabbar controller에서 올바른 사용자를 가져와야 하기 떄문에
+protocol AuthenticationDelegate: class {
+    func authenticationComplete()
+}
 
 class LoginController: UIViewController{
     
+    // MARK: Properties
     // View Model 만든걸 사용하기위해 뷰 모델의 인스턴스 생성
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticationDelegate?
+    // delegate를 weak로 만든 이유는 유지 주기를 피할려고
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
@@ -36,6 +40,7 @@ class LoginController: UIViewController{
         button.addTarget(self, action: #selector(tapLogin), for: .touchUpInside)
         return button
     }()
+    
     @objc private func tapLogin(){
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
@@ -44,7 +49,8 @@ class LoginController: UIViewController{
                 print("Debut: \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
+
         }
     }
     
