@@ -3,16 +3,30 @@ import Firebase
 
 class MainTabController: UITabBarController {
     
+    private var user: User? {
+        didSet{
+            guard let user = user else { return }
+            tabController(withUser: user)
+        }
+    }
+    
     // MARK: LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabController()
+        
         checkIfUserIsLoggedIn()
 //        logout()
     }
     
     // MARK: API
+    // ProfileController 클래스 내부에 User데 대한 액세스 권한이 있다
+    func fetchUser() {
+        UserService.fetchUser { user in
+            self.user = user
+        }
+    }
+    
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
@@ -30,14 +44,15 @@ class MainTabController: UITabBarController {
     // MARK: Helpers
     // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것
     // 컨트롤러의 인스턴스를 생성하고 있다 () 생성자
-    private func tabController(){
+    private func tabController(withUser user: User){
 //        let layout = UICollectionViewLayout()     // 많이 하는 실수 에러도 안남
         let layout = UICollectionViewFlowLayout()   // 이거 해봤는데 바로 직접적으로 적어줘도 되었다
         let feed = naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search = naviController(unseletedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController() )
         let imageSelector = naviController(unseletedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController() )
         let notification = naviController(unseletedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController() )
-        let profile = naviController(unseletedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: ProfileController(collectionViewLayout: layout) )
+        let profileController = ProfileController(user: user)
+        let profile = naviController(unseletedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: profileController)
         // ()는 생성자이며
         // 인스턴스를 만들고 있다
         

@@ -36,13 +36,6 @@ class ProfileController: UICollectionViewController {
     }
     
     // MARK: API
-    // ProfileController 클래스 내부에 User데 대한 액세스 권한이 있다
-    private func fetchUser() {
-        UserService.fetchUser { user in
-            self.user = user
-            self.navigationItem.title = user.username
-        }
-    }
     
 }
 
@@ -61,11 +54,7 @@ extension ProfileController {
         
         // header cell
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
-        
-        // 로그인한 username을
-        if let user = user {
-            header.viewModel = ProfileHeaderViewModel(user: user)
-        }
+        header.viewModel = ProfileHeaderViewModel(user: user)
         
         return header
     }
