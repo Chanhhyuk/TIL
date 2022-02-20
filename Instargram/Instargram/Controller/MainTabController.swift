@@ -14,7 +14,7 @@ class MainTabController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchUser()
         checkIfUserIsLoggedIn()
 //        logout()
     }
@@ -76,8 +76,10 @@ class MainTabController: UITabBarController {
     }
 }
 
+// MARK: AuthenticationDelegate
 extension MainTabController: AuthenticationDelegate {
     func authenticationComplete() {
+        fetchUser()
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -6,6 +6,7 @@ class RegisterController: UIViewController {
     private var profileImage: UIImage?
     // 화면을 열 때 이것에 대한 값이 존재하지 않을 것이기 때문에 따로 생성
     // 옵셔널로 만들고 사용자가 프로필을 선택할 때마다 설정할 것
+    weak var delegate: AuthenticationDelegate?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -58,7 +59,7 @@ class RegisterController: UIViewController {
                 print("error:\(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationComplete()
         }
     }
     

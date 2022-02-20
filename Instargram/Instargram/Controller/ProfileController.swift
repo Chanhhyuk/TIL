@@ -7,7 +7,7 @@ class ProfileController: UICollectionViewController {
     
     // MARK: Properties
     // Controller가 호출될때 User의 값은 nil이다 왜냐하면 API가 호출되는데는 시간이 조금 걸리기 때문
-    private var user: User?
+    private var user: User
     //didSet 관찰자가 하는 일은 값이나 변수가 설정되면 이 코드가 실행
     //didSet { collectionView.reloadData() }  // 사용자를 설정하고 다시 컬렉션 뷰를 로드
     
@@ -24,11 +24,11 @@ class ProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
-        fetchUser()
     }
     
     
     private func layout(){
+        navigationItem.title = user.username
         collectionView.backgroundColor = .white
         // cell 두개 등록
         collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: cellIdentifier)

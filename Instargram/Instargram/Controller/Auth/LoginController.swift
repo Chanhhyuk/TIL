@@ -67,7 +67,9 @@ class LoginController: UIViewController{
         return button
     }()
     @objc private func tapRegister(){
-        navigationController?.pushViewController(RegisterController(), animated: true)
+        let controller = RegisterController()
+        controller.delegate = delegate
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func viewDidLoad() {
