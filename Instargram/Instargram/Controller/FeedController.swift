@@ -5,7 +5,6 @@ class FeedController: UICollectionViewController {
     
     private let identifier = "Cell"
     
-    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,8 +12,6 @@ class FeedController: UICollectionViewController {
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
         title = "Feed"
     }
-    
-    // layout과 관련된 메서드
     
     override func viewDidLayoutSubviews() {
         //view.backgroundColor = .systemRed  collectionView이기 때문에 이것은 작동되지 않고

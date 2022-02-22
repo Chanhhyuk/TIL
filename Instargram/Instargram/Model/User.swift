@@ -1,5 +1,4 @@
 import Foundation
-
 // 사용자를 위한 모델 생성
 // firebase에 설정되어있는 모든 속성값을 표현하기 위함
 struct User {

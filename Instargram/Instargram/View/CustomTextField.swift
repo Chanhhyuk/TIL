@@ -1,5 +1,6 @@
 import UIKit
-// init(placeholder)처럼 파라미터값을 주는건 필수가 아니다. 하지만 지금같은경우 저걸 사용해주지 않는다면 커스텀뷰를 생성해서 사용하면서 attributedPlaceholder을 따로 설정해줘야 한다
+// init(placeholder)처럼 파라미터값을 주는건 필수가 아니다. 사용하지 않는다면 customTextField는 채용하면서도 placeholder는 따로 설정해주어도 됨
+// 하지만 지금같은경우 저걸 사용해주지 않는다면 placeholder와 더해서 attributedPlaceholder을 따로 설정해줘야 한다
 
 class CustomTextField: UITextField{     // 상속하는 상위클래스는 UITextField
     init(placeholder: String) {      // 커스텀 하기 위해 override 삭제

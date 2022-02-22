@@ -5,7 +5,8 @@ import SDWebImage
 class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     // MARK: Properties
     
-    // 처음 선택하면 nil이고 설정될 때까지 기다려야 한다
+    // Controller가 호출될때 값은 nil이다 왜냐하면 API가 호출되는데는 시간이 조금 걸리기 때문
+    // didSet 관찰자가 하는 일은 값이나 변수가 설정되면 이 코드가 실행
     var viewModel: ProfileHeaderViewModel? {
         didSet { configure() }
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		711221D727B10E540044369D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D627B10E540044369D /* ProfileCell.swift */; };
 		711221D927B10E840044369D /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D827B10E840044369D /* ProfileHeader.swift */; };
+		71131B2827C4F8D100BEC1E6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71131B2727C4F8D100BEC1E6 /* UserCell.swift */; };
 		711A1D2B279A62E600E65B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D2A279A62E600E65B73 /* AppDelegate.swift */; };
 		711A1D2D279A62E600E65B73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D2C279A62E600E65B73 /* SceneDelegate.swift */; };
 		711A1D32279A62E600E65B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D30279A62E600E65B73 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
 		711221D627B10E540044369D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		711221D827B10E840044369D /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		71131B2727C4F8D100BEC1E6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		711A1D27279A62E600E65B73 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		711A1D2A279A62E600E65B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711A1D2C279A62E600E65B73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				711221DA27B10E9B0044369D /* Profile */,
 				718F1B4D279D2F7F0035DF99 /* FeedCell.swift */,
 				714FA26227A1700200EA8B3A /* CustomTextField.swift */,
+				71131B2727C4F8D100BEC1E6 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				711221D927B10E840044369D /* ProfileHeader.swift in Sources */,
 				711A1D2D279A62E600E65B73 /* SceneDelegate.swift in Sources */,
 				718F1B50279D38280035DF99 /* Extensions.swift in Sources */,
+				71131B2827C4F8D100BEC1E6 /* UserCell.swift in Sources */,
 				71EF8085279A7E1E00EA79E4 /* FeedController.swift in Sources */,
 				71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */,
 				7191179327B7C8D700F18EB7 /* UserService.swift in Sources */,
