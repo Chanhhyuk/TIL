@@ -14,6 +14,8 @@ class SearchController: UITableViewController {
     // MARK: ConfigureUI
     private func configureUI(){
         view.backgroundColor = .white
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 64
     }
     
 }
