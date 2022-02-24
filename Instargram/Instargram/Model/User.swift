@@ -1,6 +1,6 @@
 import Foundation
-// 사용자를 위한 모델 생성
-// firebase에 설정되어있는 모든 속성값을 표현하기 위함
+
+// firebase에서 계정 정보를 가져올텐데 { [email: "apple@gmail.com"... ] } 이렇게 묶어서 가져오기 때문에 이것들을 쉽게 사용하게 하기 위해서 model링작업
 struct User {
     let email: String
     let fullname: String

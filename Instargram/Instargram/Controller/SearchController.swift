@@ -9,6 +9,14 @@ class SearchController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchUsers()
+    }
+    
+    // MARK: API
+    func fetchUsers() {
+        UserService.fetchUsers { user in
+            print(user)
+        }
     }
     
     // MARK: ConfigureUI

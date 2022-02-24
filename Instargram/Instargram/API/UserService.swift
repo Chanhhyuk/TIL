@@ -8,7 +8,15 @@ struct UserService {
             guard let dictionary = snapshot?.data() else { return }     // firebase에서 데이터를 가져온다
             let user = User(dictionary: dictionary)     // User클래스에서 만든 생성자 활용
             completion(user)
-
         }
     }
+    
+    static func fetchUsers(completion: @escaping([User]) -> Void) {
+        COLLECTION_USERS.getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else { return }
+            let users = snapshot.documents.map({ User(dictionary: $0.data()) })
+            completion(users)
+        }
+    }
+    
 }
