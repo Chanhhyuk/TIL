@@ -17,6 +17,7 @@ struct UserService {
             let users = snapshot.documents.map({ User(dictionary: $0.data()) })
             completion(users)
         }
+        
     }
     
 }
