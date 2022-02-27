@@ -1,6 +1,6 @@
 import UIKit
 
-// UIViewController로 상속되는 모든 클래스는 이제 gradientBackground 함수를 사용할 수 있다.
+// UIViewController로 상속되는 모든 클래스는 gradientBackground 함수를 사용할 수 있다.
 extension UIViewController {
     func gradientBackground(){
         let gradient = CAGradientLayer()

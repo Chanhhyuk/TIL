@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		710F67EB27CB59C000E5101C /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F67EA27CB59C000E5101C /* UserCellViewModel.swift */; };
 		711221D727B10E540044369D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D627B10E540044369D /* ProfileCell.swift */; };
 		711221D927B10E840044369D /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711221D827B10E840044369D /* ProfileHeader.swift */; };
 		71131B2827C4F8D100BEC1E6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71131B2727C4F8D100BEC1E6 /* UserCell.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		3DF38E3556F4FFB2A68E7D13 /* Pods-Instargram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instargram.release.xcconfig"; path = "Target Support Files/Pods-Instargram/Pods-Instargram.release.xcconfig"; sourceTree = "<group>"; };
+		710F67EA27CB59C000E5101C /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		711221D627B10E540044369D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		711221D827B10E840044369D /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		71131B2727C4F8D100BEC1E6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				718FCD7D27A27A26009E9A5E /* AuthViewModel.swift */,
 				71861B4527BBBC8000AAE114 /* ProfileHeaderViewModel.swift */,
+				710F67EA27CB59C000E5101C /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */,
 				717D9F7B27A3B97E00AC9CCA /* ImageUploader.swift in Sources */,
 				711A1D2B279A62E600E65B73 /* AppDelegate.swift in Sources */,
+				710F67EB27CB59C000E5101C /* UserCellViewModel.swift in Sources */,
 				71EF8089279A7E3C00EA79E4 /* SearchController.swift in Sources */,
 				711A1D48279A650A00E65B73 /* MainTabController.swift in Sources */,
 				71EF808B279A7E5B00EA79E4 /* NotificationController.swift in Sources */,
