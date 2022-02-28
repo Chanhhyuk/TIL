@@ -6,6 +6,7 @@ class SearchController: UITableViewController {
     // MARK: Properties
     
     private var users = [User]()
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -29,6 +30,14 @@ class SearchController: UITableViewController {
         tableView.rowHeight = 64
     }
     
+    private func configureSearchController(){
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+    }
+    
 }
 
 extension SearchController {
@@ -41,5 +50,11 @@ extension SearchController {
         cell.viewModel = UserCellViewModel(user: users[indexPath.row])
         return cell
     }
-    
+}
+
+extension SearchController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ProfileController(user: users[indexPath.row])
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
