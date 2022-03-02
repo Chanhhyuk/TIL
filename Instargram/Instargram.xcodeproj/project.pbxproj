@@ -144,7 +144,6 @@
 		711A1D3F279A631E00E65B73 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				711221DA27B10E9B0044369D /* Profile */,
 				718F1B4D279D2F7F0035DF99 /* FeedCell.swift */,
 				714FA26227A1700200EA8B3A /* CustomTextField.swift */,
 				71131B2727C4F8D100BEC1E6 /* UserCell.swift */,
@@ -162,6 +161,7 @@
 				71EF8088279A7E3C00EA79E4 /* SearchController.swift */,
 				71EF808A279A7E5B00EA79E4 /* NotificationController.swift */,
 				71EF808C279A7E7200EA79E4 /* ProfileController.swift */,
+				711221DA27B10E9B0044369D /* Profile */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

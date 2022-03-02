@@ -1,30 +1,18 @@
-// 이미지를 업로드 할 때마다 이 코드들 실행
-import FirebaseStorage
+import FirebaseStorage      // 파일 저장소
 
 
+// AuthService에서 사용
 struct ImageUploader {
-    // completion: @escaping는 이미지를 Firebase에 전송한다
-    // 그리고 해당 프로세스가 완료되면 이 완료 핸들러를 실행하고 다운로드를 다시 제공한다.
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {
-        // 이미지에 대한 업로드 데이터
-        // JPEG 데이터 확장자. JPEG 데이터를 생성하고 제공한다.
-        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
-        let filename = NSUUID().uuidString
+        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }  // jpeg 압축 품질을 결정 0 ~ 1사이
+        let filename = NSUUID().uuidString          // NSUUID 생성 (16비트의 난수가 매번 다르게 생성)
         let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)")
-        ref.putData(imageData, metadata: nil) { metadata, error in
-            if let error = error {
-                return
-            }
-            // 여기까지가 업로드 프로세스
-            // 전체 업로드 프로세스가 완료될 때까지 파일을 반환하지 않는다
-            // 따라서 다음 단계로 넘어가기 전에 완료되었음을 보장할 수 있다
-            
-            // 문자열 반환값과 같으면 계속해서 완료?
-            // 이미지에 대한 다운로드 URL이며 완료되면 완료 핸들러를 실행
+        
+        ref.putData(imageData, metadata: nil) { metadata, error in  // firebaseStorage에 파일을 업로드
+            if let error = error { return }
             ref.downloadURL { url, error in
                 guard let imageUrl = url?.absoluteString else { return }
                 completion(imageUrl)
-                // 전
             }
         }
     }

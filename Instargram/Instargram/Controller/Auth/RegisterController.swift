@@ -3,9 +3,8 @@ import UIKit
 class RegisterController: UIViewController {
     
     private var viewModel = RegistrationViewModel()
-    private var profileImage: UIImage?
-    // 화면을 열 때 이것에 대한 값이 존재하지 않을 것이기 때문에 따로 생성
-    // 옵셔널로 만들고 사용자가 프로필을 선택할 때마다 설정할 것
+    private var profileImage: UIImage? // 회원가입을 할때 이미지를 설정하기전에는 이미지값이 없기 때문에 옵셔널로 설정
+
     weak var delegate: AuthenticationDelegate?
     
     private let plusPhotoButton: UIButton = {
@@ -50,16 +49,19 @@ class RegisterController: UIViewController {
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
         guard let fullName = fullNameField.text else { return }
-        guard let userName = userNameField.text?.lowercased() else { return }
+        guard let userName = userNameField.text?.lowercased() else { return }   // .lowercased 소문자인지 확인
         guard let profileImage = self.profileImage else { return }
+        // 함수안에서 사용할 변수와 class단위에서 사용하는 변수이름이 같기 때문에 구별하기 위해 class 단위에서 사용하는 변수 앞에 self를 붙임
         
+        // AuthService에서 생성된 구조체를 이용
         let credentials = AuthCredetials(email: email, password: password, fullname: fullName, username: userName, profileImage: profileImage)
+        
         AuthService.registerUser(withCredential: credentials) { error in
             if let error = error {
                 print("error:\(error.localizedDescription)")
                 return
             }
-            self.delegate?.authenticationComplete()
+            self.delegate?.authenticationComplete()     // 회원가입 버튼을 누르면 메인컨트롤러로 가는 것
         }
     }
     
@@ -130,7 +132,7 @@ extension RegisterController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let seletedImage = info[.editedImage] as? UIImage else { return }     // 선택된 이미지를 저장한다
         
-        profileImage = seletedImage
+        profileImage = seletedImage     // 선택한 이미지를 class단위로 생성한 profileImage로 값을 전달후 이걸 다시 api로 보냄
         
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true

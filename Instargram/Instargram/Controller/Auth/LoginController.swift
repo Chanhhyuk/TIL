@@ -8,8 +8,8 @@ protocol AuthenticationDelegate: class {
 class LoginController: UIViewController{
     
     // MARK: Properties
-    // View Model 만든걸 사용하기위해 뷰 모델의 인스턴스 생성
-    private var viewModel = LoginViewModel()
+    
+    private var viewModel = LoginViewModel()    // AuthViewModel에서 만든걸 사용하기위해 뷰 모델의 인스턴스 생성
     weak var delegate: AuthenticationDelegate?
     // delegate를 weak로 만든 이유는 유지 주기를 피할려고
     
@@ -102,7 +102,8 @@ class LoginController: UIViewController{
     }
     
     // textField가 emailField인지 passwordField인지 구별하기 위한것
-    @objc private func textDidChange(sender: UITextField){ // 입력 매개변수로 내부의 UI 텍스트 필드가 된다
+    // AuthViewModel에서 만든 LoginViewModel 구조체를 사용하고 있다
+    @objc private func textDidChange(sender: UITextField){
         if sender == emailField{
             viewModel.email = sender.text
         } else {
@@ -113,7 +114,7 @@ class LoginController: UIViewController{
     }
 }
 
-// 필수는 아니지만 코드를 깔끔하게 해준다
+// 필수는 아니지만 코드를 깔끔하게 해준다, 프로토콜 지향방식
 extension LoginController: FormViewModel {
     func updateForm() {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor

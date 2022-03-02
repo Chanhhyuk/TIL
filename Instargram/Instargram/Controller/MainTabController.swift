@@ -20,16 +20,16 @@ class MainTabController: UITabBarController {
     }
     
     // MARK: API
-    // ProfileController 클래스 내부에 User데 대한 액세스 권한이 있다
     func fetchUser() {
         UserService.fetchUser { user in
             self.user = user
         }
     }
     
+    // 로그인을 하고 앱을 꺼도 로그인창이 아닌 로그인된 상태로 maincontroller를 보여주기
     func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser == nil {
-            DispatchQueue.main.async {
+        if Auth.auth().currentUser == nil {     // 로그인 상태인지 확인
+            DispatchQueue.main.async {          // API 호출을 포함하고 있기 때문에 메인큐에서 실행해야 한다
                 let controller = LoginController()
                 controller.delegate = self
                 let nav = UINavigationController(rootViewController: controller)
