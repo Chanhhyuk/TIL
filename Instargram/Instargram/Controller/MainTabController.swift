@@ -16,13 +16,13 @@ class MainTabController: UITabBarController {
         super.viewDidLoad()
         fetchUser()
         checkIfUserIsLoggedIn()
-//        logout()
     }
     
     // MARK: API
     func fetchUser() {
         UserService.fetchUser { user in
             self.user = user
+            self.navigationItem.title = user.username
         }
     }
     

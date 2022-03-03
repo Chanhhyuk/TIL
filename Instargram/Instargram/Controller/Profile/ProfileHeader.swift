@@ -10,6 +10,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     var viewModel: ProfileHeaderViewModel? {
         didSet { configure() }
     }
+    // viewModel만든거 ProfileHeader에 적용
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
