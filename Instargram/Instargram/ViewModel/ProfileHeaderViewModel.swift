@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 // profileController에서 위쪽부분 header를 채우기 위한 데이터
 struct ProfileHeaderViewModel {
@@ -11,6 +11,21 @@ struct ProfileHeaderViewModel {
     
     var profileImageUrl: URL? {
         return URL(string: user.profileImageUrl)
+    }
+    
+    var followButtonText: String {
+        if user.isCurrentUser {     // 만약 접속한 유저를 선택해서 들어갔가면 버튼은 Edit Profile
+            return "Edit Profile"
+        }
+        return user.isFollowed ? "Following" : "Follow"     // follwed가 true값이면 following
+    }
+    
+    var followButtonBackgroundColor: UIColor {
+        return user.isCurrentUser ? .white : .systemBlue
+    }
+    
+    var followButtonTextColor: UIColor {
+        return user.isCurrentUser ? .black : .white
     }
     
     init(user: User) {  // User 모델을 초기화함

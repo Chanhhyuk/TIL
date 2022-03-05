@@ -1,6 +1,8 @@
 import Firebase
 // user에 대한 정보를 가져온다 프로필을 보여줄 때 데이터로 쓰인다
 
+typealias FirestoreCompletion = (Error?) -> Void
+
 struct UserService {
     static func fetchUser(completion: @escaping(User) -> Void ) {    // Model 폴더에 User 클래스에서 만든 User 구조체 사용
         guard let uid = Auth.auth().currentUser?.uid else { return }    // firebase에서 현재 사용자 UID를 가져온다
@@ -19,6 +21,12 @@ struct UserService {
             let users = snapshot.documents.map({ User(dictionary: $0.data()) })
             completion(users)
         }
+    }
+    
+    static func followUser() {
+        
+    }
+    static func unfollowUser(){
         
     }
     

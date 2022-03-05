@@ -1,4 +1,5 @@
 import Foundation
+import Firebase
 
 // firebase에서 계정 정보를 가져올텐데 { [email: "apple@gmail.com"... ] } 이렇게 묶어서 가져오기 때문에 이것들을 쉽게 사용하게 하기 위해서 model링작업
 struct User {
@@ -7,6 +8,9 @@ struct User {
     let profileImageUrl: String
     let username: String
     let uid: String
+    
+    var isFollowed = false
+    var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }      // 현재 접속한 사용자인지 확인
     
     // 이 방식말고 codeable프로토콜을 사용하는 방법이 이씀!
     init(dictionary: [String: Any]) {

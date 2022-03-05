@@ -27,17 +27,15 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     
     private lazy var editProfileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Edit Profile", for: .normal)
         button.layer.cornerRadius = 3
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 0.5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(tapEditProfileButton), for: .touchUpInside)
         return button
     }()
     @objc private func tapEditProfileButton(){
-        print("dsds")
+        
     }
     
     
@@ -131,6 +129,10 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
+        // ProfileHeaderViewModel에 있는 followButtonText 계산속성을 따라서 버튼 글자가 바뀜
+        editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
     }
     
     private func attributedText(value: Int, label: String) -> NSAttributedString {
