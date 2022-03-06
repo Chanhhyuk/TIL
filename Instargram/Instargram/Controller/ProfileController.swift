@@ -52,6 +52,7 @@ extension ProfileController {
         // user가 안전하게 포장을 풀면 사용
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
         header.viewModel = ProfileHeaderViewModel(user: user)
+        header.delegate = self
         
         return header
     }
@@ -85,4 +86,22 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 240)
     }
+}
+
+extension ProfileController: ProfileHeaderDelegate {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
+        if user.isCurrentUser {
+            print("profile here")
+        }else if user.isFollowed {
+            print("unfollow")
+        }else {
+            UserService.followUser(uid: user.uid) { error in
+                print("follow user")
+            }
+        }
+        
+        
+    }
+    
+    
 }

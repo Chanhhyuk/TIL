@@ -2,6 +2,10 @@
 import UIKit
 import SDWebImage
 
+protocol ProfileHeaderDelegate: class {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
+}
+
 class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     // MARK: Properties
     
@@ -11,6 +15,8 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         didSet { configure() }
     }
     // viewModel만든거 ProfileHeader에 적용
+    
+    weak var delegate: ProfileHeaderDelegate?
     
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -35,7 +41,8 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         return button
     }()
     @objc private func tapEditProfileButton(){
-        
+        guard let viewModel = viewModel else { return }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
     

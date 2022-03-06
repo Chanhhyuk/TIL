@@ -2,6 +2,7 @@ import Firebase
 // user에 대한 정보를 가져온다 프로필을 보여줄 때 데이터로 쓰인다
 
 typealias FirestoreCompletion = (Error?) -> Void
+// 사용하기 더 쉽도록 새로운 유형의 이름을 만듬
 
 struct UserService {
     static func fetchUser(completion: @escaping(User) -> Void ) {    // Model 폴더에 User 클래스에서 만든 User 구조체 사용
@@ -23,9 +24,13 @@ struct UserService {
         }
     }
     
-    static func followUser() {
-        
+    static func followUser(uid: String, completion: @escaping(FirestoreCompletion)){
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).setData([:]) { error in
+            COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).setData([:], completion: completion)
+        }
     }
+    
     static func unfollowUser(){
         
     }
