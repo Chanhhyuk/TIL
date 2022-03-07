@@ -7,7 +7,7 @@ private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     
     // MARK: Properties
-    private var user: User
+    private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 self.user.isFollowed = true 그래서 var로 선언
     
     init(user: User){
         self.user = user
@@ -91,12 +91,13 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 extension ProfileController: ProfileHeaderDelegate {
     func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User) {
         if user.isCurrentUser {
-            print("profile here")
+            
         }else if user.isFollowed {
-            print("unfollow")
+            
         }else {
             UserService.followUser(uid: user.uid) { error in
-                print("follow user")
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
             }
         }
         
