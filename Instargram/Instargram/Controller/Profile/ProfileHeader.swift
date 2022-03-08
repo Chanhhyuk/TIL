@@ -33,6 +33,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     
     private lazy var editProfileButton: UIButton = {
         let button = UIButton(type: .system)
+        button.setTitle("Loading...", for: .normal)
         button.layer.cornerRadius = 3
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 0.5
