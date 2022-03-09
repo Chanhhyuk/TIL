@@ -28,8 +28,26 @@ struct ProfileHeaderViewModel {
         return user.isCurrentUser ? .black : .white
     }
     
+    var numberOfFollowers: NSAttributedString {
+        return attributedText(value: user.stats.followers, label: "followers")
+    }
+    
+    var numberOfFollowing: NSAttributedString {
+        return attributedText(value: user.stats.following, label: "following")
+    }
+    
+    var numberOfPosts: NSAttributedString {
+        return attributedText(value: 5, label: "posts")
+    }
+    
     init(user: User) {  // User 모델을 초기화함
         self.user = user           // 여기서 앞의 user는 맨위 let user, 뒤에 user는 init 매개변수 user 구분을 위해 self를 붙임
+    }
+    
+    private func attributedText(value: Int, label: String) -> NSAttributedString {
+        let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))
+        return attributeText
     }
     
 }

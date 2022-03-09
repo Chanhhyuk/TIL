@@ -52,21 +52,18 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedText(value: 5, label: "posts")
         return label
     }()
     private lazy var followersLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedText(value: 2, label: "followers")
         return label
     }()
     private lazy var followingLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedText(value: 1, label: "following")
         return label
     }()
     
@@ -141,13 +138,10 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         // ProfileHeaderViewModel에 있는 followButtonText 계산속성을 따라서 버튼 글자가 바뀜
         editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
         editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
-    }
-    
-    private func attributedText(value: Int, label: String) -> NSAttributedString {
-        let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))
-        return attributeText
         
+        postLabel.attributedText = viewModel.numberOfPosts
+        followersLabel.attributedText = viewModel.numberOfFollowers
+        followingLabel.attributedText = viewModel.numberOfFollowing
     }
     
 }

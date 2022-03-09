@@ -12,6 +12,8 @@ struct User {
     var isFollowed = false
     var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }      // 현재 접속한 사용자인지 확인
     
+    var stats: UserStats!       // 유저상태정보 post,follower,following 갯수
+    
     // 이 방식말고 codeable프로토콜을 사용하는 방법이 이씀!
     init(dictionary: [String: Any]) {
         self.email = dictionary["email"] as? String ?? ""       // ?? default값, 값이 없을경우를 대비해서 "" 빈문자열로 설정
@@ -19,5 +21,12 @@ struct User {
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
         self.username = dictionary["username"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
+        self.stats = UserStats(followers: 0, following: 0)
     }
+}
+
+struct UserStats {
+    let followers: Int
+    let following: Int
+//    let posts: Int
 }
