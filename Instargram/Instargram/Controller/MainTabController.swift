@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabController: UITabBarController {
     
@@ -63,6 +64,7 @@ class MainTabController: UITabBarController {
         // 아래처럼 코드가 지저분해지기 때문
 //        viewControllers = [naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController())]
         tabBar.tintColor = .black
+        self.delegate = self
     }
     
     // tabbar를 설정해주는건데 왜 네비게이션 컨트롤러를 리턴하는지 모르겠다...
@@ -74,6 +76,14 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black            // 네비게이션바 텍스트 색
         return nav
     }
+    
+    private func didFinishPicking(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, _ in
+            picker.dismiss(animated: true) {
+                guard let selectedImage = items.singlePhoto?.image else { return }
+            }
+        }
+    }
 }
 
 // MARK: AuthenticationDelegate
@@ -81,5 +91,29 @@ extension MainTabController: AuthenticationDelegate {
     func authenticationComplete() {
         fetchUser()
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// tabbarController가 몇번째 탭에서 호출됫는지 숫자로 알려줌
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        
+        if index == 2 {
+            var config = YPImagePickerConfiguration()
+            config.library.mediaType = .photo
+            config.shouldSaveNewPicturesToAlbum = false
+            config.startOnScreen = .library
+            config.screens = [.library]
+            config.hidesStatusBar = false
+            config.hidesBottomBar = false
+            config.library.maxNumberOfItems = 1
+            
+            let picker = YPImagePicker(configuration: config)
+            picker.modalPresentationStyle = .fullScreen
+            present(picker, animated: true, completion: nil)
+            didFinishPicking(picker)
+        }
+        return true
     }
 }
