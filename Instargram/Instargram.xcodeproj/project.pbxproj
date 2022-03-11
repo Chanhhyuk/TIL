@@ -30,6 +30,8 @@
 		7191179527B7C95B00F18EB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191179427B7C95B00F18EB7 /* Constants.swift */; };
 		71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6711F27A00BFF00ACF2E0 /* LoginController.swift */; };
 		71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6712127A00C0900ACF2E0 /* RegisterController.swift */; };
+		71E9ECE827D9C4AA00ABDA16 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9ECE727D9C4AA00ABDA16 /* UploadPostController.swift */; };
+		71E9ECEA27D9CA5900ABDA16 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9ECE927D9CA5900ABDA16 /* InputTextView.swift */; };
 		71EF8085279A7E1E00EA79E4 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF8084279A7E1E00EA79E4 /* FeedController.swift */; };
 		71EF8087279A7E3000EA79E4 /* ImageSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF8086279A7E3000EA79E4 /* ImageSelectorController.swift */; };
 		71EF8089279A7E3C00EA79E4 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EF8088279A7E3C00EA79E4 /* SearchController.swift */; };
@@ -65,6 +67,8 @@
 		7191179427B7C95B00F18EB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71E6711F27A00BFF00ACF2E0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		71E6712127A00C0900ACF2E0 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		71E9ECE727D9C4AA00ABDA16 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		71E9ECE927D9CA5900ABDA16 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		71EF8084279A7E1E00EA79E4 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		71EF8086279A7E3000EA79E4 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		71EF8088279A7E3C00EA79E4 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				71EF8088279A7E3C00EA79E4 /* SearchController.swift */,
 				71EF808A279A7E5B00EA79E4 /* NotificationController.swift */,
 				71EF808C279A7E7200EA79E4 /* ProfileController.swift */,
+				71E9ECE727D9C4AA00ABDA16 /* UploadPostController.swift */,
 				711221DA27B10E9B0044369D /* Profile */,
 			);
 			path = Controller;
@@ -191,6 +196,7 @@
 			children = (
 				718F1B4F279D38280035DF99 /* Extensions.swift */,
 				7191179427B7C95B00F18EB7 /* Constants.swift */,
+				71E9ECE927D9CA5900ABDA16 /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -339,6 +345,7 @@
 			files = (
 				711221D727B10E540044369D /* ProfileCell.swift in Sources */,
 				714FA26327A1700200EA8B3A /* CustomTextField.swift in Sources */,
+				71E9ECE827D9C4AA00ABDA16 /* UploadPostController.swift in Sources */,
 				71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */,
 				717D9F7B27A3B97E00AC9CCA /* ImageUploader.swift in Sources */,
 				711A1D2B279A62E600E65B73 /* AppDelegate.swift in Sources */,
@@ -360,6 +367,7 @@
 				718F1B4E279D2F7F0035DF99 /* FeedCell.swift in Sources */,
 				71861B4627BBBC8000AAE114 /* ProfileHeaderViewModel.swift in Sources */,
 				717D9F7D27A3B98E00AC9CCA /* AuthService.swift in Sources */,
+				71E9ECEA27D9CA5900ABDA16 /* InputTextView.swift in Sources */,
 				717E54A027B8E21C00B5DA79 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
