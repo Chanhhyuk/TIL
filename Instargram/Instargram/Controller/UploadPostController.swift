@@ -10,8 +10,12 @@ class UploadPostController: UIViewController {
         return imageView
     }()
     
-    private let textView: UITextView = {
-        let textView = UITextView()
+    // 게시글을 적을 때 여러줄을 적을것이므로 textField가 아닌 textView로 작성
+    private lazy var textView: InputTextView = {
+        let textView = InputTextView()
+        textView.placeholderText = "Enter caption.."
+        textView.font = UIFont.systemFont(ofSize: 16)
+        textView.delegate = self
         return textView
     }()
     
@@ -29,6 +33,12 @@ class UploadPostController: UIViewController {
     }
     @objc private func handleShare(){
         
+    }
+    
+    private func checkMaxLength(_ textView: UITextView){
+        if textView.text.count > 100 {
+            textView.deleteBackward()   // 글자수가 100을 넘으면 작성이 안됨
+        }
     }
     
     // MARK: LifeCycle
@@ -55,6 +65,14 @@ class UploadPostController: UIViewController {
         textView.anchor(top: photoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 12, paddingRight: 12, height: 64)
         
         view.addSubview(label)
-        label.anchor(bottom: textView.bottomAnchor, right: view.rightAnchor, paddingRight: 12)
+        label.anchor(bottom: textView.bottomAnchor, right: view.rightAnchor, paddingBottom: -8 ,paddingRight: 12)
+    }
+}
+
+extension UploadPostController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        checkMaxLength(textView)
+        let count = textView.text.count
+        label.text = "\(count) / 100"
     }
 }
