@@ -22,6 +22,7 @@
 		717D9F7B27A3B97E00AC9CCA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D9F7A27A3B97E00AC9CCA /* ImageUploader.swift */; };
 		717D9F7D27A3B98E00AC9CCA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D9F7C27A3B98E00AC9CCA /* AuthService.swift */; };
 		717E54A027B8E21C00B5DA79 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717E549F27B8E21C00B5DA79 /* User.swift */; };
+		71849E8627DA0F7F00B888B4 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71849E8527DA0F7F00B888B4 /* PostService.swift */; };
 		71861B4627BBBC8000AAE114 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71861B4527BBBC8000AAE114 /* ProfileHeaderViewModel.swift */; };
 		718F1B4E279D2F7F0035DF99 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F1B4D279D2F7F0035DF99 /* FeedCell.swift */; };
 		718F1B50279D38280035DF99 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718F1B4F279D38280035DF99 /* Extensions.swift */; };
@@ -59,6 +60,7 @@
 		717D9F7A27A3B97E00AC9CCA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		717D9F7C27A3B98E00AC9CCA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		717E549F27B8E21C00B5DA79 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		71849E8527DA0F7F00B888B4 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		71861B4527BBBC8000AAE114 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
 		718F1B4D279D2F7F0035DF99 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		718F1B4F279D38280035DF99 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				717D9F7A27A3B97E00AC9CCA /* ImageUploader.swift */,
 				717D9F7C27A3B98E00AC9CCA /* AuthService.swift */,
 				7191179227B7C8D700F18EB7 /* UserService.swift */,
+				71849E8527DA0F7F00B888B4 /* PostService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				71131B2827C4F8D100BEC1E6 /* UserCell.swift in Sources */,
 				71EF8085279A7E1E00EA79E4 /* FeedController.swift in Sources */,
 				71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */,
+				71849E8627DA0F7F00B888B4 /* PostService.swift in Sources */,
 				7191179327B7C8D700F18EB7 /* UserService.swift in Sources */,
 				718FCD7E27A27A26009E9A5E /* AuthViewModel.swift in Sources */,
 				7191179527B7C95B00F18EB7 /* Constants.swift in Sources */,

@@ -1,7 +1,16 @@
 import UIKit
 
+protocol UploadPostControllerDelegate: class {
+    func controllerDidFinishUploadingPost(_ controller: UploadPostController)
+}
+
 class UploadPostController: UIViewController {
     // MARK: Properties
+    weak var delegate: UploadPostControllerDelegate?
+    
+    var selectedImage: UIImage? {
+        didSet { photoImageView.image = selectedImage }
+    }
     
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -32,6 +41,16 @@ class UploadPostController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @objc private func handleShare(){
+        guard let image = selectedImage else { return }     // 사용자가 선택한 이미지
+        guard let caption = textView.text else { return }   // 사용자가 작성한 textView 내용
+        
+        PostService.uploadPost(caption: caption, image: image) { error in
+            if let error = error {
+                return
+            }
+            
+            self.delegate?.controllerDidFinishUploadingPost(self)
+        }
         
     }
     
