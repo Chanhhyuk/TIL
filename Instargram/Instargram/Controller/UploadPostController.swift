@@ -44,7 +44,10 @@ class UploadPostController: UIViewController {
         guard let image = selectedImage else { return }     // 사용자가 선택한 이미지
         guard let caption = textView.text else { return }   // 사용자가 작성한 textView 내용
         
+        showLoader(true)    // 로딩 애니메이션이 작동
+        
         PostService.uploadPost(caption: caption, image: image) { error in
+            self.showLoader(false)  // 업로드가 완료될때 로딩 애니메이션 해제
             if let error = error {
                 return
             }

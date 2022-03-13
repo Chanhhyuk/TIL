@@ -1,7 +1,11 @@
 import UIKit
+import JGProgressHUD        // 로딩 표시
 
 // UIViewController로 상속되는 모든 클래스는 gradientBackground 함수를 사용할 수 있다.
 extension UIViewController {
+    static let hud = JGProgressHUD(style: .dark)    // static을 뺀 일반속성으로 선언하면 에러 발생
+    // extension(확장)은 저장속성을 포함하지 말아야한다
+    
     func gradientBackground(){
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
@@ -9,6 +13,16 @@ extension UIViewController {
         view.layer.addSublayer(gradient)
         gradient.frame = view.frame
     }
+    
+    func showLoader(_ show: Bool) {
+        view.endEditing(true)
+        if show {
+            UIViewController.hud.show(in: view)
+        } else{
+            UIViewController.hud.dismiss()
+        }
+    }
+    
 }
 
 // UIButton을 확장한다. UIButton을 사용하면 attributed 함수를 사용할 수 있다.
