@@ -1,16 +1,27 @@
 import UIKit
 import Firebase
 
+private let identifier = "Cell"
+
 class FeedController: UICollectionViewController {
-    
-    private let identifier = "Cell"
-    
     // MARK: LifeCycle
+    private var posts = [Post]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // viewDidLayoutSubviews에 적었을때 크러쉬가 났음 순서 문제인듯 함
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
         title = "Feed"
+        fetchPosts()
+    }
+    
+    // MARK: API
+    private func fetchPosts() {
+        PostService.fetchPosts { posts in
+            self.posts = posts
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,7 +56,7 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     // 셀의 항목 수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return posts.count
     }
     // 각각의 셀을 정의
     // 잘보면 UICollectionViewCell을 반환하는 함수인걸 볼 수 있다.
