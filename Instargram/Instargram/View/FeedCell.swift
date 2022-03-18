@@ -13,14 +13,13 @@ class FeedCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        imageView.image = #imageLiteral(resourceName: "venom-7")
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
 
     
     private lazy var usernameButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("venom", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
@@ -60,19 +59,16 @@ class FeedCell: UICollectionViewCell {
     }()
     private let likesLabel: UILabel = {
         let label = UILabel()
-        label.text = "1 like"
         label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Some test caption"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     private let postTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "2 days ago"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         return label
@@ -107,6 +103,9 @@ class FeedCell: UICollectionViewCell {
         guard let viewModel = viewModel else { return }
         captionLabel.text = viewModel.caption
         postImageView.sd_setImage(with: viewModel.imageUrl)     // sd_setImage 라이브러리
+        profileImageView.sd_setImage(with: viewModel.userProfileImageUrl)
+        usernameButton.setTitle(viewModel.username, for: .normal)
+        likesLabel.text = viewModel.likesLabelText
     }
     
     // 버튼 세개를 일렬로 나열
