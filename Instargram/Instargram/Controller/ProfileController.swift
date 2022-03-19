@@ -7,8 +7,9 @@ private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     
     // MARK: Properties
-    private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 self.user.isFollowed = true 그래서 var로 선언
+    private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 (self.user.isFollowed = true) 그래서 var로 선언
     
+    // 의존성 주입?
     init(user: User){
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -21,7 +22,7 @@ class ProfileController: UICollectionViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        layout()
+        configureUI()
         checkIfUserIsFollowed()
         fetchUserStats()
     }
@@ -41,7 +42,7 @@ class ProfileController: UICollectionViewController {
         }
     }
     
-    private func layout(){
+    private func configureUI(){
         navigationItem.title = user.username
         collectionView.backgroundColor = .white
         // cell 두개 등록
@@ -120,8 +121,5 @@ extension ProfileController: ProfileHeaderDelegate {
             }
         }
         
-        
     }
-    
-    
 }

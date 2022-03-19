@@ -1,8 +1,9 @@
+// 회원가입뷰에서 받은 사용자 정보를 firebase에 전송할때 사용
 import UIKit
 import Firebase
 import AVFoundation
 
-
+// 회원가입할때 전달할 데이터
 struct AuthCredetials {
     let email: String
     let password: String
@@ -11,15 +12,19 @@ struct AuthCredetials {
     let profileImage: UIImage
 }
 
+
 // 회원가입의 데이터인 이메일 패스워드 이름과 프로필사진을 전송
 struct AuthService {
+    
     // AuthDataResultCallback: 로그인 관련 이벤트가 완료될 때 호출됨
     static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?){
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
-        // 알맞는 이메일과 비번을 사용했는지 확인
+        // 로그인 통신
     }
     
-    // withCredential 인자 레이블 credentials 매개변수
+    // withCredential 인자 레이블 credentials 매개변수?
+    // AuthService 구조체를 함수 파라미터로 사용?
+    // 이미지를 업로드하고 이미지url이 생성되는데 그것을 가져와서 사용자를 등록하는데 사용한다
     static func registerUser(withCredential credentials: AuthCredetials, completion: @escaping(Error?) -> Void){
         ImageUploader.uploadImage(image: credentials.profileImage) { imageUrl in
             Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
@@ -27,7 +32,11 @@ struct AuthService {
                     print("Debug: \(error.localizedDescription)")
                     return
                 }
-                guard let uid = result?.user.uid else { return }        // uid는 위의 구조체에 없으니 따로 생성
+                
+                guard let uid = result?.user.uid else { return }        // uid 고유번호
+                
+                
+                // imageUrl과 uid는 AuthCredetials에 없어서 만들어서 사용?
                 
                 // data를 key:value 형식으로 전달
                 let data: [String: Any] = ["email": credentials.email,

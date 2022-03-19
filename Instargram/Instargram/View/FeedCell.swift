@@ -18,7 +18,7 @@ class FeedCell: UICollectionViewCell {
     }()
 
     
-    private lazy var usernameButton: UIButton = {
+    private let usernameButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
@@ -39,19 +39,20 @@ class FeedCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var likeButton: UIButton = {
+    private let likeButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "like_unselected") , for: .normal)
         return button
     }()
-    private lazy var commentButton: UIButton = {
+    
+    private let commentButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "comment") , for: .normal)
         return button
     }()
-    private lazy var shareButton: UIButton = {
+    private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "send2") , for: .normal)

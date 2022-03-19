@@ -1,8 +1,9 @@
 import UIKit
 
-// 로그인하면 기본 tabbar controller에서 올바른 사용자를 가져와야 하기 떄문에
-protocol AuthenticationDelegate: class {
-    func authenticationComplete()
+// A를 로그인한 상태에서 로그아웃하고 B를 로그인 했는데 프로필은 여전히 A를 나타냈다 이 상태에서 앱을 재 실행시키니 B로 새로고침이 되었다.
+// 이것이 해제되면 이 프로토콜을 사용하여 기본 tabbar에 작업을 다시 위임할 것?, 컨트롤러를 새로고침?
+protocol AuthenticationDelegate: class {    // class 키워드: 해당 프로토콜을 class에서만 사용할 수 있게한다 struct 사용불가
+    func authenticationDidComplete()           // class protocol로 만든 이유는 weak를 사용하기 위해?
 }
 
 class LoginController: UIViewController{
@@ -21,11 +22,13 @@ class LoginController: UIViewController{
     
     private let emailField: UITextField = {     // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
         let textField = CustomTextField(placeholder: "Email")
+        textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return textField
     }()
     
     private let passwordField: UITextField = {
         let textField = CustomTextField(placeholder: "Password")
+        textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -33,26 +36,13 @@ class LoginController: UIViewController{
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
+        button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)    // 이 값이 없으면 제일 처음에 배경색이 투명색을 나옴
         button.layer.cornerRadius = 5
         button.setHeight(50)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(tapLogin), for: .touchUpInside)
         return button
     }()
-    
-    @objc private func tapLogin(){
-        guard let email = emailField.text else { return }
-        guard let password = passwordField.text else { return }
-        AuthService.logUserIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print("Debut: \(error.localizedDescription)")
-                return
-            }
-            self.delegate?.authenticationComplete()
-
-        }
-    }
     
     private let forgotButton: UIButton = {      // 사용자 정의 하위클래스를 생성하여 코드가 깔끔해졌다
         let button = UIButton(type: .system)
@@ -66,18 +56,12 @@ class LoginController: UIViewController{
         button.addTarget(self, action: #selector(tapRegister), for: .touchUpInside) // 여기서 self는 LoginController 클래스를 참조한다 즉 self는 작업을 처리할 클래스다
         return button
     }()
-    @objc private func tapRegister(){
-        let controller = RegisterController()
-        controller.delegate = delegate
-        navigationController?.pushViewController(controller, animated: true)
-    }
     
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        textFieldObservers()
         navigationController?.navigationBar.barStyle = .black // 이걸 사용하면 네비게이션 위에 상태바들이 다크모드 on/off 상관없이 흰색을 띰
         gradientBackground()
-        
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
         iconImage.setDimensions(height: 80, width: 120)
@@ -94,23 +78,41 @@ class LoginController: UIViewController{
         registerButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
-    
-    // textField delegate를 사용할줄 알았는데 .editingChanged를 사용함
-    func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
-        emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    // MARK: Selector
+    @objc private func tapRegister(){
+        let controller = RegisterController()
+        controller.delegate = delegate
+        navigationController?.pushViewController(controller, animated: true)
     }
     
-    // textField가 emailField인지 passwordField인지 구별하기 위한것
-    // AuthViewModel에서 만든 LoginViewModel 구조체를 사용하고 있다
+    // 로그인 버튼을 누르면 API AuthService에서 만든 구조체 AuthService의 logUserIn 함수를 사용해 통신
+    @objc private func tapLogin(){
+        guard let email = emailField.text else { return }
+        guard let password = passwordField.text else { return }
+        
+        // 로그인을 실패했다면 왜 실패했는지 경고창을 만들었으면 좋겠다
+        AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Debut: \(error.localizedDescription)")
+                return
+            }
+            self.delegate?.authenticationDidComplete() // MainTabController 만든 authenticationDidComplete 함수 실행
+        }
+    }
+    
+    // textField delegate를 사용할줄 알았는데 .editingChanged를 사용함 / 텍스트 필드에서 변경될때 마다 호출 됨
     @objc private func textDidChange(sender: UITextField){
+        // textField가 emailField인지 passwordField인지 구별하기 위해 sender로 값을 받음
         if sender == emailField{
-            viewModel.email = sender.text
+            viewModel.email = sender.text       // AuthViewModel에서 만든 LoginViewModel 구조체를 사용하고 있다
         } else {
             viewModel.password = sender.text
         }
+        
+        // email필드와 password필드가 비었는지 확인 LoginViewModel에 만든 formIsValid에서 true false로 리턴
+        // formIsValid가 안 적혀있는데 왜 작동되는지 모르겠음
         updateForm()
-//        print("Debug: \(viewModel.formIsValid)") 타이핑 할때마다 true false값 확인할 수 있음
+
     }
 }
 

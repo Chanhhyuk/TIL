@@ -27,12 +27,15 @@ class MainTabController: UITabBarController {
         }
     }
     
-    // 로그인을 하고 앱을 꺼도 로그인창이 아닌 로그인된 상태로 maincontroller를 보여주기
+    
+    // 로그인 상태를 확인하고 아니라면 로그인 컨트롤러를 보여준다.
+    // 로그인을 했다면 rootController이 MainController이므로 이 함수는 작동하지 않으므로 MainController을 보여준다
     func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser == nil {     // 로그인 상태인지 확인
-            DispatchQueue.main.async {          // API 호출을 포함하고 있기 때문에 메인큐에서 실행해야 한다
+        if Auth.auth().currentUser == nil {     // 로그인 상태인지 확인, 사용자프로필이 없다면(nil)
+            DispatchQueue.main.async {          // API 호출을 포함하고(Auth.auth().currentUser) 있기 때문에 메인쓰레드로 다시 이동해야 한다?
+                // 화면표시, UI변경과 같이 UI업데이트와 관련된 작업을 수행할때는 메인쓰레드에서 해야한다?
                 let controller = LoginController()
-                controller.delegate = self
+                controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용
                 let nav = UINavigationController(rootViewController: controller)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
@@ -43,8 +46,6 @@ class MainTabController: UITabBarController {
     
     
     // MARK: Helpers
-    // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것
-    // 컨트롤러의 인스턴스를 생성하고 있다 () 생성자
     private func tabController(withUser user: User){
 //        let layout = UICollectionViewLayout()     // 많이 하는 실수 에러도 안남
         let layout = UICollectionViewFlowLayout()   // 이거 해봤는데 바로 직접적으로 적어줘도 되었다
@@ -54,8 +55,8 @@ class MainTabController: UITabBarController {
         let notification = naviController(unseletedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController() )
         let profileController = ProfileController(user: user)
         let profile = naviController(unseletedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: profileController)
-        // ()는 생성자이며
-        // 인스턴스를 만들고 있다
+        // ()는 생성자이며 컨트롤러의 인스턴스를 생성하고 있다 ()?
+        // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것?
         
         // UITabbarController을 상속받아서 얻는 속성 viewControllers = []
         // 위에는 컨트롤러 인스턴스를 생성만 한거고 이 배열에서 사용하면 컨트롤러의 인스턴스를 나타낸다
@@ -96,7 +97,7 @@ class MainTabController: UITabBarController {
 
 // MARK: AuthenticationDelegate
 extension MainTabController: AuthenticationDelegate {
-    func authenticationComplete() {
+    func authenticationDidComplete() {      // 인증 완료
         fetchUser()
         self.dismiss(animated: true, completion: nil)
     }
@@ -130,6 +131,10 @@ extension MainTabController: UploadPostControllerDelegate {
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
         selectedIndex = 0
         controller.dismiss(animated: true, completion: nil)
+        
+        guard let feedNav = viewControllers?.first as? UINavigationController else { return }
+        guard let feed = feedNav.viewControllers.first as? FeedController else { return }
+        feed.handleRefresh()
     }
     
     

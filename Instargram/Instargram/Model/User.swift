@@ -1,3 +1,4 @@
+// User에 관한 내용으로 회원가입이나 로그인할 때 사용
 import Foundation
 import Firebase
 
@@ -10,7 +11,10 @@ struct User {
     let uid: String
     
     var isFollowed = false
-    var isCurrentUser: Bool { return Auth.auth().currentUser?.uid == uid }      // 현재 접속한 사용자인지 확인
+    
+    var isCurrentUser: Bool { // 현재 접속한 사용자인지 확인
+        return Auth.auth().currentUser?.uid == uid
+    }
     
     var stats: UserStats!       // 유저상태정보 post,follower,following 갯수
     

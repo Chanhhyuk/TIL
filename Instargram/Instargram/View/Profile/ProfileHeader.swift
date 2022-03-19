@@ -11,9 +11,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     
     // Controller가 호출될때 값은 nil이다 왜냐하면 API가 호출되는데는 시간이 조금 걸리기 때문
     // didSet 관찰자가 하는 일은 값이나 변수가 설정되면 이 코드가 실행
-    var viewModel: ProfileHeaderViewModel? {
-        didSet { configure() }
-    }
+    var viewModel: ProfileHeaderViewModel? { didSet { configure() } }
     // viewModel만든거 ProfileHeader에 적용
     
     weak var delegate: ProfileHeaderDelegate?
@@ -31,7 +29,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         return label
     }()
     
-    private lazy var editProfileButton: UIButton = {
+    private let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Loading...", for: .normal)
         button.layer.cornerRadius = 3
@@ -46,21 +44,19 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
-    
-    // 아무것도 초기화 하지 않았기 때문에 lazy 지연 로드가 필요하다?
-    private lazy var postLabel: UILabel = {
+    private let postLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
-    private lazy var followersLabel: UILabel = {
+    private let followersLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
-    private lazy var followingLabel: UILabel = {
+    private let followingLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center

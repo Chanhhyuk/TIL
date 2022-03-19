@@ -1,15 +1,17 @@
 import Firebase
-// user에 대한 정보를 가져온다 프로필을 보여줄 때 데이터로 쓰인다
+// user에 대한 정보를 만듬 프로필을 보여줄 때 데이터로 쓰인다
 
 typealias FirestoreCompletion = (Error?) -> Void
 // 사용하기 더 쉽도록 새로운 유형의 이름을 만듬
 
 struct UserService {
+    
+    // 로그인한 계정의 프로필을 보여줄거기 때문에 하나의 User 내용만 있으면 된다
     static func fetchUser(completion: @escaping(User) -> Void ) {    // Model 폴더에 User 클래스에서 만든 User 구조체 사용
-        guard let uid = Auth.auth().currentUser?.uid else { return }    // firebase에서 현재 사용자 UID를 가져온다
+        guard let uid = Auth.auth().currentUser?.uid else { return }    // firebase에서 현재 사용자(로그인된) UID를 가져온다
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in // 해당 UID로 사용자 컬렉션으로 이동하여 해당 문서를 얻는다
             guard let dictionary = snapshot?.data() else { return }     // firebase에서 데이터를 가져온다
-            let user = User(dictionary: dictionary)     // User클래스에서 만든 생성자 활용
+            let user = User(dictionary: dictionary)     // Model User파일에 User구조체에서 만든 생성자 활용
             completion(user)
         }
     }

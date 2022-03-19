@@ -5,38 +5,47 @@ private let identifier = "Cell"
 
 class FeedController: UICollectionViewController {
     // MARK: LifeCycle
-    private var posts = [Post]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // viewDidLayoutSubviews에 적었을때 크러쉬가 났음 순서 문제인듯 함
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)
-        title = "Feed"
+        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: identifier)  // 셀 등록
+        configureUI()
         fetchPosts()
     }
-    
     // MARK: API
+    private var posts = [Post]()
     private func fetchPosts() {
         PostService.fetchPosts { posts in
             self.posts = posts
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    // MARK: ConfigureUI
+    private func configureUI() {
         //view.backgroundColor = .systemRed  collectionView이기 때문에 이것은 작동되지 않고
         collectionView.backgroundColor = .white // 이렇게 해야 작동함
         
-        
-        // 컬렉션 뷰에 셀을 반환하도록 지시하고 있지만 컬렉션에 셀을 등록하지 않았다
+        // 컬렉션 뷰에 셀을 반환하도록 지시하고 있지만(아래 delegate) 컬렉션에 셀을 등록하지 않았다(register)
         // 셀을 등록해야 반환할 수 있다.
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
+        title = "Feed"
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
+    }
+    
+    
+    // MARK: Selector
+    @objc func handleRefresh(){
+        posts.removeAll()
+        fetchPosts()
     }
     
     @objc private func tapLogout(){
         do {
-            try Auth.auth().signOut()
+            try Auth.auth().signOut()       // firebase에 로그아웃을 전달?
             let controller = LoginController()
             controller.delegate = self.tabBarController as? MainTabController
             let nav = UINavigationController(rootViewController: controller)
@@ -47,8 +56,9 @@ class FeedController: UICollectionViewController {
         }
     }
     
-    
 }
+
+
 
 // 처음에 상속받을 때 UIViewController에서 collectionView를 사용했다면 extension에 UICollectionViewDataSource를 상속해야 했지만
 // UICollectionViewController를 처음에 상속받았고 CollectionViewController에 UICollectionViewDataSource도 포함되어 있으므로 따로 상속하지 않아도 됨

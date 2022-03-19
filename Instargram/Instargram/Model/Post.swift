@@ -1,6 +1,6 @@
+// 게시물에 사용될 데이터들
 import Foundation
 import Firebase
-// Post에서 사용할 데이터 객체를 만듬
 
 struct Post {
     var caption: String
