@@ -8,6 +8,7 @@ class ProfileController: UICollectionViewController {
     
     // MARK: Properties
     private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 (self.user.isFollowed = true) 그래서 var로 선언
+    private var posts = [Post]()
     
     // 의존성 주입?
     init(user: User){
@@ -25,6 +26,7 @@ class ProfileController: UICollectionViewController {
         configureUI()
         checkIfUserIsFollowed()
         fetchUserStats()
+        fetchPosts()
     }
     
     // MARK: API
@@ -38,6 +40,13 @@ class ProfileController: UICollectionViewController {
     private func fetchUserStats() {
         UserService.fetchUserStats(uid: user.uid) { stats in
             self.user.stats = stats
+            self.collectionView.reloadData()
+        }
+    }
+    
+    private func fetchPosts() {
+        PostService.fetchPosts(forUser: user.uid) { posts in
+            self.posts = posts
             self.collectionView.reloadData()
         }
     }
@@ -57,11 +66,11 @@ class ProfileController: UICollectionViewController {
 // MARK: UICollectionViewDataSource
 extension ProfileController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return posts.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! ProfileCell
-        
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

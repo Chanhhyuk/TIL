@@ -91,7 +91,7 @@ class RegisterController: UIViewController {
                 print("error:\(error.localizedDescription)")
                 return
             }
-            self.delegate?.authenticationComplete()     // 회원가입 버튼을 누르면 메인컨트롤러로 가는 것
+            self.delegate?.authenticationDidComplete()     // 회원가입 버튼을 누르면 메인컨트롤러로 가는 것
         }
     }
     
