@@ -87,6 +87,12 @@ extension ProfileController {
 // MARK: UICollectionViewDelegate
 extension ProfileController {
     
+    // collectionView의 cell을 클릭했을(선택) 때의 이벤트
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        controller.post = posts[indexPath.row]
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 

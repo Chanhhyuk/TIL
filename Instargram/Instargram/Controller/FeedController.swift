@@ -4,6 +4,10 @@ import Firebase
 private let identifier = "Cell"
 
 class FeedController: UICollectionViewController {
+    
+    private var posts = [Post]()
+    var post: Post?
+    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,8 +16,9 @@ class FeedController: UICollectionViewController {
         fetchPosts()
     }
     // MARK: API
-    private var posts = [Post]()
     private func fetchPosts() {
+        guard post == nil else { return }
+        
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()
@@ -28,9 +33,12 @@ class FeedController: UICollectionViewController {
         
         // 컬렉션 뷰에 셀을 반환하도록 지시하고 있지만(아래 delegate) 컬렉션에 셀을 등록하지 않았다(register)
         // 셀을 등록해야 반환할 수 있다.
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
-        title = "Feed"
         
+        if post == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
+        }
+        
+        title = "Feed"
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView.refreshControl = refresher
@@ -66,7 +74,7 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     // 셀의 항목 수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        return post == nil ? posts.count : 1
     }
     // 각각의 셀을 정의
     // 잘보면 UICollectionViewCell을 반환하는 함수인걸 볼 수 있다.
@@ -78,7 +86,14 @@ extension FeedController {
     // 위에 identifier와 동일한 식별자를 사용하고 있따?
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
-        cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        
+        if let post = post {
+            cell.viewModel = PostViewModel(post: post)
+            return cell
+        } else {
+            cell.viewModel = PostViewModel(post: posts[indexPath.row])
+        }
+
         return cell
     }
 }
