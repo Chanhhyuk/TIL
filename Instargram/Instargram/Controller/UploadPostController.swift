@@ -22,11 +22,10 @@ class UploadPostController: UIViewController {
     }()
     
     // 게시글을 적을 때 여러줄을 적을것이므로 textField가 아닌 textView로 작성
-    private lazy var textView: InputTextView = {
+    private let textView: InputTextView = {
         let textView = InputTextView()
         textView.placeholderText = "Enter caption.."
         textView.font = UIFont.systemFont(ofSize: 16)
-        textView.delegate = self
         return textView
     }()
     
@@ -42,6 +41,8 @@ class UploadPostController: UIViewController {
     @objc private func handleCancel(){
         dismiss(animated: true, completion: nil)
     }
+    
+    // 클릭하면 MainController로 이동해야하고, MainController에 글이 올라와야 된다
     @objc private func handleShare(){
         guard let image = selectedImage else { return }     // 사용자가 선택한 이미지
         guard let caption = textView.text else { return }   // 사용자가 작성한 textView 내용
@@ -51,35 +52,29 @@ class UploadPostController: UIViewController {
         
         PostService.uploadPost(caption: caption, image: image, user: user) { error in
             self.showLoader(false)  // 업로드가 완료될때 로딩 애니메이션 해제
-            if let error = error {
-                return
-            }
-            
+            if let error = error { return }
             self.delegate?.controllerDidFinishUploadingPost(self)
         }
         
-    }
-    
-    private func checkMaxLength(_ textView: UITextView){
-        if textView.text.count > 100 {
-            textView.deleteBackward()   // 글자수가 100을 넘으면 작성이 안됨
-        }
     }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        textView.delegate = self
     }
     
     // MARK: ConfigureUI
     private func configureUI(){
         view.backgroundColor = .white
         navigationItem.title = "Upload Post"
+        
         // systemItem에서 cancel 기능이 있어서 사용했으나
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         // Share기능은 없으므로 커스텀해서 사용
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .done, target: self, action: #selector(handleShare))
+        
         view.addSubview(photoImageView)
         photoImageView.setDimensions(height: 180, width: 180)
         photoImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
@@ -94,9 +89,10 @@ class UploadPostController: UIViewController {
     }
 }
 
+// MARK: textViewDelegate
 extension UploadPostController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        checkMaxLength(textView)
+        if textView.text.count > 100 { textView.deleteBackward() }   // 글자수가 100을 넘으면 작성이 안됨
         let count = textView.text.count
         label.text = "\(count) / 100"
     }

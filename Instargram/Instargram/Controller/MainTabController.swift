@@ -43,9 +43,24 @@ class MainTabController: UITabBarController {
         }
     }
     
+    // UploadPostController에서 shere를 누를 때 실행
+    private func didFinishPicking(_ picker: YPImagePicker){
+        picker.didFinishPicking { items, _ in       // error는 없으므로 _ 공백
+            picker.dismiss(animated: false) {
+                guard let selectedImage = items.singlePhoto?.image else { return }
+                
+                let controller = UploadPostController()
+                controller.selectedImage = selectedImage
+                controller.delegate = self
+                controller.currentUser = self.user
+                let vc = UINavigationController(rootViewController: controller)
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            }
+        }
+    }
     
     
-    // MARK: Helpers
     private func tabController(withUser user: User){
 //        let layout = UICollectionViewLayout()     // 많이 하는 실수 에러도 안남
         let layout = UICollectionViewFlowLayout()   // 이거 해봤는데 바로 직접적으로 적어줘도 되었다
@@ -77,22 +92,7 @@ class MainTabController: UITabBarController {
         nav.navigationBar.tintColor = .black            // 네비게이션바 텍스트 색
         return nav
     }
-    
-    private func didFinishPicking(_ picker: YPImagePicker){
-        picker.didFinishPicking { items, _ in
-            picker.dismiss(animated: false) {
-                guard let selectedImage = items.singlePhoto?.image else { return }
-                
-                let controller = UploadPostController()
-                controller.selectedImage = selectedImage
-                controller.delegate = self
-                controller.currentUser = self.user
-                let vc = UINavigationController(rootViewController: controller)
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: false, completion: nil)
-            }
-        }
-    }
+
 }
 
 // MARK: AuthenticationDelegate

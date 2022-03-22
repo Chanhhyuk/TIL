@@ -3,6 +3,12 @@ import UIKit
 class UserCell: UITableViewCell {
     
     // MARK: Properties
+//    var user: User? {         User 모델 대신 ViewModel을 이용하여 수행, MVVM 패턴에 어긋남
+//        didSet {
+//            usernameLabel.text = user?.username
+//            fullnameLabel.text = user?.fullname
+//        }
+//    }
     var viewModel: UserCellViewModel? {
         didSet { configure() }
     }

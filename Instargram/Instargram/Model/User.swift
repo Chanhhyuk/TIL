@@ -10,9 +10,9 @@ struct User {
     let username: String
     let uid: String
     
-    var isFollowed = false
+    var isFollowed = false      // follow인지 아닌지 확인
     
-    var isCurrentUser: Bool { // 현재 접속한 사용자인지 확인
+    var isCurrentUser: Bool { // 현재 접속한 사용자인지 확인. 현재 사용자면 edit profile을 현재 사용자가 아니면 follow 버튼을 리턴하기 위함
         return Auth.auth().currentUser?.uid == uid
     }
     
