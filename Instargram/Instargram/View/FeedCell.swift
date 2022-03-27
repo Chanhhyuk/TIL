@@ -8,6 +8,7 @@ class FeedCell: UICollectionViewCell {
         didSet { configure() }
     }
     
+    // let으로 선언하면 self를 FeedCell.self 바꾸라고 나옴 lazy var로 선언하면 에러 문구가 안 뜸(업데이트 후로 바뀐거 같음)??
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

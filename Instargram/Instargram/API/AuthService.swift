@@ -16,6 +16,7 @@ struct AuthCredetials {
 // 회원가입의 데이터인 이메일 패스워드 이름과 프로필사진을 전송
 struct AuthService {
     
+    // API struct에 static으로 function을 선언하는 이유는?
     // AuthDataResultCallback: 로그인 관련 이벤트가 완료될 때 호출됨
     static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?){
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)

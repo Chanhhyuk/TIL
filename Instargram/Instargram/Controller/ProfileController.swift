@@ -132,7 +132,7 @@ extension ProfileController: ProfileHeaderDelegate {
         }else {
             UserService.followUser(uid: user.uid) { error in
                 self.user.isFollowed = true
-                self.collectionView.reloadData()
+                self.collectionView.reloadData()        // 새 사용자를 다시 호출한다?
             }
         }
         

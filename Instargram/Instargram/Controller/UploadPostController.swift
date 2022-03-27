@@ -1,3 +1,4 @@
+// ImageSelector에다가 바로 적으면 될것을 왜 UploadPostController을 따로 만들었을까?
 import UIKit
 
 protocol UploadPostControllerDelegate: class {

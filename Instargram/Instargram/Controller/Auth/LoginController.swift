@@ -110,7 +110,7 @@ class LoginController: UIViewController{
         }
         
         // email필드와 password필드가 비었는지 확인 LoginViewModel에 만든 formIsValid에서 true false로 리턴
-        // formIsValid가 안 적혀있는데 왜 작동되는지 모르겠음
+        // AuthViewModel에서 만든 formIsValid가 안 적혀있는데 왜 작동되는지 모르겠음
         updateForm()
 
     }
