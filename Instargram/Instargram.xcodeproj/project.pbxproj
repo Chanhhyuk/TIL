@@ -32,6 +32,7 @@
 		7191179327B7C8D700F18EB7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191179227B7C8D700F18EB7 /* UserService.swift */; };
 		7191179527B7C95B00F18EB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191179427B7C95B00F18EB7 /* Constants.swift */; };
 		71C6599627EB506200BFF0EC /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6599527EB506200BFF0EC /* CommentController.swift */; };
+		71CC9B3127F3165B00DE2707 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC9B3027F3165B00DE2707 /* CommentCell.swift */; };
 		71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6711F27A00BFF00ACF2E0 /* LoginController.swift */; };
 		71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6712127A00C0900ACF2E0 /* RegisterController.swift */; };
 		71E9ECE827D9C4AA00ABDA16 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9ECE727D9C4AA00ABDA16 /* UploadPostController.swift */; };
@@ -73,6 +74,7 @@
 		7191179227B7C8D700F18EB7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		7191179427B7C95B00F18EB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71C6599527EB506200BFF0EC /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		71CC9B3027F3165B00DE2707 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		71E6711F27A00BFF00ACF2E0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		71E6712127A00C0900ACF2E0 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		71E9ECE727D9C4AA00ABDA16 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				711221D827B10E840044369D /* ProfileHeader.swift */,
 				711221D627B10E540044369D /* ProfileCell.swift */,
+				71CC9B3027F3165B00DE2707 /* CommentCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				718F1B4E279D2F7F0035DF99 /* FeedCell.swift in Sources */,
 				714F528F27DB4397006FFA06 /* PostViewModel.swift in Sources */,
 				71861B4627BBBC8000AAE114 /* ProfileHeaderViewModel.swift in Sources */,
+				71CC9B3127F3165B00DE2707 /* CommentCell.swift in Sources */,
 				717D9F7D27A3B98E00AC9CCA /* AuthService.swift in Sources */,
 				71E9ECEA27D9CA5900ABDA16 /* InputTextView.swift in Sources */,
 				717E54A027B8E21C00B5DA79 /* User.swift in Sources */,

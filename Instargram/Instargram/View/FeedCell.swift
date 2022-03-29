@@ -2,11 +2,17 @@
 // 사용하고자 할때 해당 Controller에 가서 collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "cell") 작성
 import UIKit
 
+protocol FeedCellDelegate: class {
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
+}
+
 class FeedCell: UICollectionViewCell {
     
     var viewModel: PostViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: FeedCellDelegate?
     
     // let으로 선언하면 self를 FeedCell.self 바꾸라고 나옴 lazy var로 선언하면 에러 문구가 안 뜸(업데이트 후로 바뀐거 같음)??
     private let profileImageView: UIImageView = {
@@ -51,6 +57,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "comment") , for: .normal)
+        button.addTarget(self, action: #selector(handleCommentButton), for: .touchUpInside)
         return button
     }()
     private let shareButton: UIButton = {
@@ -117,6 +124,12 @@ class FeedCell: UICollectionViewCell {
         stackView.distribution = .fillEqually
         addSubview(stackView)
         stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 60)
+    }
+    
+    // MARK: Selector
+    @objc private func handleCommentButton(){
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)
     }
     
 }

@@ -41,6 +41,7 @@ struct UserService {
         }
     }
     
+    // 프로세스가 백엔드에서 완료될 때마다 UI가 업데이트 된다
     static func checkIfUserIsFollowed(uid: String, completion: @escaping(Bool) -> Void) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).getDocument { (snapshot, error) in

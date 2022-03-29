@@ -86,6 +86,7 @@ extension FeedController {
     // 위에 identifier와 동일한 식별자를 사용하고 있따?
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
+        cell.delegate = self
         
         if let post = post {
             cell.viewModel = PostViewModel(post: post)
@@ -107,4 +108,13 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
         height += 110                   // 50은 포스트 이미지 60은 댓글이랑 좋아요 버튼
         return CGSize(width: width , height: height)
     }
+}
+
+extension FeedController: FeedCellDelegate {
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
+        let controller = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
 }
