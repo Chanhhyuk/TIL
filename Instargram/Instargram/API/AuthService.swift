@@ -23,9 +23,10 @@ struct AuthService {
         // 로그인 통신
     }
     
-    // withCredential 인자 레이블 credentials 매개변수?
+    // withCredential는 이 함수를 사용할 곳에서 쓰일 파라미터 이름 인자 레이블
     // AuthService 구조체를 함수 파라미터로 사용?
     // 이미지를 업로드하고 이미지url이 생성되는데 그것을 가져와서 사용자를 등록하는데 사용한다
+    // 회원가입을 하게 되면 그 사용자에 대한 UID가 자동으로 생성된다. 그리고 이 UID는 그 사용자 정보를 데이터베이스에 저장할 때 DocumentID로 지정하여 통일성 및 유일성을 줘야한다.
     static func registerUser(withCredential credentials: AuthCredetials, completion: @escaping(Error?) -> Void){
         ImageUploader.uploadImage(image: credentials.profileImage) { imageUrl in
             Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in

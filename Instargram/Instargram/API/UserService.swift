@@ -26,8 +26,7 @@ struct UserService {
     
     static func followUser(uid: String, completion: @escaping(FirestoreCompletion)){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
-        // following 문서에 현재 사용자의 이름으로
-        // completion을 사용하지 않고 실행?
+        // following 이름의 컬렉션에 현재 로그인된 계정의 문서를 만들고 그 문서에 user-following 컬렉션을 만들어서 해당 uid를 저장한다
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).setData([:]) { error in
             COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).setData([:], completion: completion)
         }
@@ -43,12 +42,14 @@ struct UserService {
     
     // 프로세스가 백엔드에서 완료될 때마다 UI가 업데이트 된다
     static func checkIfUserIsFollowed(uid: String, completion: @escaping(Bool) -> Void) {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).getDocument { (snapshot, error) in
             guard let isFollowed = snapshot?.exists else { return }
             completion(isFollowed)
         }
     }
+    
+    
     
     static func fetchUserStats(uid: String, completion: @escaping(UserStats) -> Void) {
         COLLECTION_FOLLOWERS.document(uid).collection("user-followers").getDocuments { (snapshot, _) in
