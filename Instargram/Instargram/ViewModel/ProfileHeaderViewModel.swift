@@ -14,12 +14,15 @@ struct ProfileHeaderViewModel {
         return user.isFollowed ? "Following" : "Follow"     // follwed가 true값이면 following
     }
     
+    // User 모델에서 만든 데이터 형식을 사용
     var followButtonBackgroundColor: UIColor { return user.isCurrentUser ? .white : .systemBlue }
     var followButtonTextColor: UIColor { return user.isCurrentUser ? .black : .white }
     var numberOfFollowers: NSAttributedString { return attributedText(value: user.stats.followers, label: "followers") }
     var numberOfFollowing: NSAttributedString { return attributedText(value: user.stats.following, label: "following") }
     var numberOfPosts: NSAttributedString { return attributedText(value: user.stats.posts, label: "posts") }
     
+    
+    // 글자는 진하게 숫자는 보통글씨체로
     private func attributedText(value: Int, label: String) -> NSAttributedString {
         let attributeText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
         attributeText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray ]))

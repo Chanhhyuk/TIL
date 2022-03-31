@@ -1,4 +1,5 @@
 // ImageSelector에다가 바로 적으면 될것을 왜 UploadPostController을 따로 만들었을까?
+// MainController에서 만든 YPImagePickerConfiguration로 사진을 설정하고 포스트 내용을 적는 Controller
 import UIKit
 
 protocol UploadPostControllerDelegate: class {

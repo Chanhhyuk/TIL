@@ -24,6 +24,7 @@ struct UserService {
         }
     }
     
+    // 현재 사용자가 해당 사용자를 follow 한다
     static func followUser(uid: String, completion: @escaping(FirestoreCompletion)){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
         // following 이름의 컬렉션에 현재 로그인된 계정의 문서를 만들고 그 문서에 user-following 컬렉션을 만들어서 해당 uid를 저장한다
@@ -32,7 +33,7 @@ struct UserService {
         }
     }
     
-    // API를 올바르게 찾아가서 삭제만 해주면 됨
+    // 현재 사용자가 해당 사용자를 unfollowe 한다
     static func unfollowUser(uid: String, completion: @escaping(FirestoreCompletion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).delete { error in
@@ -40,30 +41,40 @@ struct UserService {
         }
     }
     
-    // 프로세스가 백엔드에서 완료될 때마다 UI가 업데이트 된다
+    
+    
+    // 현재 사용자가 선택된 사용자를 followed 했는지 확인
+    // follow 체크하는것들 중에서 얘만 Model이랑 직접적으로 연결되어 있지 않고 firebase와 통신해서 그에따른 값인 true false만 리턴한다.
+    // follow를 해도 화면을 뒤로 갔다가 다시 follow한 사용자의 페이지로 돌아가면 follow를 하기 처음으로 화면이 돌아와 있었다.
+    // @escaping(Bool) 이므로 follow가 되어있다면 true 안되어있다면 false를 리턴한다
     static func checkIfUserIsFollowed(uid: String, completion: @escaping(Bool) -> Void) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).getDocument { (snapshot, error) in
             guard let isFollowed = snapshot?.exists else { return }
-            completion(isFollowed)
+            // exists: Snapshot에 데이터가 포함되어 있으면 true 아니면 false 리턴
+            completion(isFollowed)  // true, false 둘 중 하나가 나올텐데 @escaping(Bool)에 값이 들어가게 된다?
         }
     }
     
     
-    
+    // 선택한 사용자의 팔로우 팔로잉 포스트의 수를 표시
+    // Model에 User에서 만든 UserState를 사용
     static func fetchUserStats(uid: String, completion: @escaping(UserStats) -> Void) {
+        // 해당 사용자의(uid) user-followers의 콜렉션에 있는 정보를 다 가져온다(getDocuments)
+        // error는 없을거니 _로 넣는다
         COLLECTION_FOLLOWERS.document(uid).collection("user-followers").getDocuments { (snapshot, _) in
-            let followers = snapshot?.documents.count ?? 0
-            COLLECTION_FOLLOWING.document(uid).collection("user-following").getDocuments { (snapshot, _) in
-                let following = snapshot?.documents.count ?? 0
-                
-                COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid).getDocuments { (snapshot, _) in
-                    let posts = snapshot?.documents.count ?? 0
-                    completion(UserStats(followers: followers, following: following, posts: posts))
+            let followers = snapshot?.documents.count ?? 0      // document 전체의 count수 비어있다면 0을 followers에 넣는다.
+        COLLECTION_FOLLOWING.document(uid).collection("user-following").getDocuments { (snapshot, _) in
+            let following = snapshot?.documents.count ?? 0
+        COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid).getDocuments { (snapshot, _) in
+            let posts = snapshot?.documents.count ?? 0
+                completion(UserStats(followers: followers, following: following, posts: posts))
                 }
                 
             }
         }
     }
+    
+    
     
 }

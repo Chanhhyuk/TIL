@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 import YPImagePicker
+// 이미지를 확대하거나 필터를 넣을 수 있는 라이브러리
 
 class MainTabController: UITabBarController {
     
@@ -76,11 +77,8 @@ class MainTabController: UITabBarController {
         // UITabbarController을 상속받아서 얻는 속성 viewControllers = []
         // 위에는 컨트롤러 인스턴스를 생성만 한거고 이 배열에서 사용하면 컨트롤러의 인스턴스를 나타낸다
         viewControllers = [feed, search, imageSelector, notification, profile]
-        // 위에 변수에 따로 저장하는게 아니라 생성자형태로 바로 넣을 수 있다 하지만 이렇게 하는게 좋다
-        // 아래처럼 코드가 지저분해지기 때문
-//        viewControllers = [naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController())]
         tabBar.tintColor = .black
-        self.delegate = self
+        self.delegate = self        // UploadPostControllerDelegate를 사용하기 위해
     }
     
     // tabbar를 설정해주는건데 왜 네비게이션 컨트롤러를 리턴하는지 모르겠다...
@@ -108,15 +106,15 @@ extension MainTabController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.firstIndex(of: viewController)
         
-        if index == 2 {
+        if index == 2 { // tabBar중 2번째 index가 선택 되었을 때
             var config = YPImagePickerConfiguration()
-            config.library.mediaType = .photo
-            config.shouldSaveNewPicturesToAlbum = false
+            config.library.mediaType = .photo       // 유형 사진
+            config.shouldSaveNewPicturesToAlbum = false // 편집한 사진을 새로 저장하지 않는다.
             config.startOnScreen = .library
             config.screens = [.library]
-            config.hidesStatusBar = false
-            config.hidesBottomBar = false
-            config.library.maxNumberOfItems = 1
+            config.hidesStatusBar = false       // 상태바 숨기지 않는다.
+            config.hidesBottomBar = false       // 하단바 숨기지 않는다.
+            config.library.maxNumberOfItems = 1 // 라이브러리 최대 항복수 1개
             
             let picker = YPImagePicker(configuration: config)
             picker.modalPresentationStyle = .fullScreen

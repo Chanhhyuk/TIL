@@ -29,6 +29,7 @@ struct User {
     }
 }
 
+// User 안에다가 만들면 될것을 굳이 바깥에다 만들었을까? 깔끔하게 하려고?
 struct UserStats {
     let followers: Int
     let following: Int

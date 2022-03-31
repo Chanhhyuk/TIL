@@ -128,6 +128,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     // 처음 선택하면 nil이기떄문에 안전하게 여기서 포장을 푼다
     // API가 호출이 완료된 후 UI를 업데이트 해준다
     private func configure(){
+        // 여기서 viewModel은 ProfileHeaderViewModel
         guard let viewModel = viewModel else { return }
         nameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
@@ -136,6 +137,7 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
         editProfileButton.backgroundColor = viewModel.followButtonBackgroundColor
         
+        // .attributedText는 NSAttributedString형식으로 넣어야 한다. ProfileHeaderViewModel에서 이런 형식으로 만들었음
         postLabel.attributedText = viewModel.numberOfPosts
         followersLabel.attributedText = viewModel.numberOfFollowers
         followingLabel.attributedText = viewModel.numberOfFollowing

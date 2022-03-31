@@ -30,13 +30,17 @@ class ProfileController: UICollectionViewController {
     }
     
     // MARK: API
+    
+    // 현재 사용자가 해당 사용자를 팔로우 했는지 확인
     private func checkIfUserIsFollowed(){
         UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
-            self.user.isFollowed = isFollowed
-            self.collectionView.reloadData()
+            // self.user: 지금 이 컨트롤러에 선언된 user 변수 User 모델을 가르킨다
+            self.user.isFollowed = isFollowed       // viewModel에 ProfileHeaderViewModel에서 followButtonText 값을 맞게 변환
+            self.collectionView.reloadData()        // 다시 collectionView를 load한다 (새로고침)?
         }
     }
     
+    // 선택한 사용자의 프로필의 상태(팔로우,팔로잉,포스트 수)를 보여준다.
     private func fetchUserStats() {
         UserService.fetchUserStats(uid: user.uid) { stats in
             self.user.stats = stats
