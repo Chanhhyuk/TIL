@@ -36,10 +36,11 @@ struct AuthService {
                 }
                 
                 guard let uid = result?.user.uid else { return }        // uid 고유번호
+                // UUID(Universally Unique Identifier): 고유의 값
+                // NSUUID: 임의의 128비트 값을 생성해서 고유값을 만듬 (항상 값이 다르게 나온다)
                 
                 
                 // imageUrl과 uid는 AuthCredetials에 없어서 만들어서 사용?
-                
                 // data를 key:value 형식으로 전달
                 let data: [String: Any] = ["email": credentials.email,
                                            "fullname": credentials.fullname,

@@ -1,19 +1,19 @@
 import UIKit
 import Firebase
-import YPImagePicker
-// 이미지를 확대하거나 필터를 넣을 수 있는 라이브러리
+import YPImagePicker // 이미지 라이브러리
 
+
+// UICollectionViewController UITableViewController로 상속받으면 이미 DataSource, Delegate 프로토콜을 준수한다 따로선언해줄 필요가 없다
 class MainTabController: UITabBarController {
     
     private var user: User? {
-        didSet{
+        didSet{     // didSet: 값이 변경되기 직전을 감지 한다
             guard let user = user else { return }
             tabController(withUser: user)
         }
     }
     
     // MARK: LifeCycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
@@ -22,6 +22,7 @@ class MainTabController: UITabBarController {
     
     // MARK: API
     func fetchUser() {
+        // API 폴더에 UserService 구조체에 fetchUser 구조체를 사용
         UserService.fetchUser { user in
             self.user = user
             self.navigationItem.title = user.username
@@ -48,10 +49,10 @@ class MainTabController: UITabBarController {
     private func didFinishPicking(_ picker: YPImagePicker){
         picker.didFinishPicking { items, _ in       // error는 없으므로 _ 공백
             picker.dismiss(animated: false) {
-                guard let selectedImage = items.singlePhoto?.image else { return }
+                guard let selectedImage = items.singlePhoto?.image else { return }  // 선택된 이미지를 전달
                 
                 let controller = UploadPostController()
-                controller.selectedImage = selectedImage
+                controller.selectedImage = selectedImage    
                 controller.delegate = self
                 controller.currentUser = self.user
                 let vc = UINavigationController(rootViewController: controller)
@@ -64,7 +65,7 @@ class MainTabController: UITabBarController {
     
     private func tabController(withUser user: User){
 //        let layout = UICollectionViewLayout()     // 많이 하는 실수 에러도 안남
-        let layout = UICollectionViewFlowLayout()   // 이거 해봤는데 바로 직접적으로 적어줘도 되었다
+        let layout = UICollectionViewFlowLayout()   // 직접적으로 적어줘도 됨
         let feed = naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search = naviController(unseletedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController() )
         let imageSelector = naviController(unseletedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController() )
@@ -101,8 +102,9 @@ extension MainTabController: AuthenticationDelegate {
     }
 }
 
-// tabbarController가 몇번째 탭에서 호출됫는지 숫자로 알려줌
+
 extension MainTabController: UITabBarControllerDelegate {
+    // tabbarController가 몇번째 탭에서 호출됫는지 숫자로 알려줌
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         let index = viewControllers?.firstIndex(of: viewController)
         
@@ -125,6 +127,7 @@ extension MainTabController: UITabBarControllerDelegate {
     }
 }
 
+// 컨트롤러 델리게이트를 만든 이유?
 extension MainTabController: UploadPostControllerDelegate {
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
         selectedIndex = 0

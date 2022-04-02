@@ -16,7 +16,7 @@ class UploadPostController: UIViewController {
         didSet { photoImageView.image = selectedImage }
     }
     
-    private let photoImageView: UIImageView = {
+    private let photoImageView: UIImageView = {     // 업로드할 이미지
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -82,10 +82,8 @@ class UploadPostController: UIViewController {
         photoImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
         photoImageView.centerX(inView: view)
         photoImageView.layer.cornerRadius = 10
-        
         view.addSubview(textView)
         textView.anchor(top: photoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 12, paddingRight: 12, height: 64)
-        
         view.addSubview(label)
         label.anchor(bottom: textView.bottomAnchor, right: view.rightAnchor, paddingBottom: -8 ,paddingRight: 12)
     }

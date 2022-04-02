@@ -6,6 +6,7 @@ class InputTextView: UITextView {
     // MARK: Properties
     
     var placeholderText: String? {
+        //
         didSet { placeholderLabel.text = placeholderText }
     }
     
@@ -17,7 +18,7 @@ class InputTextView: UITextView {
     
     // MARK: Action
     @objc private func handleTextDidChange(){
-        placeholderLabel.isHidden = !text.isEmpty   // !(텍스트가 비어있다면) !(true) = false, 즉 텍스트가 비어있다면 hidden(숨기기)를 하지 않는다.
+        placeholderLabel.isHidden = !text.isEmpty   // !(텍스트가 비어있다면) !(true) = false, 텍스트가 비어있지 않다면 플레이스홀더를 숨긴다.
     }
     
     // MARK: LifeCycle
@@ -25,7 +26,7 @@ class InputTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         addSubview(placeholderLabel)
         placeholderLabel.anchor(top: topAnchor, left: leftAnchor, paddingTop: 6, paddingLeft: 8)
-        // text를 입력하면 placeholder가 사라지게 하기 위함
+        
         // button은 addTarget을 할 수 있는데 label은 못 함 그래서 이렇게 따로 만듬
         // UITextField delegate와 동일하다
         // 텍스트가 변경되면 관찰자에게 텍스트가 변경되었음을 알리고 알림을 받으면 handleTextDidChange 함수 호출
