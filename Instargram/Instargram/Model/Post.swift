@@ -3,12 +3,12 @@ import Foundation
 import Firebase
 
 struct Post {
+    let postId: String
     var caption: String
     var likes: Int      // 좋아요 수는 변할수 있기 때문에 var로 선언
     let imageUrl: String
     let ownerUid: String
     let timestamp: Timestamp
-    let postId: String
     let ownerImageUrl: String
     let ownerUsername: String
     

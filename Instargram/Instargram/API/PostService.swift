@@ -5,9 +5,12 @@ import CoreMedia
 struct PostService {
     
     // static으로 선언하지 않을경우 UploadPostController에서 PostService를 사용할때 PostService(). 생성자로 사용해야 한다
-    static func uploadPost(caption: String, image: UIImage, user: User, completion: @escaping(FirestoreCompletion)) {
+    // post 작성하면 3가지 정보 업로드할 문장, 업로드할 사진, 업로드하는 유저내용(이름)을 firebase에 보냄
+    static func uploadPost(caption: String, image: UIImage, user: User, completion: @escaping(FirestoreCompletion)) {   // UserService에서 만든 typealias 사용
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        // API ImageUploader 구조체 사용
         ImageUploader.uploadImage(image: image) { imageUrl in
+            // Model Post있는 timestamp, caption 등등 사용
             let data = ["caption": caption, "timestamp": Timestamp(date: Date()), "likes":0, "imageUrl": imageUrl, "ownerUid": uid, "ownerImageUrl": user.profileImageUrl, "ownerUsername": user.username ] as [String: Any]
             
             COLLECTION_POSTS.addDocument(data: data, completion: completion)

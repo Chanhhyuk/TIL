@@ -1,5 +1,6 @@
 import Firebase
 typealias FirestoreCompletion = (Error?) -> Void // 사용하기 더 쉽도록 새로운 유형의 이름을 만듬
+// 완료 핸들러의 약식으로 표기법?
 
 struct UserService {
     

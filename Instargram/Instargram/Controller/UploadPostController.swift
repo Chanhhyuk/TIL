@@ -24,10 +24,11 @@ class UploadPostController: UIViewController {
     }()
     
     // 게시글을 적을 때 여러줄을 적을것이므로 textField가 아닌 textView로 작성
-    private let textView: InputTextView = {
+    private lazy var textView: InputTextView = {
         let textView = InputTextView()
         textView.placeholderText = "Enter caption.."
         textView.font = UIFont.systemFont(ofSize: 16)
+        textView.delegate = self
         return textView
     }()
     
@@ -64,7 +65,6 @@ class UploadPostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        textView.delegate = self
     }
     
     // MARK: ConfigureUI
@@ -93,7 +93,7 @@ class UploadPostController: UIViewController {
 extension UploadPostController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.count > 100 { textView.deleteBackward() }   // 글자수가 100을 넘으면 작성이 안됨
-        let count = textView.text.count
+        let count = textView.text.count     // 글자수 카운팅
         label.text = "\(count) / 100"
     }
 }
