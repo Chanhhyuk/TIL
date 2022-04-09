@@ -45,15 +45,15 @@ class MainTabController: UITabBarController {
         }
     }
     
-    // UploadPostController에서 shere를 누를 때 실행
+    // UploadPostController에서 shere를 누를 때 실행. 포스트 게시
     private func didFinishPicking(_ picker: YPImagePicker){
         picker.didFinishPicking { items, _ in       // error는 없으므로 _ 공백
             picker.dismiss(animated: false) {
-                guard let selectedImage = items.singlePhoto?.image else { return }  // 선택된 이미지를 전달
+                guard let selectedImage = items.singlePhoto?.image else { return }  // UploadController에 있는 didSet 선택된 이미지를 전달
                 
                 let controller = UploadPostController()
                 controller.selectedImage = selectedImage    
-                controller.delegate = self
+                controller.delegate = self          // UploadController에 만든 weak var delegate 사용, 맨 아래 protocol에 따른 delegate 사용
                 controller.currentUser = self.user
                 let vc = UINavigationController(rootViewController: controller)
                 vc.modalPresentationStyle = .fullScreen
@@ -127,16 +127,16 @@ extension MainTabController: UITabBarControllerDelegate {
     }
 }
 
-// 컨트롤러 델리게이트를 만든 이유?
+// PostController에서 게시글을 share하면
 extension MainTabController: UploadPostControllerDelegate {
+    // 함수를 호출할 때 PostController의 인스턴스에서 전달?
+    // 이 기능을 실행할 때마다 PostController는 닫을 것
     func controllerDidFinishUploadingPost(_ controller: UploadPostController) {
-        selectedIndex = 0
+        selectedIndex = 0       // 탭바 0번째로 이동(MainController)
         controller.dismiss(animated: true, completion: nil)
-        
+
         guard let feedNav = viewControllers?.first as? UINavigationController else { return }
         guard let feed = feedNav.viewControllers.first as? FeedController else { return }
         feed.handleRefresh()
     }
-    
-    
 }

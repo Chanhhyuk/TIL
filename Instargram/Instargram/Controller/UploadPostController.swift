@@ -49,7 +49,7 @@ class UploadPostController: UIViewController {
     @objc private func handleShare(){
         guard let image = selectedImage else { return }     // 사용자가 선택한 이미지
         guard let caption = textView.text else { return }   // 사용자가 작성한 textView 내용
-        guard let user = currentUser else { return }
+        guard let user = currentUser else { return }        // 현재 사용자
         
         showLoader(true)    // 로딩 애니메이션이 작동
         
