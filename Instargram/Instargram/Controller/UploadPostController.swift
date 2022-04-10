@@ -51,10 +51,10 @@ class UploadPostController: UIViewController {
         guard let caption = textView.text else { return }   // 사용자가 작성한 textView 내용
         guard let user = currentUser else { return }        // 현재 사용자
         
-        showLoader(true)    // 로딩 애니메이션이 작동
+        showLoader(true)    // 로딩 애니메이션이 작동, extension에서 만든거 사용
         
         PostService.uploadPost(caption: caption, image: image, user: user) { error in
-            self.showLoader(false)  // 업로드가 완료될때 로딩 애니메이션 해제
+            self.showLoader(false)  // 오류가 있든 없든 일단 로딩 애니메이션을 숨긴다
             if let error = error { return }
             self.delegate?.controllerDidFinishUploadingPost(self)
         }

@@ -5,7 +5,7 @@ private let identifier = "Cell"
 
 class FeedController: UICollectionViewController {
     
-    private var posts = [Post]()
+    private var posts = [Post]()    // PostService.fetchPosts에서 업데이트해서 posts.count로...?
     var post: Post?
     
     // MARK: LifeCycle

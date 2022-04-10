@@ -17,9 +17,8 @@ struct PostService {
         }
     }
     
-    
-    // 게시글을 패치 할 때 사용
-    static func fetchPosts(completion: @escaping([Post]) -> Void) {
+    // 게시글을 패치할때
+    static func fetchPosts(completion: @escaping([Post]) -> Void) {     // 모든 게시글을 불러온다
         // timestamp 기준으로 최신순으로 정렬
         COLLECTION_POSTS.order(by: "timestamp", descending: true).getDocuments { snapshot, Error in
             guard let documents = snapshot?.documents else { return }
