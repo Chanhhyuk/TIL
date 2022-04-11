@@ -5,7 +5,7 @@ private let identifier = "Cell"
 
 class FeedController: UICollectionViewController {
     
-    private var posts = [Post]()    // PostService.fetchPosts에서 업데이트해서 posts.count로...?
+    private var posts = [Post]()    
     var post: Post?
     
     // MARK: LifeCycle
@@ -15,13 +15,14 @@ class FeedController: UICollectionViewController {
         configureUI()
         fetchPosts()
     }
+    
     // MARK: API
     private func fetchPosts() {
-        guard post == nil else { return }
+//        guard post == nil else { return }
         
         PostService.fetchPosts { posts in
             self.posts = posts
-            self.collectionView.refreshControl?.endRefreshing()
+            self.collectionView.refreshControl?.endRefreshing()     // 새로고침 로딩 끝
             self.collectionView.reloadData()
         }
     }
@@ -47,6 +48,7 @@ class FeedController: UICollectionViewController {
     
     // MARK: Selector
     @objc func handleRefresh(){
+        // 새로고침 하면 posts를 지웠다가 다시 reload한다(fetchPosts)
         posts.removeAll()
         fetchPosts()
     }
@@ -86,11 +88,10 @@ extension FeedController {
     // 위에 identifier와 동일한 식별자를 사용하고 있따?
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
-        cell.delegate = self
+//        cell.delegate = self
         
         if let post = post {
             cell.viewModel = PostViewModel(post: post)
-            return cell
         } else {
             cell.viewModel = PostViewModel(post: posts[indexPath.row])
         }

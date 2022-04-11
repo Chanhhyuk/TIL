@@ -2,10 +2,11 @@
 import UIKit
 import JGProgressHUD        // 로딩 표시 라이브러리
 
-// UIViewController로 상속되는 모든 클래스는 gradientBackground 함수를 사용할 수 있다.
-// JGProgressHUD를 사용할 수 있다.
+// UIViewController로 상속되는 모든 클래스는 아래와 같은 함수 사용할 수 있음
 extension UIViewController {
+    
     // extension(확장)은 저장속성을 포함하지 말아야한다
+    // 새 값을 저장하기 위해 추가 메모리가 필요한데 extension은 그런 작업을 관리 할 수 없다
     static let hud = JGProgressHUD(style: .dark)    // static을 뺀 일반저장속성으로 선언하면 에러 발생
     
     
@@ -18,7 +19,6 @@ extension UIViewController {
     }
     
     // JGProgressHUD 사용
-    // hud가 정적으로 생성되었기 때문에 인스턴스를 가질필요가 없다(in: view)? 컨트롤러의 인스턴스
     func showLoader(_ show: Bool) {
         view.endEditing(true)   //
         if show {

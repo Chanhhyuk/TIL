@@ -8,9 +8,7 @@ protocol FeedCellDelegate: class {
 
 class FeedCell: UICollectionViewCell {
     
-    var viewModel: PostViewModel? {
-        didSet { configure() }
-    }
+    var viewModel: PostViewModel? { didSet { configure() } }
     
     weak var delegate: FeedCellDelegate?
     

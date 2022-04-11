@@ -1,5 +1,6 @@
 import Foundation
 
+// FeedCell에서 사용할 viewModel을 만든다.
 struct PostViewModel {
     let post: Post
     
@@ -15,12 +16,13 @@ struct PostViewModel {
     
     var likesLabelText: String {
         if post.likes != 1 {
-            return "\(post.likes) likes"
+            return "\(post.likes) likes"    // 2이상이면 복수형이닌까 likes
         } else {
-            return "\(post.likes) like"
+            return "\(post.likes) like"     // 1이면 단수형이니까 like
         }
     }
     
+    // 생성자를 만든 이유는?
     init(post: Post) { self.post = post }
     
 }

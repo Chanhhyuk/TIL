@@ -19,7 +19,7 @@ struct PostService {
     
     // 게시글을 패치할때
     static func fetchPosts(completion: @escaping([Post]) -> Void) {     // 모든 게시글을 불러온다
-        // timestamp 기준으로 최신순으로 정렬
+        // API를 가져올때 order(by: timestamp) timestamp 기준으로 최신순으로 정렬
         COLLECTION_POSTS.order(by: "timestamp", descending: true).getDocuments { snapshot, Error in
             guard let documents = snapshot?.documents else { return }
             let posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data()) })
@@ -27,10 +27,10 @@ struct PostService {
         }
     }
     
-    // 모든 uid를 가져와서 그 중에서 로그인
+    // 프로필 컨트롤러에서 현재 로그인된 user의 게시글 이미지 목록
     static func fetchPosts(forUser uid: String, completion: @escaping([Post]) -> Void) {
+        // whereField로 특정필드(ownerUid)
         let query = COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid)
-        
         query.getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             var posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
