@@ -2,6 +2,8 @@
 // 사용하고자 할때 해당 Controller에 가서 collectionView.register(FeedCell.self, forCellWithReuseIdentifier: "cell") 작성
 import UIKit
 
+// Controller에 있는게 아니라 Cell에 버튼이 있기 때문에 사용.
+// CommentController로 푸시 할 수 없다.
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
 }
@@ -9,8 +11,9 @@ protocol FeedCellDelegate: class {
 class FeedCell: UICollectionViewCell {
     
     var viewModel: PostViewModel? { didSet { configure() } }
+    // ?옵셔널로 선언하고 사용하는곳에서 안전하게 풀어서 사용?
     
-    weak var delegate: FeedCellDelegate?
+    weak var delegate: FeedCellDelegate?        // 대리자를 위임한다?
     
     // let으로 선언하면 self를 FeedCell.self 바꾸라고 나옴 lazy var로 선언하면 에러 문구가 안 뜸(업데이트 후로 바뀐거 같음)??
     private let profileImageView: UIImageView = {
@@ -125,9 +128,10 @@ class FeedCell: UICollectionViewCell {
     }
     
     // MARK: Selector
+    // cell이기 때문에 controller에 대한 액세스 권한이 없고 보기만 가능
     @objc private func handleCommentButton(){
         guard let viewModel = viewModel else { return }
-        delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)
+        delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)    // 이 작업을 수행하려면 작업을 위임하는곳(Feed Controller)에서 이 프로토콜을 준수해야 한다.
     }
     
 }

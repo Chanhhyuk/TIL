@@ -1,10 +1,9 @@
-// 왜 firebase에 업로드할때 이미지업로드를 따로 만들어서 할까?
 import FirebaseStorage      // 파일 저장소
+// 업로드 정보중에서 이미지만 따로 파일을 만든 이유는 정보의 종류가 달라서 그런걸까?
 
 // AuthService에서 사용
 struct ImageUploader {
     // #escaping(String)을 한 이유는 이미지를 업로드할 때 해당 이미지의 URL을 다운로드 할거기 떄문?
-    // 이 함수를 호출할 때 연결된 이미지 URL을 다시 가져와야 한다
     // 이미지를 firebase에 전송하고 에러 없이 완료되면 완료 핸들러를 실행하고 다운로드를 다시 제공한다?
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }  // jpeg 압축 품질을 결정 0 ~ 1사이

@@ -54,6 +54,7 @@ class LoginController: UIViewController{
         let button = UIButton(type: .system)
         button.attributed(first: "Don't have an account?", second: "Sign Up")
         button.addTarget(self, action: #selector(tapRegister), for: .touchUpInside) // 여기서 self는 LoginController 클래스를 참조한다 즉 self는 작업을 처리할 클래스다
+        // 다른곳은 LoginController.self 하면 됫는데 여기는 에러가 남
         return button
     }()
     
@@ -69,6 +70,7 @@ class LoginController: UIViewController{
         
         let stack = UIStackView(arrangedSubviews: [emailField, passwordField, loginButton,forgotButton])
         // 계속해서 위치를 잡을 필요가 없이 stack view 하나만 위치를 잡아주면 나머지는 자동으로 위치가 잡힘 스택뷰의 장점
+        // 로고 이미지는 높이를 다르게 줘야하기 때문에 스택뷰에 넣지않고 따로 만든것 같다
         stack.axis = .vertical
         stack.spacing = 20
         view.addSubview(stack)

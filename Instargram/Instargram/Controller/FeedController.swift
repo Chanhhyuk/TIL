@@ -88,7 +88,7 @@ extension FeedController {
     // 위에 identifier와 동일한 식별자를 사용하고 있따?
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
-//        cell.delegate = self
+        cell.delegate = self    // 댓글버튼 delegate 사용
         
         if let post = post {
             cell.viewModel = PostViewModel(post: post)
@@ -111,11 +111,10 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// FeedCell에서 만든 델리게이트를 위임받아서 FeedCell에서 만든 버튼을 누르면 CommentController로 push할 수 있게 한다
 extension FeedController: FeedCellDelegate {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
         let controller = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
         navigationController?.pushViewController(controller, animated: true)
     }
-    
-    
 }

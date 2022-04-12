@@ -31,9 +31,12 @@ struct PostService {
     static func fetchPosts(forUser uid: String, completion: @escaping([Post]) -> Void) {
         // whereField로 특정필드(ownerUid)
         let query = COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid)
+        
         query.getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }
             var posts = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
+            
+            // 프로필에서 게시글 사진을 시간정렬순(최신순)으로
             posts.sort { ( post1, post2 ) -> Bool in
                 return post1.timestamp.seconds > post2.timestamp.seconds
             }

@@ -9,7 +9,7 @@ extension UIViewController {
     // 새 값을 저장하기 위해 추가 메모리가 필요한데 extension은 그런 작업을 관리 할 수 없다
     static let hud = JGProgressHUD(style: .dark)    // static을 뺀 일반저장속성으로 선언하면 에러 발생
     
-    
+    // private로 선언하면 사용할곳에 사용이 안되었다 왜?
     func gradientBackground(){
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
@@ -34,8 +34,8 @@ extension UIViewController {
 extension UIButton {
     func attributed(first: String, second: String){
         let atts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.systemFont(ofSize: 16)]
-        let attributedTitle = NSMutableAttributedString(string: "\(first) ", attributes: atts) // 뒤에 공백을 넣기 위해 \()를 사용한다
         let boldAtts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.87), .font: UIFont.boldSystemFont(ofSize: 16)]
+        let attributedTitle = NSMutableAttributedString(string: "\(first) ", attributes: atts) // 뒤에 공백을 넣기 위해 \()를 사용한다
         attributedTitle.append(NSAttributedString(string: second, attributes: boldAtts))
         setAttributedTitle(attributedTitle, for: .normal)
     }

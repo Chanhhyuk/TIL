@@ -26,9 +26,10 @@ class UploadPostController: UIViewController {
     // 게시글을 적을 때 여러줄을 적을것이므로 textField가 아닌 textView로 작성
     private lazy var textView: InputTextView = {
         let textView = InputTextView()
-        textView.placeholderTexㅅ = "Enter caption.."
+        textView.placeholderText = "Enter caption.."
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.delegate = self
+        textView.placeholderShouldCenter = true
         return textView
     }()
     

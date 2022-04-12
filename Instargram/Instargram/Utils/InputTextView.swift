@@ -18,6 +18,17 @@ class InputTextView: UITextView {
         return label
     }()
     
+    var placeholderShouldCenter = true {
+        didSet {
+            if placeholderShouldCenter {
+                placeholderLabel.anchor(left: leftAnchor, right: rightAnchor, paddingLeft: 8)
+                placeholderLabel.centerY(inView: self)
+            } else {
+                placeholderLabel.anchor(top: topAnchor, left: leftAnchor, paddingTop: 6, paddingLeft: 8)
+            }
+        }
+    }
+    
     // MARK: Action
     @objc private func handleTextDidChange(){
         placeholderLabel.isHidden = !text.isEmpty   // 텍스트가 비어있지 않다면 placeholderLabel을 숨긴다
@@ -29,8 +40,8 @@ class InputTextView: UITextView {
         addSubview(placeholderLabel)
         placeholderLabel.anchor(top: topAnchor, left: leftAnchor, paddingTop: 6, paddingLeft: 8)
         
-        
         // 관찰자가(textDidChangeNotification) 텍스트가 있음을 알림 (handleTextDidChange)
+        // ???
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextDidChange), name: UITextView.textDidChangeNotification, object: nil)
     }
     

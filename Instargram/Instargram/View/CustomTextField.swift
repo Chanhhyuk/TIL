@@ -8,7 +8,7 @@ class CustomTextField: UITextField{     // 상속하는 상위클래스는 UITex
         
         let spacer = UIView()
         spacer.setDimensions(height: 50, width: 12)
-        leftView = spacer
+        leftView = spacer               // textField를 상속받기 때문에 앞에 textField가 있는것과 같다
         leftViewMode = .always
         borderStyle = .none             // textField를 상속받기 때문에 앞에 textField가 있는것과 같다
         textColor = .white
@@ -16,7 +16,7 @@ class CustomTextField: UITextField{     // 상속하는 상위클래스는 UITex
         keyboardType = .emailAddress
         backgroundColor = UIColor(white: 1, alpha: 0.1)
         setHeight(50)
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor(white: 1, alpha: 0.7)])  // 플레이스홀더 색
     }
     
     required init?(coder: NSCoder) {
