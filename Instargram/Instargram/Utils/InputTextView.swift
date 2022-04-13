@@ -12,7 +12,7 @@ class InputTextView: UITextView {
     }
     
     // text는 UploadController에서 설정해 준다
-    private let placeholderLabel: UILabel = {
+    let placeholderLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         return label

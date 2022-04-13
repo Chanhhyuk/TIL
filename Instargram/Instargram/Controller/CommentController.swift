@@ -8,6 +8,7 @@ class CommentController: UICollectionViewController{
     private lazy var commentInputView: CommentInput = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cv = CommentInput(frame: frame)
+        cv.delegate = self      // CommentInput에서 만든 delegate를 사용하기 위해
         return cv
     }()
     
@@ -40,6 +41,8 @@ class CommentController: UICollectionViewController{
         navigationItem.title = "Comments"
         collectionView.backgroundColor = .white
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.alwaysBounceVertical = true          // collectionView 스크롤이 콘텐츠뷰의 끝에 도달할 때 튀어 오르기가 항상 발생하는지를 결정하는 부울 값
+        collectionView.keyboardDismissMode = .interactive   // 스크롤을 내릴 때 키보드도 함께 내린다.       .ondrug가 더 확실한거 같음
     }
     
 }
@@ -47,7 +50,7 @@ class CommentController: UICollectionViewController{
 // cell의 갯수와 어떤 cell을 사용할 것인지
 extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
@@ -59,5 +62,11 @@ extension CommentController {
 extension CommentController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 80)
+    }
+}
+
+extension CommentController: CommentInputDelegate {             // CommentInput에서 위임한일을 여기 컨트롤러에서 처리한다.
+    func inputView(_ inputView: CommentInput, wantsToUploadComment comment: String) {
+        print("comment: \(comment)")
     }
 }
