@@ -6,7 +6,7 @@ import YPImagePicker // 이미지 라이브러리
 // UICollectionViewController UITableViewController로 상속받으면 이미 DataSource, Delegate 프로토콜을 준수한다 따로선언해줄 필요가 없다
 class MainTabController: UITabBarController {
     
-    private var user: User? {
+    var user: User? {
         didSet{     // didSet: 값이 변경되기 직전을 감지 한다
             guard let user = user else { return }
             tabController(withUser: user)

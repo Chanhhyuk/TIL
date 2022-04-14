@@ -114,7 +114,7 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 // FeedCell에서 만든 델리게이트를 위임받아서 FeedCell에서 만든 버튼을 누르면 CommentController로 push할 수 있게 한다
 extension FeedController: FeedCellDelegate {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
-        let controller = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        let controller = CommentController(post: post)
         navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -5,12 +5,24 @@ private let reuseIdentifier = "CommentCell"
 
 class CommentController: UICollectionViewController{
     // MARK: Properties
+    private let post: Post
+    
     private lazy var commentInputView: CommentInput = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cv = CommentInput(frame: frame)
         cv.delegate = self      // CommentInput에서 만든 delegate를 사용하기 위해
         return cv
     }()
+    
+    // 사용자 초기화?
+    init(post: Post) {
+        self.post = post
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -67,6 +79,15 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
 
 extension CommentController: CommentInputDelegate {             // CommentInput에서 위임한일을 여기 컨트롤러에서 처리한다.
     func inputView(_ inputView: CommentInput, wantsToUploadComment comment: String) {
-        print("comment: \(comment)")
+        
+        guard let tab = tabBarController as? MainTabController else { return }
+        guard let user = tab.user else { return }
+        
+        showLoader(true)
+        
+        CommentService.uploadComment(comment: comment, postID: post.postId, user: user) { error in
+            self.showLoader(false)
+            inputView.clearCommentTextView()
+        }
     }
 }

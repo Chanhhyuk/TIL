@@ -32,6 +32,7 @@
 		7191179327B7C8D700F18EB7 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191179227B7C8D700F18EB7 /* UserService.swift */; };
 		7191179527B7C95B00F18EB7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7191179427B7C95B00F18EB7 /* Constants.swift */; };
 		71C6599627EB506200BFF0EC /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6599527EB506200BFF0EC /* CommentController.swift */; };
+		71C6998B28081BFF009412E0 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C6998A28081BFF009412E0 /* CommentService.swift */; };
 		71CC9B3127F3165B00DE2707 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CC9B3027F3165B00DE2707 /* CommentCell.swift */; };
 		71E569F428058BF300976CB0 /* CommentInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E569F328058BF300976CB0 /* CommentInput.swift */; };
 		71E6712027A00BFF00ACF2E0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6711F27A00BFF00ACF2E0 /* LoginController.swift */; };
@@ -75,6 +76,7 @@
 		7191179227B7C8D700F18EB7 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		7191179427B7C95B00F18EB7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		71C6599527EB506200BFF0EC /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		71C6998A28081BFF009412E0 /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		71CC9B3027F3165B00DE2707 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		71E569F328058BF300976CB0 /* CommentInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInput.swift; sourceTree = "<group>"; };
 		71E6711F27A00BFF00ACF2E0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				717D9F7C27A3B98E00AC9CCA /* AuthService.swift */,
 				7191179227B7C8D700F18EB7 /* UserService.swift */,
 				71849E8527DA0F7F00B888B4 /* PostService.swift */,
+				71C6998A28081BFF009412E0 /* CommentService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				71E569F428058BF300976CB0 /* CommentInput.swift in Sources */,
 				71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */,
 				71849E8627DA0F7F00B888B4 /* PostService.swift in Sources */,
+				71C6998B28081BFF009412E0 /* CommentService.swift in Sources */,
 				7191179327B7C8D700F18EB7 /* UserService.swift in Sources */,
 				718FCD7E27A27A26009E9A5E /* AuthViewModel.swift in Sources */,
 				7178E37527DB38FF009CE7FB /* Post.swift in Sources */,
