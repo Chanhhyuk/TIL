@@ -6,6 +6,7 @@ private let reuseIdentifier = "CommentCell"
 class CommentController: UICollectionViewController{
     // MARK: Properties
     private let post: Post
+    private var comments = [Comment]()
     
     private lazy var commentInputView: CommentInput = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
@@ -28,6 +29,7 @@ class CommentController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchComments()
     }
     
     // textfield, textView안에 내장된 inputAccessoryView 프로퍼티를 UIView에 대입
@@ -49,6 +51,16 @@ class CommentController: UICollectionViewController{
         tabBarController?.tabBar.isHidden = false
     }
     
+    // MARK: API
+    private func fetchComments() {
+        CommentService.fetchComments(forPost: post.postId) { comments in
+            self.comments = comments
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
+    // MARK: configureUI
     private func configureUI(){
         navigationItem.title = "Comments"
         collectionView.backgroundColor = .white
@@ -62,7 +74,7 @@ class CommentController: UICollectionViewController{
 // cell의 갯수와 어떤 cell을 사용할 것인지
 extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return comments.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
