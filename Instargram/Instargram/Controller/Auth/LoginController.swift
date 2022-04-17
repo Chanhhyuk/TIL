@@ -10,13 +10,13 @@ class LoginController: UIViewController{
     
     // MARK: Properties
     
-    private var viewModel = LoginViewModel()    // AuthViewModel에서 만든걸 사용하기위해 뷰 모델의 인스턴스 생성
+    private var viewModel = LoginViewModel()    // 이것도 var가 아닌 let으로 바꿨더니 사용하려던 곳에 에러가 났다?
     weak var delegate: AuthenticationDelegate?
     // delegate를 weak로 만든 이유는 유지 주기를 피할려고
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFill        // 이거 여러옵션 비교글 올리기
         return imageView
     }()
     
@@ -89,6 +89,8 @@ class LoginController: UIViewController{
     
     // 로그인 버튼을 누르면 API AuthService에서 만든 구조체 AuthService의 logUserIn 함수를 사용해 통신
     @objc private func tapLogin(){
+        
+        // guard let email 변수 안에 emailField.text가 들어오면 사용 아니면 return
         guard let email = emailField.text else { return }
         guard let password = passwordField.text else { return }
         

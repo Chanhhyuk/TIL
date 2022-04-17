@@ -20,7 +20,7 @@ protocol FormViewModel {
 
 
 struct LoginViewModel: AuthViewModel {
-    var email: String?  // 이거 let으로 선언했더니 뷰 모델 인스턴스 생성할때 꼭 파라미터를 적어줘야 했다
+    var email: String?  // 이거 let으로 선언하거나 var로 선언했는데 ? 때고 선언하면 LoginViewController에서 인스턴스 생성할때 꼭 파라미터를 적어줘야 했다?
     var password: String?
     
     // View를 업데이트 하는 로직이 Controller 내부에 있는것은 바람직하지 않아서 ViewModel 계산속성으로 작성한다?

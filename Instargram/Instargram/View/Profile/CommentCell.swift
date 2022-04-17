@@ -3,6 +3,10 @@ import UIKit
 class CommentCell: UICollectionViewCell {
     // MARK: Properties
     
+    var viewModel: CommentViewModel? {      // didSet 없이 그냥 사용해도 되는데 didSet을 사용하는 이유가 실시간으로 바꾸기 위해서 인가?
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -11,13 +15,7 @@ class CommentCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let commentLabel: UILabel = {
-        let label = UILabel()
-        let attrubutedString = NSMutableAttributedString(string: "joker ", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attrubutedString.append(NSAttributedString(string: "test comment...", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = attrubutedString
-        return label
-    }()
+    private let commentLabel = UILabel()
     
     // MARK: LifeCycle
     override init(frame: CGRect) {
@@ -36,6 +34,15 @@ class CommentCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 40 / 2
         addSubview(commentLabel)
         commentLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        commentLabel.anchor(right: rightAnchor, paddingRight: 8)
+        commentLabel.numberOfLines = 0
+    }
+    
+    private func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        commentLabel.attributedText = viewModel.commentLabelText()
     }
     
 }

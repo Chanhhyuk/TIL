@@ -77,7 +77,8 @@ extension CommentController {
         return comments.count
     }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CommentCell
+        cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
     }
 }
@@ -85,7 +86,9 @@ extension CommentController {
 // cell의 크기
 extension CommentController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        let viewModel = CommentViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height + 32     // cell 사이의 32만큼의 공백을 줌
+        return CGSize(width: view.frame.width, height: height)  // 글자수에 따라 cell의 높이값이 유동적으로 변하므로 height를 32 고정값이 아닌 viewModel에서 만든 유동적인 값을 줌
     }
 }
 
