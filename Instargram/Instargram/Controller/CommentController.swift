@@ -106,3 +106,14 @@ extension CommentController: CommentInputDelegate {             // CommentInput�
         }
     }
 }
+
+// cell 이미지 클릭시 해당 프로필로 가는 것. cell의 데이터를 넘겨받아야 한다
+extension CommentController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let uid = comments[indexPath.row].uid
+        UserService.fetchUser(withUid: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+}

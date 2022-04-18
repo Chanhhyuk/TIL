@@ -1,4 +1,3 @@
-// 회원가입뷰에서 받은 사용자 정보를 firebase에 전송할때 사용
 import UIKit        // UIImage를 사용하므로 UIKit 사용
 import Firebase
 import AVFoundation
@@ -16,7 +15,7 @@ struct AuthCredetials {     // viewModel은 var로 도배 했는데 여긴 let�
 // 회원가입의 데이터인 이메일 패스워드 이름과 프로필사진을 전송
 struct AuthService {
     
-    // API struct에 static으로 function을 선언하는 이유는?
+    // private로 선언하면 다른곳에서 사용을 못했음
     // AuthDataResultCallback: 로그인 관련 이벤트가 완료될 때 호출됨
     static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?){
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)

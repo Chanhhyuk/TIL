@@ -5,8 +5,7 @@ typealias FirestoreCompletion = (Error?) -> Void // 사용하기 더 쉽도록 �
 struct UserService {
     
     // MainController에서 사용
-    static func fetchUser(completion: @escaping(User) -> Void ) {    // Model 폴더에 User 클래스에서 만든 User 구조체 사용
-        guard let uid = Auth.auth().currentUser?.uid else { return }    // firebase에서 현재 사용자의 UID를 담는다.
+    static func fetchUser(withUid uid: String, completion: @escaping(User) -> Void ) {    // Model 폴더에 User 클래스에서 만든 User 구조체 사용
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in // User 문서 -> 현재 사용자 uid로 된 문서안에 데이터 가져오기
             guard let dictionary = snapshot?.data() else { return }     // 데이터를 가져왔다면 변수에 담기
             let user = User(dictionary: dictionary)     // Model User파일에 User구조체에서 만든 생성자 활용

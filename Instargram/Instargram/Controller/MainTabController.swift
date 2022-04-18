@@ -23,7 +23,8 @@ class MainTabController: UITabBarController {
     // MARK: API
     func fetchUser() {
         // API 폴더에 UserService 구조체에 fetchUser 구조체를 사용
-        UserService.fetchUser { user in
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.fetchUser(withUid: uid) { user in
             self.user = user
             self.navigationItem.title = user.username
         }
@@ -39,7 +40,7 @@ class MainTabController: UITabBarController {
                 let controller = LoginController()
                 controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용
                 let nav = UINavigationController(rootViewController: controller)
-                nav.modalPresentationStyle = .fullScreen
+                nav.modalPresentationStyle = .fullScreen            // modal과 present로 주는 이유는 navigation push로 할 경우 뒤로가기가 생성될텐데 어짜피 사용 안할거라서?
                 self.present(nav, animated: true, completion: nil)
             }
         }

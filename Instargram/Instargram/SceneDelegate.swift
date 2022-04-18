@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MainTabController()
+        window?.rootViewController = MainTabController()        // MainTab이 root고 로그인이 안되어있다면 바로 LoginView로 넘어가게끔 설정
         window?.makeKeyAndVisible()
         UINavigationBar.appearance().tintColor = .black
     }
