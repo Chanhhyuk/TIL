@@ -2,7 +2,7 @@ import Foundation
 
 // FeedCell에서 사용할 viewModel을 만든다.
 struct PostViewModel {
-    let post: Post
+    var post: Post
     
     var imageUrl: URL? { return URL(string: post.imageUrl) }
     

@@ -3,9 +3,10 @@
 import UIKit
 
 // Controller에 있는게 아니라 Cell에 버튼이 있기 때문에 사용.
-// CommentController로 푸시 할 수 없다.
+// 좋아요버튼은 FeedCell에 있지만 처리할 수 없고 FeedController에서 처리해야하므로 delegate로 위임함
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
+    func cell(_ cell: FeedCell, didLike post: Post)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -51,6 +52,7 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "like_unselected") , for: .normal)
+        button.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         return button
     }()
     
@@ -132,6 +134,11 @@ class FeedCell: UICollectionViewCell {
     @objc private func handleCommentButton(){
         guard let viewModel = viewModel else { return }
         delegate?.cell(self, wantsToShowCommentsFor: viewModel.post)    // 이 작업을 수행하려면 작업을 위임하는곳(Feed Controller)에서 이 프로토콜을 준수해야 한다.
+    }
+    
+    @objc private func didTapLike(){
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, didLike: viewModel.post)
     }
     
 }

@@ -117,4 +117,14 @@ extension FeedController: FeedCellDelegate {
         let controller = CommentController(post: post)
         navigationController?.pushViewController(controller, animated: true)
     }
+    func cell(_ cell: FeedCell, didLike post: Post) {
+        cell.viewModel?.post.didLike.toggle()
+        // FeedController에서 cell을 delegate를 했는데 viewModel이 PostViewModel인데 FeedCell에서 선언
+        
+        if post.didLike {
+            print("Like")
+        }else{
+            print("UnLike")
+        }
+    }
 }

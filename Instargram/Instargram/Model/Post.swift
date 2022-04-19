@@ -11,6 +11,7 @@ struct Post {           // 나머지는 변하지 않으므로 let 선언
     let timestamp: Timestamp    // 타임스탬프 객체에 대한 액세스 권한을 얻으려면 Firebase를 가져와야 한다
     let ownerImageUrl: String
     let ownerUsername: String
+    var didLike = false
     
     init(postId: String, dictionary: [String: Any]) {
         self.postId = postId
@@ -21,6 +22,7 @@ struct Post {           // 나머지는 변하지 않으므로 let 선언
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
         self.ownerImageUrl = dictionary["ownerImageUrl"] as? String ?? ""
         self.ownerUsername = dictionary["ownerUsername"] as? String ?? ""
+        
     }
     
 }

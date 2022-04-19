@@ -32,7 +32,9 @@ struct AuthService {
                 if let error = error {
                     print("Debug: \(error.localizedDescription)")
                     return
-                }
+                }       // 여기 까지가 firebase에 회원가입 하는거
+                
+                // 여기부터는 firebase 저장소에 올릴 데이터들
                 
                 guard let uid = result?.user.uid else { return }        // uid 고유번호
                 // UUID(Universally Unique Identifier): 고유의 값

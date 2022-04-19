@@ -35,7 +35,7 @@ class MainTabController: UITabBarController {
     // 로그인을 했다면 rootController이 MainController이므로 이 함수는 작동하지 않으므로 MainController을 보여준다
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser == nil {     // 로그인 상태인지 확인, 사용자프로필이 없다면(nil)
-            DispatchQueue.main.async {          // API 호출을 포함하고(Auth.auth().currentUser) 있기 때문에 메인쓰레드로 다시 이동해야 한다?
+            DispatchQueue.main.async {          // API통신을 하고 다운로드가 완료된 후 UI를 업데이트 하고 싶다면 Main 스레드에서 작업한다
                 // 화면표시, UI변경과 같이 UI업데이트와 관련된 작업을 수행할때는 메인쓰레드에서 해야한다?
                 let controller = LoginController()
                 controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용

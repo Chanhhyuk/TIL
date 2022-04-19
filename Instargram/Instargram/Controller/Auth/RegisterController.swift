@@ -6,6 +6,7 @@ class RegisterController: UIViewController {
     
     private var viewModel = RegistrationViewModel() // AuthViewModel에서 만든 RegistrationViewModel 사용
     private var profileImage: UIImage?          // 회원가입을 할때 이미지를 설정하기전에는 이미지값이 없기 때문에 옵셔널로 설정
+    // 이거 그리고 옵셔널로 안해주면 Class has no initializers 에러가 났음
     weak var delegate: AuthenticationDelegate?
     
     // 프로필 이미지
@@ -69,8 +70,8 @@ class RegisterController: UIViewController {
     @objc private func tapPlusPhoto() {
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
+        picker.allowsEditing = true     // 사진과 영상을 찍은 후 편집하는 절차를 혀용할 것인가
+        present(picker, animated: true, completion: nil)    // UIImagePickerController로 화면전환
     }
     
     @objc private func tapSignUp(){
@@ -110,6 +111,7 @@ class RegisterController: UIViewController {
         } else {
             viewModel.userName = sender.text
         }
+        print(viewModel.formIsValid)
         updateForm()
     }
     
@@ -143,11 +145,12 @@ extension RegisterController: UIImagePickerControllerDelegate, UINavigationContr
         
         profileImage = seletedImage     // 선택한 이미지를 class단위로 생성한 profileImage로 값을 전달후 이걸 다시 api로 보냄
         
+        // plusPhotoButton이 기본이미지에서 seleted 선택한 이미지로 변경
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true
         plusPhotoButton.layer.borderColor = UIColor.white.cgColor
         plusPhotoButton.layer.borderWidth = 2
         plusPhotoButton.setImage(seletedImage.withRenderingMode(.alwaysOriginal), for: .normal)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)       // UIImagePickerController에서 선택 후 다시 RegisterController로 돌아감
     }
 }
