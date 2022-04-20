@@ -48,7 +48,7 @@ class FeedCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let likeButton: UIButton = {
+    lazy var likeButton: UIButton = {        // 좋아요를 누르면 버튼의 색이 변해야 하므로 lazy var로 선언
         let button = UIButton()
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: "like_unselected") , for: .normal)

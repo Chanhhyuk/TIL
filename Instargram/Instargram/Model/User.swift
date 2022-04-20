@@ -1,4 +1,5 @@
-// User에 관한 내용으로 회원가입이나 로그인할 때 사용
+// 이걸 처음 만든 시점이 회원가입이나 로그인 할때 보낼때는 안 만들었는데 다시 데이터들을 받을 때 생성함
+// API의 UserService, MainController에서 사용자 정보를 뿌려줄때 사용
 import Foundation
 import Firebase
 

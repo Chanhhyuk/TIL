@@ -5,6 +5,7 @@ class RegisterController: UIViewController {
     // MARK: Properties
     
     private var viewModel = RegistrationViewModel() // AuthViewModel에서 만든 RegistrationViewModel 사용
+    // 이거 let으로 선언하면 아래의 viewModel.email, password 등등을 사용못함 왜?
     private var profileImage: UIImage?          // 회원가입을 할때 이미지를 설정하기전에는 이미지값이 없기 때문에 옵셔널로 설정
     // 이거 그리고 옵셔널로 안해주면 Class has no initializers 에러가 났음
     weak var delegate: AuthenticationDelegate?
@@ -92,7 +93,7 @@ class RegisterController: UIViewController {
                 print("error:\(error.localizedDescription)")
                 return
             }
-            self.delegate?.authenticationDidComplete()     // 회원가입 버튼을 누르면 메인컨트롤러로 가는 것
+            self.delegate?.authenticationDidComplete()     // 회원가입 버튼을 누르면 MainController로 가는것
         }
     }
     
@@ -111,13 +112,13 @@ class RegisterController: UIViewController {
         } else {
             viewModel.userName = sender.text
         }
-        print(viewModel.formIsValid)
         updateForm()
     }
     
     
     // MARK: Function
     private func textFieldObservers(){      // 텍스트 필드에서 변경될때 마다 호출 됨
+        emailField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         fullNameField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         userNameField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)

@@ -35,6 +35,7 @@ class FeedController: UICollectionViewController {
         // 컬렉션 뷰에 셀을 반환하도록 지시하고 있지만(아래 delegate) 컬렉션에 셀을 등록하지 않았다(register)
         // 셀을 등록해야 반환할 수 있다.
         
+        // 이건 왜 post가 nil일 경우에만 로그아웃버튼이 나오게 했을까?
         if post == nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
         }
@@ -124,7 +125,10 @@ extension FeedController: FeedCellDelegate {
         if post.didLike {
             print("Like")
         }else{
-            print("UnLike")
+            PostService.likePost(post: post) { error in
+                cell.likeButton.setImage(UIImage(named: "like_selected") , for: .normal)
+                cell.likeButton.tintColor = .red
+            }
         }
     }
 }

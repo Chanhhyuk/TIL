@@ -8,6 +8,8 @@ class ProfileController: UICollectionViewController {
     
     // MARK: Properties
     private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 (self.user.isFollowed = true) 그래서 var로 선언
+    // private let user: User?, var user: User 이것만 선언했는데도 Class 'ProfileController' has no initializers 에러가 나옴 init이랑 required init도 같이 적어줌
+    // private var user: User? 했는데 아무에러도 안뜸
     private var posts = [Post]()
     
     // 의존성 주입?
@@ -108,6 +110,8 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
+    
+    // cell과 cell 사이의 공백 길이 행과 열
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }

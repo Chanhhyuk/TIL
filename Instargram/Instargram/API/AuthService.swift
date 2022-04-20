@@ -18,8 +18,8 @@ struct AuthService {
     // private로 선언하면 다른곳에서 사용을 못했음
     // AuthDataResultCallback: 로그인 관련 이벤트가 완료될 때 호출됨
     static func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?){
+        // completion 안 사용하니까 이 함수를 사용하려는 곳에 클로저를 사용 못하고 사용하면 Extra trailing closure passed in call 에러가 남
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
-        // 로그인 통신
     }
     
     // withCredential는 이 함수를 사용할 곳에서 쓰일 파라미터 이름 인자 레이블
