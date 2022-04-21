@@ -66,7 +66,7 @@ class MainTabController: UITabBarController {
     
     private func tabController(withUser user: User){
 //        let layout = UICollectionViewLayout()     // 많이 하는 실수 에러도 안남
-        let layout = UICollectionViewFlowLayout()   // 직접적으로 적어줘도 됨
+        let layout = UICollectionViewFlowLayout()   // 직접적으로 적어주는게 더 깔끔한데 내가보기엔 이렇게 쓰는 이유가 뭘까?
         let feed = naviController(unseletedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
         let search = naviController(unseletedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController() )
         let imageSelector = naviController(unseletedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController() )

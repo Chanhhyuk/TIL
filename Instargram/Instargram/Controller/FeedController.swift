@@ -1,7 +1,8 @@
 import UIKit
 import Firebase
 
-private let identifier = "Cell"
+private let identifier = "Cell"     // 실제로도 이렇게 사용하는 개발자들이 많을까?
+// 왜 식별자는 개발자가 실수할법한 문자열로 선언으로 정해졌을까? 뭔가 다른 의미가 있나? 걍 변수이름 내가 마음대로 짓는거 마냥 그런건가?
 
 class FeedController: UICollectionViewController {
     
@@ -123,7 +124,11 @@ extension FeedController: FeedCellDelegate {
         // FeedController에서 cell을 delegate를 했는데 viewModel이 PostViewModel인데 FeedCell에서 선언
         
         if post.didLike {
-            print("Like")
+            PostService.unlikePost(post: post) { _ in
+                // 이거 가로 안에서 Literal 안 먹히길래 가로 밖에서 하고 복붙 했는데 이래됨
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+                cell.likeButton.tintColor = .black
+            }
         }else{
             PostService.likePost(post: post) { error in
                 cell.likeButton.setImage(UIImage(named: "like_selected") , for: .normal)

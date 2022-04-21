@@ -47,6 +47,7 @@ struct PostService {
     
     static func likePost(post: Post, completion: @escaping(FirestoreCompletion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        // 게시물과 다른 사람이기 때문에 게시물을 확인하는게 아닌 현재 로그인 사용자를 확인
         
         COLLECTION_POSTS.document(post.postId).updateData(["likes": post.likes + 1])
         
@@ -56,8 +57,16 @@ struct PostService {
         }
     }
     
-    static func unlikePost() {
+    static func unlikePost(post: Post, completion: @escaping(FirestoreCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        // 게시물과 다른 사람이기 때문에 게시물을 확인하는게 아닌 현재 로그인 사용자를 확인
+//        guard post.likes > 0 else { return }  // 안전장치를 만든다.(좋아요는 음수가 될 수 없다)
         
+        COLLECTION_POSTS.document(post.postId).updateData(["likes": post.likes - 1 ])
+        // 문서에서 likes 값을 1 줄인다
+        COLLECTION_POSTS.document(post.postId).collection("post-likes").document(uid).delete { _ in
+            COLLECTION_USERS.document(uid).collection("user-likes").document(post.postId).delete(completion: completion)
+        }
     }
     
 }

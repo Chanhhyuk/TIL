@@ -42,7 +42,7 @@ extension UIButton {
 }
 
 
-
+// 이거는 따로 유명하게 뭐가 있는걸까? 아니면 그냥 강의자가 임의로 만든걸까?
 extension UIView {
     func anchor(top: NSLayoutYAxisAnchor? = nil,
                 left: NSLayoutXAxisAnchor? = nil,
