@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 // FeedCell에서 사용할 viewModel을 만든다.
 struct PostViewModel {
@@ -13,6 +14,15 @@ struct PostViewModel {
     var caption: String { return post.caption }
 
     var likes: Int { return post.likes }
+    
+    var likeButtonTintColot: UIColor {
+        return post.didLike ? .red : .black
+    }
+    
+    var likeButtonImage: UIImage? {
+        let imageName = post.didLike ? "like_selected" : "like_unselected"
+        return UIImage(named: imageName)
+    }
     
     var likesLabelText: String {
         if post.likes != 1 {

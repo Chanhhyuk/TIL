@@ -6,7 +6,9 @@ private let identifier = "Cell"     // 실제로도 이렇게 사용하는 개�
 
 class FeedController: UICollectionViewController {
     
-    private var posts = [Post]()    
+    private var posts = [Post]() {
+        didSet{ collectionView.reloadData() }
+    }
     var post: Post?
     
     // MARK: LifeCycle
@@ -24,9 +26,20 @@ class FeedController: UICollectionViewController {
         PostService.fetchPosts { posts in
             self.posts = posts
             self.collectionView.refreshControl?.endRefreshing()     // 새로고침 로딩 끝
-            self.collectionView.reloadData()
+            self.checkIfUserLikedPosts()
         }
     }
+    
+    private func checkIfUserLikedPosts() {
+        posts.forEach { post in
+            PostService.checkIfUserLikedPost(post: post) { didLike in
+                if let index = self.posts.firstIndex(where: { $0.postId == post.postId }) {
+                    self.posts[index].didLike = didLike
+                }
+            }
+        }
+    }
+    
     
     // MARK: ConfigureUI
     private func configureUI() {
@@ -128,11 +141,13 @@ extension FeedController: FeedCellDelegate {
                 // 이거 가로 안에서 Literal 안 먹히길래 가로 밖에서 하고 복붙 했는데 이래됨
                 cell.likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
                 cell.likeButton.tintColor = .black
+                cell.viewModel?.post.likes = post.likes - 1
             }
         }else{
             PostService.likePost(post: post) { error in
                 cell.likeButton.setImage(UIImage(named: "like_selected") , for: .normal)
                 cell.likeButton.tintColor = .red
+                cell.viewModel?.post.likes = post.likes + 1
             }
         }
     }

@@ -31,7 +31,7 @@ class LoginController: UIViewController{
         return textField
     }()
     
-    private let passwordField: UITextField = {
+    private let passwordField: CustomTextField = { // 중요! 위에처럼 UITextField라고 써도 되고 커스텀 타입으로 사용해도 됨 즉 커스텀은 기존 타입에 내가 옵션을 추가 한것
         let textField = CustomTextField(placeholder: "Password")
         textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return textField
@@ -126,6 +126,8 @@ class LoginController: UIViewController{
 }
 
 // 필수는 아니지만 코드를 깔끔하게 해준다, 프로토콜 지향방식
+// 아니 근데 왜 이걸보고 깔끔하고 코드에 도움이 된다고 하는걸까? ViewModel만 따로 묶어 놓은거라서?
+// 프로토콜은 그거에 맞게 꼭 써야하는 기능을 코드에 적어야 하니까 안정성도?
 extension LoginController: FormViewModel {
     func updateForm() {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor

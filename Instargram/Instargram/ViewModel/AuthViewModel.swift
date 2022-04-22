@@ -1,11 +1,16 @@
 // 로그인과 회원가입 뷰에서 데이터 값에 따라 동작을 설정하기 위한 viewModel
-import UIKit    // UIColor 속성을 사용하기 때문에 UIKit을 사용
+// UIColor 속성을 사용하기 때문에 UIKit을 사용
+// 여기는 근데 viewModel인데 model은 사용하지 않았네? 다른곳은 post나 user를 사용했는데 말이야
+import UIKit
 
+
+// 아 이거 그리고 파일이름이랑 똑같게 할려고 만든거래 LoginViewModel이면 어디 파일에 있는지 모르니까?
 protocol AuthViewModel {
     var formIsValid: Bool { get }
     var buttonBackgroundColor: UIColor { get }
     var buttonTintColor: UIColor { get }
     
+    // 한번 더 확인하는 느낌?
     // 프로토콜을 잘 준수했는지(해당 속성들을 다 구현했는지) 알려준다.
     // 써보닌깐 필수는 아니라는걸 알것같다 복붙하면되닌깐 근데 코드를 관리하기 위해서 또한 꼭 써야될때도 있을거 같다.
     // 로그인과 회원가입에서 공통으로 쓰인다.

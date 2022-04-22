@@ -2,6 +2,8 @@ import UIKit
 // UploadPostController에서 사용할 textView를 커스텀
 // textView를 사용할 때 플레이스홀더가 없기 때문에 직접 만들고 또 글자를 적으면 사라지는것 까지 직접 설정을 만듬
 
+
+// Extensions 보면 extension으로 만들었는데 왜 얘는 하위클래스로 만들었을까?
 class InputTextView: UITextView {
     // MARK: Properties
 
