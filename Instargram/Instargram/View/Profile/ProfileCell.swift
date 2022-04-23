@@ -21,7 +21,7 @@ class ProfileCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .lightGray
         addSubview(postImageView)
-        postImageView.fillSuperview()       // 슈퍼뷰를 전부 채워준다
+        postImageView.fillSuperview()
     }
     
     required init?(coder: NSCoder) {

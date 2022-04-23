@@ -93,6 +93,8 @@ class RegisterController: UIViewController {
                 print("error:\(error.localizedDescription)")
                 return
             }
+            // self도 생략해도 되는데 왜 사용하는걸까?
+            // self.dismiss(animated: true, completion: nil)     // completion nil 사용할꺼면 생략해도 되지 않나? 왜쓰는거임? ,왜 이걸 안 쓰고 아래것을 사용했을까?
             self.delegate?.authenticationDidComplete()     // 회원가입 버튼을 누르면 MainController로 가는것
         }
     }

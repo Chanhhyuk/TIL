@@ -34,12 +34,12 @@ class MainTabController: UITabBarController {
     // 로그인 상태를 확인하고 아니라면 로그인 컨트롤러를 보여준다.
     // 로그인을 했다면 rootController이 MainController이므로 이 함수는 작동하지 않으므로 MainController을 보여준다
     func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser == nil {     // 로그인 상태인지 확인, 사용자프로필이 없다면(nil)
+        if Auth.auth().currentUser == nil {     // Auth.auth() 작업이 비동기식으로 또는 백그라운드 스레드에서 발생한다
             DispatchQueue.main.async {          // API통신을 하고 다운로드가 완료된 후 UI를 업데이트 하고 싶다면 Main 스레드에서 작업한다
                 // 화면표시, UI변경과 같이 UI업데이트와 관련된 작업을 수행할때는 메인쓰레드에서 해야한다?
                 let controller = LoginController()
                 controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용
-                let nav = UINavigationController(rootViewController: controller)
+                let nav = UINavigationController(rootViewController: controller)    // 로그인 화면과 회원가입 화면을 왔다갔다 해야되기 때문에 NavigiationController로 설정
                 nav.modalPresentationStyle = .fullScreen            // modal과 present로 주는 이유는 navigation push로 할 경우 뒤로가기가 생성될텐데 어짜피 사용 안할거라서?
                 self.present(nav, animated: true, completion: nil)
             }

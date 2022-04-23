@@ -7,7 +7,8 @@ private let identifier = "Cell"     // 실제로도 이렇게 사용하는 개�
 class FeedController: UICollectionViewController {
     
     private var posts = [Post]() {
-        didSet{ collectionView.reloadData() }
+        didSet{ collectionView.reloadData() }   // Post 배열과 관련해서 수정하거나 추가하거나 삭제할때마다 didSet블럭이 실행된다
+        // collectionView가 다시 reload된다는건 feedCell도 다시 reload 된다는것
     }
     var post: Post?
     
@@ -33,6 +34,8 @@ class FeedController: UICollectionViewController {
     private func checkIfUserLikedPosts() {
         posts.forEach { post in
             PostService.checkIfUserLikedPost(post: post) { didLike in
+                // 고유 식별자를 통해 올바른 게시물을 찾는다?
+                // 여러 post가 있는데 선택된 post의 index를 찾아서 해당 포스트만 like 하게끔
                 if let index = self.posts.firstIndex(where: { $0.postId == post.postId }) {
                     self.posts[index].didLike = didLike
                 }
@@ -70,8 +73,11 @@ class FeedController: UICollectionViewController {
     
     @objc private func tapLogout(){
         do {
-            try Auth.auth().signOut()       // firebase에 로그아웃을 전달?
-            let controller = LoginController()
+            // 로그 아웃 버튼을 눌렀다면
+            try Auth.auth().signOut()       // 로그 아웃이 되고
+            
+            // 여기 부분 MainController이랑 많이 겹치는데 줄이는 방법 없을까?
+            let controller = LoginController()  // LoginController 화면을 불러온다
             controller.delegate = self.tabBarController as? MainTabController
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
@@ -134,6 +140,7 @@ extension FeedController: FeedCellDelegate {
     }
     func cell(_ cell: FeedCell, didLike post: Post) {
         cell.viewModel?.post.didLike.toggle()
+        // toggle 공부
         // FeedController에서 cell을 delegate를 했는데 viewModel이 PostViewModel인데 FeedCell에서 선언
         
         if post.didLike {

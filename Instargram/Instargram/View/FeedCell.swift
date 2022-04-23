@@ -4,6 +4,7 @@ import UIKit
 
 // Controller에 있는게 아니라 Cell에 버튼이 있기 때문에 사용.
 // 좋아요버튼은 FeedCell에 있지만 처리할 수 없고 FeedController에서 처리해야하므로 delegate로 위임함
+// 이게 Protocol을 사용하는건데 이름을 delegate로 지어서 delegate를 사용하는걸로 착각하는걸까?
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
     func cell(_ cell: FeedCell, didLike post: Post)
@@ -13,6 +14,7 @@ class FeedCell: UICollectionViewCell {
     
     var viewModel: PostViewModel? { didSet { configure() } }
     // ?옵셔널로 선언하고 사용하는곳에서 안전하게 풀어서 사용?
+    
     
     weak var delegate: FeedCellDelegate?        // 대리자를 위임한다?
     
@@ -140,7 +142,7 @@ class FeedCell: UICollectionViewCell {
     
     @objc private func didTapLike(){
         guard let viewModel = viewModel else { return }
-        delegate?.cell(self, didLike: viewModel.post)
+        delegate?.cell(self, didLike: viewModel.post)       // FeedController로 권한을 위임할 것을 전달
     }
     
 }

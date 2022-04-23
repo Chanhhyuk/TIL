@@ -49,8 +49,10 @@ struct PostService {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         // 게시물과 다른 사람이기 때문에 게시물을 확인하는게 아닌 현재 로그인 사용자를 확인
         
-        COLLECTION_POSTS.document(post.postId).updateData(["likes": post.likes + 1])
+        COLLECTION_POSTS.document(post.postId).updateData(["likes": post.likes + 1])    // 현재 포스트에 likes를 1 추가
         
+        
+        // 문서를 두개 추가한다는데 하나가 어떤사람이 이 포스트에 좋아요를 눌렀는지 or
         COLLECTION_POSTS.document(post.postId).collection("post-likes").document(uid).setData([:]) { _ in
             COLLECTION_USERS.document(uid).collection("user-likes").document(post.postId).setData([:], completion: completion)
             
@@ -69,6 +71,8 @@ struct PostService {
         }
     }
     
+    
+    // 현재 사용자가 좋아요를 눌른 포스트를 확인해서 좋아요 버튼의 색을 알맞게 바꾼다
     static func checkIfUserLikedPost(post: Post, completion: @escaping(Bool) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         

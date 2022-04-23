@@ -19,7 +19,9 @@ struct User {
     
     var stats: UserStats!       // 유저상태정보 post,follower,following 갯수
     
-    // 이 방식말고 codeable프로토콜을 사용하는 방법이 이씀!
+    // 이거는 좋은 방법이 아님
+    // 이 방식말고 Decodable,codeable프로토콜을 사용하는 방법이 이씀!
+    // 근데 firebase는 이게 최선이라는데?
     init(dictionary: [String: Any]) {
         self.email = dictionary["email"] as? String ?? ""       // ?? default값, 값이 없을경우를 대비해서 "" 빈문자열로 설정
         self.fullname = dictionary["fullname"] as? String ?? "" // dictionary에서 key값 fullname을 찾는다 있으면 사용.

@@ -1,12 +1,14 @@
 import UIKit
 
 // 문자열로 사용할 경우 오타가능성이 있기 때문에 프로퍼티로 선언
+// 그리고 나중에 변경할 상황이 생길때 여러곳을 바꿀 필요없이 여기서 한꺼번에 변경 가능
 private let cellIdentifier = "ProfileCell"
 private let headerIdentifier = "ProfileHeader"
 
 class ProfileController: UICollectionViewController {
     
     // MARK: Properties
+    // ProfileController 클래스 내부에 User에 대한 액세스 권한이 생겼음
     private var user: User          // User 모델에 값을 변경해야 하는 일이 생기는데 (self.user.isFollowed = true) 그래서 var로 선언
     // private let user: User?, var user: User 이것만 선언했는데도 Class 'ProfileController' has no initializers 에러가 나옴 init이랑 required init도 같이 적어줌
     // private var user: User? 했는데 아무에러도 안뜸
@@ -46,7 +48,8 @@ class ProfileController: UICollectionViewController {
     private func fetchUserStats() {
         UserService.fetchUserStats(uid: user.uid) { stats in
             self.user.stats = stats
-            self.collectionView.reloadData()
+            self.collectionView.reloadData()                    // 얘도 self를 왜 꼭 써야할까?
+//            self.navigationItem.title = user.username       // 왜 꼭 self를 써야될까?
         }
     }
     
