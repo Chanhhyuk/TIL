@@ -26,7 +26,6 @@ class MainTabController: UITabBarController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.fetchUser(withUid: uid) { user in
             self.user = user
-            self.navigationItem.title = user.username
         }
     }
     
@@ -71,7 +70,7 @@ class MainTabController: UITabBarController {
         let search = naviController(unseletedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: SearchController() )
         let imageSelector = naviController(unseletedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: ImageSelectorController() )
         let notification = naviController(unseletedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController() )
-        let profileController = ProfileController(user: user)
+        let profileController = ProfileController(user: user)       // ProfileController에 새로운 init을 만들었으므로 이렇게 적었다 왜?
         let profile = naviController(unseletedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: profileController)
         // ()는 생성자이며 컨트롤러의 인스턴스를 생성하고 있다 ()?
         // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것?
@@ -96,6 +95,7 @@ class MainTabController: UITabBarController {
 }
 
 // MARK: AuthenticationDelegate
+// LoginController에서 로그인이 완료되면 MainTab에 일을 지시한다
 extension MainTabController: AuthenticationDelegate {
     func authenticationDidComplete() {      // 인증 완료
         fetchUser()

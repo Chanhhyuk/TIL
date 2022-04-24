@@ -75,10 +75,9 @@ class FeedController: UICollectionViewController {
         do {
             // 로그 아웃 버튼을 눌렀다면
             try Auth.auth().signOut()       // 로그 아웃이 되고
-            
             // 여기 부분 MainController이랑 많이 겹치는데 줄이는 방법 없을까?
             let controller = LoginController()  // LoginController 화면을 불러온다
-            controller.delegate = self.tabBarController as? MainTabController
+            controller.delegate = self.tabBarController as? MainTabController       // 이거 뭔지 궁금함
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
@@ -134,6 +133,13 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 // FeedCell에서 만든 델리게이트를 위임받아서 FeedCell에서 만든 버튼을 누르면 CommentController로 push할 수 있게 한다
 extension FeedController: FeedCellDelegate {
+    func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String) {
+        UserService.fetchUser(withUid: uid) { user in
+            let controller = ProfileController(user: user)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+    
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post) {
         let controller = CommentController(post: post)
         navigationController?.pushViewController(controller, animated: true)

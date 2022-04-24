@@ -1,6 +1,6 @@
 // 프로필 컨트롤러 위에부분
 import UIKit
-import SDWebImage
+import SDWebImage   // firebase에서 이미지를 가져올 때 Url로 가져오는데 이걸 쉽게 가져오기 위해서? 사용?
 
 protocol ProfileHeaderDelegate: class {
     func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
@@ -11,8 +11,11 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
     
     // Controller가 호출될때 값은 nil이다 왜냐하면 API가 호출되는데는 시간이 조금 걸리기 때문
     // didSet 관찰자가 하는 일은 값이나 변수가 설정되면 이 코드가 실행
+    // ProfileHeaderViewModel 이거 옵셔널 뺴주었더니 not initialized at super.init call 라고 에러뜸
+    // ProfileController에서 변할때마다 reloadData()를 해줌으로써 얘도 didSet의 효과를 받는다
+    // 프로퍼티 감시자 값이 새로 할당될 때마다 호출하며 변경되는 값이 현재의 값과 같더라도 호출한다
     var viewModel: ProfileHeaderViewModel? { didSet { configure() } }
-    // viewModel만든거 ProfileHeader에 적용
+    
     
     weak var delegate: ProfileHeaderDelegate?
     
@@ -125,13 +128,14 @@ class ProfileHeader: UICollectionReusableView {     // 재사용 가능
         fatalError("init(coder:) has not been implemented")
     }
     
-    // 처음 선택하면 nil이기떄문에 안전하게 여기서 포장을 푼다
-    // API가 호출이 완료된 후 UI를 업데이트 해준다
+    
+    // configureUI에 써도 되는데 한번만 실행하면 될것들을 많은 것들을 reload하게 되기도 하고 변경되는 값들만 깔끔하게 모아놓은것도 있음
     private func configure(){
-        // 여기서 viewModel은 ProfileHeaderViewModel
+        // viewModel이 옵셔널로 설정했기 때문에 여기서 안전하게 한번 풀어서 사용
         guard let viewModel = viewModel else { return }
+        // 여기서 viewModel을 안전하게 풀지 않았다면 아래 viewModel뒤에 다 ?을 붙여줘야 함
         nameLabel.text = viewModel.fullname
-        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)       // sd 라이브러리 사용
         editProfileButton.setTitle(viewModel.followButtonText, for: .normal)
         // ProfileHeaderViewModel에 있는 followButtonText 계산속성을 따라서 버튼 글자가 바뀜
         editProfileButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)

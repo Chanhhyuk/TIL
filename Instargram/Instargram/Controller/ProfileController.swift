@@ -14,7 +14,10 @@ class ProfileController: UICollectionViewController {
     // private var user: User? 했는데 아무에러도 안뜸
     private var posts = [Post]()
     
-    // 의존성 주입?
+    
+    // init을 새로 생성함으로써 위에 var user: User?의 옵셔널이 필요 없게되었다 왜?
+    // ProfileController는 User가 가지고 있는 모든 정보를 사용한다 따라서 이 Controller를 User개체로 초기화하려는 것이 합리적이다
+    // 따라서 이 Controller은 인스턴스화 할때마다 init의 다음 내용을 전달해야 한다
     init(user: User){
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
@@ -48,6 +51,7 @@ class ProfileController: UICollectionViewController {
     private func fetchUserStats() {
         UserService.fetchUserStats(uid: user.uid) { stats in
             self.user.stats = stats
+            // collectionView 전체가 reload 된다
             self.collectionView.reloadData()                    // 얘도 self를 왜 꼭 써야할까?
 //            self.navigationItem.title = user.username       // 왜 꼭 self를 써야될까?
         }
@@ -84,8 +88,8 @@ extension ProfileController {
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        // user가 안전하게 포장을 풀면 사용
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! ProfileHeader
+        // ProfileHeader에서 만든 viewModel 프로퍼티 사용
         header.viewModel = ProfileHeaderViewModel(user: user)
         header.delegate = self
         

@@ -2,11 +2,13 @@ import UIKit
 // 프로필 헤더에 관련된 데이터들을 가공
 
 struct ProfileHeaderViewModel {
-    let user: User      // Model 폴더에 User 클래스에 있는 User 구조체를 사용
+    let user: User      // User로 가보면 객체가 dictionary로 채워지게 우리가 만든것을 볼 수 있다
+    // Profile을 채우려면 User 가 필요하다
     init(user: User) { self.user = user } // 여기서 앞의 user는 맨위 let user, 뒤에 user는 init 매개변수 user 구분을 위해 self를 붙임
     
     var fullname: String { return user.fullname }
     var profileImageUrl: URL? { return URL(string: user.profileImageUrl) }
+    // 얘만 왜 타입이 URL일까? 업로드 할때 다른건 String로 이미지만 다른 형식으로 해서 그런걸까?  return은 왜 저 모양인지?
     var followButtonText: String {
         if user.isCurrentUser {     // 만약 접속한 유저를 선택해서 들어갔다면 버튼은 Edit Profile
             return "Edit Profile"

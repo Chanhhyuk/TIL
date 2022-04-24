@@ -8,6 +8,7 @@ import UIKit
 protocol FeedCellDelegate: class {
     func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
     func cell(_ cell: FeedCell, didLike post: Post)
+    func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String)
 }
 
 class FeedCell: UICollectionViewCell {
@@ -19,12 +20,17 @@ class FeedCell: UICollectionViewCell {
     weak var delegate: FeedCellDelegate?        // 대리자를 위임한다?
     
     // let으로 선언하면 self를 FeedCell.self 바꾸라고 나옴 lazy var로 선언하면 에러 문구가 안 뜸(업데이트 후로 바뀐거 같음)??
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
         imageView.backgroundColor = .lightGray
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile) )
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tap)
+        
         return imageView
     }()
 
@@ -33,13 +39,9 @@ class FeedCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(didTapUsername), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showUserProfile), for: .touchUpInside)
         return button
     }()
-    
-    @objc private func didTapUsername(){
-        print("test")
-    }
     
     private let postImageView: UIImageView = {
         let imageView = UIImageView()
@@ -143,6 +145,11 @@ class FeedCell: UICollectionViewCell {
     @objc private func didTapLike(){
         guard let viewModel = viewModel else { return }
         delegate?.cell(self, didLike: viewModel.post)       // FeedController로 권한을 위임할 것을 전달
+    }
+    
+    @objc private func showUserProfile() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToShowProfileFor: viewModel.post.ownerUid)
     }
     
 }
