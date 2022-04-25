@@ -22,6 +22,7 @@ class ProfileController: UICollectionViewController {
         self.user = user
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
+    // 종속성 주입 사용자 지정 초기화
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

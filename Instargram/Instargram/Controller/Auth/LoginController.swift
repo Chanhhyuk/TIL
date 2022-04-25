@@ -18,6 +18,7 @@ class LoginController: UIViewController{
     weak var delegate: AuthenticationDelegate?
     // delegate를 weak로 만든 이유는 유지 주기를 피할려고
     // 이거 let으로 만들었더니 LoginController 이니셜라이즈 필요하다고 에러
+    // weak 메모리 누수와 관련
     
     private let iconImage: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white"))

@@ -38,7 +38,7 @@ class SearchController: UITableViewController {
     private func configureUI(){
         view.backgroundColor = .white
         tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)      // 레지스터 등록
-        tableView.rowHeight = 64
+        tableView.rowHeight = 64        // 이거 중요! cell의 높이를 설정해줌 swift 내장 옵션
     }
     
     private func configureSearchController(){

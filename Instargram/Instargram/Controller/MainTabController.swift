@@ -25,7 +25,7 @@ class MainTabController: UITabBarController {
         // API 폴더에 UserService 구조체에 fetchUser 구조체를 사용
         guard let uid = Auth.auth().currentUser?.uid else { return }
         UserService.fetchUser(withUid: uid) { user in
-            self.user = user
+            self.user = user        // 다시한번 user를 일치시킨다 이게 있기 때문에 로그아웃하고 다른 로그인을 했을 때 화면이 바뀐다.
         }
     }
     
@@ -37,7 +37,7 @@ class MainTabController: UITabBarController {
             DispatchQueue.main.async {          // API통신을 하고 다운로드가 완료된 후 UI를 업데이트 하고 싶다면 Main 스레드에서 작업한다
                 // 화면표시, UI변경과 같이 UI업데이트와 관련된 작업을 수행할때는 메인쓰레드에서 해야한다?
                 let controller = LoginController()
-                controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용
+                controller.delegate = self          // LoginController만든 프로토콜 AuthenticationDelegate을 사용?
                 let nav = UINavigationController(rootViewController: controller)    // 로그인 화면과 회원가입 화면을 왔다갔다 해야되기 때문에 NavigiationController로 설정
                 nav.modalPresentationStyle = .fullScreen            // modal과 present로 주는 이유는 navigation push로 할 경우 뒤로가기가 생성될텐데 어짜피 사용 안할거라서?
                 self.present(nav, animated: true, completion: nil)
@@ -72,6 +72,7 @@ class MainTabController: UITabBarController {
         let notification = naviController(unseletedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), rootViewController: NotificationController() )
         let profileController = ProfileController(user: user)       // ProfileController에 새로운 init을 만들었으므로 이렇게 적었다 왜?
         let profile = naviController(unseletedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: profileController)
+        // User 데이터를 가져와 ProfileController에 user 데이터를 사용해 초기화 한다
         // ()는 생성자이며 컨트롤러의 인스턴스를 생성하고 있다 ()?
         // 뷰 컨트롤러의 인스턴스를 각각의 내부에 저장하는 것?
         
@@ -98,8 +99,8 @@ class MainTabController: UITabBarController {
 // LoginController에서 로그인이 완료되면 MainTab에 일을 지시한다
 extension MainTabController: AuthenticationDelegate {
     func authenticationDidComplete() {      // 인증 완료
-        fetchUser()
-        self.dismiss(animated: true, completion: nil)
+        fetchUser()         // fetchUser를 통해 사용자를 가져오고
+        self.dismiss(animated: true, completion: nil)   // 해당 view를(Controller) 닫는다
     }
 }
 

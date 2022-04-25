@@ -18,7 +18,7 @@ class UserCell: UITableViewCell {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.backgroundColor = .lightGray
+        iv.backgroundColor = .lightGray     // 이미지가 이미 있는데 왜 백그라운드 색을 주었을까?
         iv.image = #imageLiteral(resourceName: "venom-7")
         return iv
     }()

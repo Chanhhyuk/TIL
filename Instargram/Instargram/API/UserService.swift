@@ -16,9 +16,9 @@ struct UserService {
     
     
     // SearchController에서 사용
-    // 친구 추천하는 탭에서 사용할거기 때문에 firebase에서 user를 전부 가져온다
+    // 이거 map 말고 for문으로 구현해보기
     static func fetchUsers(completion: @escaping([User]) -> Void) {
-        COLLECTION_USERS.getDocuments { (snapshot, error) in
+        COLLECTION_USERS.getDocuments { (snapshot, error) in    // 친구 추천하는 탭에서 사용할거기 때문에 firebase에서 user를 전부 가져온다
             guard let snapshot = snapshot else { return }
             let users = snapshot.documents.map({ User(dictionary: $0.data()) }) // option 누른 후 users를 클릭해보면 알 수 있다 let users = [User] 라는걸
             completion(users)

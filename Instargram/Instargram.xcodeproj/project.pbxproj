@@ -18,6 +18,7 @@
 		711A1D37279A62E700E65B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D35279A62E700E65B73 /* LaunchScreen.storyboard */; };
 		711A1D48279A650A00E65B73 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D47279A650A00E65B73 /* MainTabController.swift */; };
 		713387DF28167127000D2720 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713387DE28167127000D2720 /* NotificationCell.swift */; };
+		713387E32816CC10000D2720 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713387E22816CC10000D2720 /* Notification.swift */; };
 		714F528F27DB4397006FFA06 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F528E27DB4397006FFA06 /* PostViewModel.swift */; };
 		714FA26327A1700200EA8B3A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714FA26227A1700200EA8B3A /* CustomTextField.swift */; };
 		7178E37527DB38FF009CE7FB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178E37427DB38FF009CE7FB /* Post.swift */; };
@@ -65,6 +66,7 @@
 		711A1D38279A62E700E65B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		711A1D47279A650A00E65B73 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		713387DE28167127000D2720 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		713387E22816CC10000D2720 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		714F528E27DB4397006FFA06 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		714FA26227A1700200EA8B3A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7178E37427DB38FF009CE7FB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				717E549F27B8E21C00B5DA79 /* User.swift */,
 				7178E37427DB38FF009CE7FB /* Post.swift */,
 				71C6998C28091155009412E0 /* Comment.swift */,
+				713387E22816CC10000D2720 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				718F1B50279D38280035DF99 /* Extensions.swift in Sources */,
 				71131B2827C4F8D100BEC1E6 /* UserCell.swift in Sources */,
 				71EF8085279A7E1E00EA79E4 /* FeedController.swift in Sources */,
+				713387E32816CC10000D2720 /* Notification.swift in Sources */,
 				71E569F428058BF300976CB0 /* CommentInput.swift in Sources */,
 				71E6712227A00C0900ACF2E0 /* RegisterController.swift in Sources */,
 				71849E8627DA0F7F00B888B4 /* PostService.swift in Sources */,
