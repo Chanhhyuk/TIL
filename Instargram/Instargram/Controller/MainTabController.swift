@@ -8,16 +8,16 @@ class MainTabController: UITabBarController {
     
     var user: User? {
         didSet{     // didSet: 값이 변경되기 직전을 감지 한다
-            guard let user = user else { return }
-            tabController(withUser: user)
+            guard let user = user else { return }       // var로 변수 User 타입인 user를 생성했단말이지 근데 여기서 user = user 다? 무슨뜻이지?ㅈ
+            tabController(withUser: user)               // 컨트롤러 전체에 user 데이터를 업데이트 한다.
         }
     }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUser()
         checkIfUserIsLoggedIn()
+        fetchUser()
     }
     
     // MARK: API

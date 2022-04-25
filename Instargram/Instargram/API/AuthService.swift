@@ -1,6 +1,6 @@
 import UIKit        // UIImage를 사용하므로 UIKit 사용
 import Firebase
-import AVFoundation
+
 
 // 회원가입할때 전달할 데이터
 struct AuthCredetials {     // viewModel은 var로 도배 했는데 여긴 let으로 선언했네?

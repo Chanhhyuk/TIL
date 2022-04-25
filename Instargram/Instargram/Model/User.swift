@@ -1,6 +1,5 @@
 // 이걸 처음 만든 시점이 회원가입이나 로그인 할때 보낼때는 안 만들었는데 다시 데이터들을 받을 때 생성함
 // API의 UserService, MainController에서 사용자 정보를 뿌려줄때 사용
-import Foundation
 import Firebase
 
 // firebase에서 계정 정보를 가져올텐데 { [email: "apple@gmail.com"... ] } 이렇게 묶어서 가져오기 때문에 이것들을 쉽게 사용하게 하기 위해서 model링작업
