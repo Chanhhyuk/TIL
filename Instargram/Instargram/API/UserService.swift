@@ -17,6 +17,7 @@ struct UserService {
     
     // SearchController에서 사용
     // 이거 map 말고 for문으로 구현해보기
+    // 위에랑 fetchUser 이름만 갖고 함수 파라미터가 다른데도 다른곳에서 사용하려하면 Ambiguous use of로 에러 뜨면서 사용하지 뫃샜음
     static func fetchUsers(completion: @escaping([User]) -> Void) {
         COLLECTION_USERS.getDocuments { (snapshot, error) in    // 친구 추천하는 탭에서 사용할거기 때문에 firebase에서 user를 전부 가져온다
             guard let snapshot = snapshot else { return }
@@ -25,18 +26,34 @@ struct UserService {
         }
     }
     
+    // 이렇게 해도 되는데 위에가 더 깔끔한 방법 어쨋든 User 모델의 형식에 맞게 dictionary 형태로 전달만 해주면 됨
+//    static func fetchUsers(completion: @escaping([User]) -> Void) {
+//        var users = [User]()
+//        COLLECTION_USERS.getDocuments { snapshot, error in
+//            guard let snapshot = snapshot else { return }
+//            snapshot.documents.forEach { document in
+//                let user = User(dictionary: document.data())
+//                users.append(user)
+//            }
+//            completion(users)
+//        }
+//    }
+    
+    
     // 현재 사용자가 해당 사용자를 follow 한다
     static func followUser(uid: String, completion: @escaping(FirestoreCompletion)){
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
         // following 이름의 컬렉션에 현재 로그인된 계정의 문서를 만들고 그 문서에 user-following 컬렉션을 만들어서 해당 uid를 저장한다
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).setData([:]) { error in
             COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).setData([:], completion: completion)
+            // completion에 completion을 넣는것은 무엇일까? default값을 넣는걸까?
         }
     }
     
     // 현재 사용자가 해당 사용자를 unfollowe 한다
     static func unfollowUser(uid: String, completion: @escaping(FirestoreCompletion)) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }     // 현재 사용자
+        // 첫번째로 현재 사용자의 user-following 콜렉션으로 가서 해당uid를 삭제가 완료되면 그 다음 해당 uid로 가서 currentUid를 삭제한다
         COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).delete { error in
             COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).delete(completion: completion)
         }

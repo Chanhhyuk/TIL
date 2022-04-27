@@ -31,6 +31,7 @@ struct PostService {
     static func fetchPosts(forUser uid: String, completion: @escaping([Post]) -> Void) {
         // whereField로 특정필드(ownerUid)
         let query = COLLECTION_POSTS.whereField("ownerUid", isEqualTo: uid)
+        // where: firestore 고유 기능 쿼리를 필터링할 수 있다
         
         query.getDocuments { snapshot, error in
             guard let documents = snapshot?.documents else { return }

@@ -137,6 +137,7 @@ extension MainTabController: UploadPostControllerDelegate {
         selectedIndex = 0       // 탭바 0번째로 이동(MainController)
         controller.dismiss(animated: true, completion: nil)
 
+        // feed에 액세스하기 위해서  Navigation Controller을 찾아야하고 FeedController을 찾아야한다
         guard let feedNav = viewControllers?.first as? UINavigationController else { return }
         guard let feed = feedNav.viewControllers.first as? FeedController else { return }
         feed.handleRefresh()

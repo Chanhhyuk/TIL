@@ -3,12 +3,16 @@ import UIKit
 
 private let reuseIdentifier = "CommentCell"
 
+
+// 얘를 collection이 아니라 tableview로 해줘도 되지 않았을까?
 class CommentController: UICollectionViewController{
     // MARK: Properties
     private let post: Post
     private var comments = [Comment]()
     
-    private lazy var commentInputView: CommentInput = {
+    
+    // 이걸 commentView에서 안 주고 Controller에다가 주었을까?
+    private lazy var commentInputView: CommentInput = {     // lazy var를 안 주고 let을 줄 경우 view.frame.width에서 에러
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cv = CommentInput(frame: frame)
         cv.delegate = self      // CommentInput에서 만든 delegate를 사용하기 위해

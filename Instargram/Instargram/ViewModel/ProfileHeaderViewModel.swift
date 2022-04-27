@@ -9,8 +9,9 @@ struct ProfileHeaderViewModel {
     var fullname: String { return user.fullname }
     var profileImageUrl: URL? { return URL(string: user.profileImageUrl) }
     // 얘만 왜 타입이 URL일까? 업로드 할때 다른건 String로 이미지만 다른 형식으로 해서 그런걸까?  return은 왜 저 모양인지?
+    
     var followButtonText: String {
-        if user.isCurrentUser {     // 만약 접속한 유저를 선택해서 들어갔다면 버튼은 Edit Profile
+        if user.isCurrentUser {
             return "Edit Profile"
         }
         return user.isFollowed ? "Following" : "Follow"     // follwed가 true값이면 following

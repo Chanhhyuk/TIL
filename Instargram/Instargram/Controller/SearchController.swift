@@ -9,6 +9,8 @@ class SearchController: UITableViewController {
     private var users = [User]()        // UserService.fetchUsers에서 User값을 가져오므로 외부에 액세스할 필요가 없으므르 private사용
     private var filteredUsers = [User]()
     private let searchController = UISearchController(searchResultsController: nil) // 검색 기능 추가
+    
+    // 이거는 viewModel에 적어도 되지 않을까? 옮겨보기
     private var inSearchMode: Bool { return searchController.isActive && !searchController.searchBar.text!.isEmpty }
     // searchController가 내부가 활성화 되어 있으며 비어있지 않을경우 true 반환
     // 처음에는 추천친구를 다 보여주고(false) 써치바 클릭하고 글자를 작성하면(true)
@@ -62,7 +64,8 @@ extension SearchController {
         // 재사용을 사용해야하기 때문에 사용(dequeueReusableCell)
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
         let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
-        cell.viewModel = UserCellViewModel(user: user)
+        // cell.user = viewModel[indexPath.row]  UserCell을 MVVM 패턴 없이 그대로 받아왔다면 이렇게 적어야 했다.
+        cell.viewModel = UserCellViewModel(user: user)      // User 모델을 직접 사용하는게 아닌 viewModel 한것을 가져온다
         return cell
     }
 }
@@ -73,7 +76,7 @@ extension SearchController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = inSearchMode ? filteredUsers[indexPath.row] : users[indexPath.row]
         // 써치모드의 경우 filter된 user의 index가 필요하고 아닌경우 user의 index가 필요하다
-        let controller = ProfileController(user: user)      // 클릭한 user로된 ProfileController로 이동
+        let controller = ProfileController(user: user)      // 이거 만약에 ProfileController에 init()을 만들지 않았다면 다른 방법이 있을까?
         navigationController?.pushViewController(controller, animated: true)
     }
 }

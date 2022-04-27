@@ -9,14 +9,15 @@ struct User {
     let profileImageUrl: String
     let username: String
     let uid: String
+    var stats: UserStats!      // UserStats 아래 만든거 가져가서 사용하면 될것을 왜 User에다가 따로 또 만들었을까?
     
+    
+    // 얘내 둘은 값을 따로 설정했으므로 init에 적어줄 필요가 없다
     var isFollowed = false      // follow인지 아닌지 확인
-    
     var isCurrentUser: Bool { // 현재 접속한 사용자인지 확인. 현재 사용자면 edit profile을 현재 사용자가 아니면 follow 버튼을 리턴하기 위함
         return Auth.auth().currentUser?.uid == uid
     }
     
-    var stats: UserStats!       // 유저상태정보 post,follower,following 갯수
     
     // 이거는 좋은 방법이 아님
     // 이 방식말고 Decodable,codeable프로토콜을 사용하는 방법이 이씀!

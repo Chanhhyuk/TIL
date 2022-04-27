@@ -3,13 +3,13 @@ import UIKit
 class UserCell: UITableViewCell {
     
     // MARK: Properties
-//    var user: User? {         User 모델 대신 ViewModel을 이용하여 수행, MVVM 패턴에 어긋남
-//        didSet {
+//    var user: User? {         UserCellViewModel 없이 이렇게 User Model에서 직접 데이터를 가져오는 방법도 있다. MVVM 패턴에 어긋남
+//        didSet {              SearchController에 cell쪽으로 가기 ㄱㄱ
 //            usernameLabel.text = user?.username
 //            fullnameLabel.text = user?.fullname
 //        }
 //    }
-    var viewModel: UserCellViewModel? {
+    var viewModel: UserCellViewModel? {     // UserCellViewModel에 옵셔널이 들어가는 이유는?
         didSet { configure() }
     }
     

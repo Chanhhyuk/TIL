@@ -25,7 +25,7 @@ class FeedCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = true
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .lightGray      // 데이터를 받아 올 때 동안 빈 공간을 보여주기보단 회색 백그라운드라도...
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile) )
         imageView.isUserInteractionEnabled = true

@@ -96,7 +96,7 @@ class FeedController: UICollectionViewController {
 extension FeedController {
     // 셀의 항목 수
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return post == nil ? posts.count : 1
+        return post == nil ? posts.count : 1           // post값이 nil이면 posts의 전부를 nil이 아니라면 1개를 반환
     }
     // 각각의 셀을 정의
     // 잘보면 UICollectionViewCell을 반환하는 함수인걸 볼 수 있다.
@@ -161,6 +161,8 @@ extension FeedController: FeedCellDelegate {
                 cell.likeButton.setImage(UIImage(named: "like_selected") , for: .normal)
                 cell.likeButton.tintColor = .red
                 cell.viewModel?.post.likes = post.likes + 1
+                
+                NotificationService.uploadNotification(toUid: post.ownerUid, type: .like, post: post)
             }
         }
     }
