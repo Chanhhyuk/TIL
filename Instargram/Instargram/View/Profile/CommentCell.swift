@@ -34,8 +34,9 @@ class CommentCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = 40 / 2
         addSubview(commentLabel)
         commentLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
-        commentLabel.anchor(right: rightAnchor, paddingRight: 8)
-        commentLabel.numberOfLines = 0
+        
+        commentLabel.anchor(right: rightAnchor, paddingRight: 8)    // 댓글이 길어지면 오른쪽 벽에 붙여지지 않게 여백을 준다.
+        commentLabel.numberOfLines = 0          // 댓글이 길어지면 화면에 ... 으로 짤리 않게
     }
     
     private func configure() {

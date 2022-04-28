@@ -146,6 +146,7 @@ extension FeedController: FeedCellDelegate {
     }
     func cell(_ cell: FeedCell, didLike post: Post) {
         cell.viewModel?.post.didLike.toggle()
+        // 파라미터 post는 상수이므로 post.didLike.toggle() 하면 에러가 뜸 상수는 값을 변경하지 못하므로
         // toggle 공부
         // FeedController에서 cell을 delegate를 했는데 viewModel이 PostViewModel인데 FeedCell에서 선언
         

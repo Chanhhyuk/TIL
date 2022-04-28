@@ -6,7 +6,7 @@ import UIKit
 // 좋아요버튼은 FeedCell에 있지만 처리할 수 없고 FeedController에서 처리해야하므로 delegate로 위임함
 // 이게 Protocol을 사용하는건데 이름을 delegate로 지어서 delegate를 사용하는걸로 착각하는걸까?
 protocol FeedCellDelegate: class {
-    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)
+    func cell(_ cell: FeedCell, wantsToShowCommentsFor post: Post)      // Feed에서 댓글버튼을 누르면 CommentController로 이동하는 함수
     func cell(_ cell: FeedCell, didLike post: Post)
     func cell(_ cell: FeedCell, wantsToShowProfileFor uid: String)
 }

@@ -80,6 +80,7 @@ struct PostService {
         COLLECTION_USERS.document(uid).collection("user-likes").document(post.postId).getDocument { snapshot, _ in
             guard let didLike = snapshot?.exists else { return }
             completion(didLike)
+            // return이 Bool 값으로 didLike에 값이 있다면 true 없다면 false를 리턴
         }
     }
     
